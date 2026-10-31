@@ -137,10 +137,13 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - **21:10:** Rıza söz verdiyse çanı **Rıza** çalar, kırk yıl sonra ilk kez. Yoksa çan çalmaz; Nazlı ezgiyi sonuna kadar mırıldanır, Elif kaydeder.
 - Gece fırtına; su değirmenin bahçesinde. "Yarın 18:00'de son araç, 21:10'da son çan. İkisi bir arada olmaz."
 
-### Gün 7 — Son Çan
-- Selim'in ekibi 18:00'de son kez geçecek; sonra kimse gelmez.
-- Gün boyunca bayraklara göre farklı sahneler: Rıza'nın Nazlı'yla yüzleşmesi, değirmenden çıkış, bilek, pil.
-- **21:10:** Son çan. Kim çalıyor, neden çalıyor — sona göre değişir.
+### Gün 7 — Son Çan  *(yazıldı, oynanabilir)*
+- Su değirmenin içinde. Çıkış: Rıza'nın kayığını beklemek (Rıza'yla bağ kurulduysa sabah erken, yoksa öğlen gelir) / geçitten Nazlı'yı tutarak geçmek (**Sinyal Yok**) / kuzey yoluna yürümek (Nazlı yürüyemez, geri dönülür).
+- **Rıza ile Nazlı:** Nazlı Rıza'nın payını biliyorsa yüzleşirler ("Atlamadım. Kırk yıl her gece atladım ama." / "İkimiz de yanlış yerde bekledik. Kürek çek Rıza."). Rıza söz verdiyse kayıkta kendisi anlatır. Aksi hâlde sır Rıza'da kalır.
+- Bu gece savaklar tamamen kapanır; su bir gecede kuleyi yutacaktır.
+- **17:10 kararı:** 18:00'de Selim'in aracıyla çıkmak (**Kuru Toprak**) ya da son çanı bekleyip gece kayıkla gölün üstünden baraj iskelesine gitmek.
+- **21:10:** Kayık postanenin penceresinin önünde. Koşullar tamamsa (Nazlı gerçeği biliyor, güven ≥ 7) Nazlı ipi Elif'e verir: "Bu sefer sen çal. O gece Kemal çalmıştı." Nazlı fısıldar: **"Git artık Orhan. Ben de gidiyorum."** (**Son Çan**). Değilse Nazlı son kez "gel artık" der (**Kuru Toprak**).
+- Sonsözler birkaç gün / bir hafta sonra, başka bir numaradan gelir (Elif'in ya da Nazlı'nın yeni telefonu, ya da Selim).
 
 ## Sonlar
 
@@ -148,9 +151,9 @@ Hiçbir sonda kimse kendi canına kıymaz; su "kayıp" değil "veda" anlamı ta�
 
 | Son | Koşul (özet) | Ne olur |
 | --- | --- | --- |
-| **Son Çan** *(gerçek son)* | Güven yüksek, tutanak + itiraf + Nazlı'nın sırrı çözüldü, gerçek Nazlı'ya söylendi | Rıza Nazlı'dan özür diler. 21:10'da çanı son kez Elif çalar: bu sefer Orhan'a veda. Üçü sabaha karşı Rıza'nın kayığıyla çıkar. Bir hafta sonra Nazlı oyuncuya Elif'in yeni telefonundan yazar: "Cevap verdiğin için." |
-| **Kuru Toprak** | Elif çıktı ama sır tam çözülmedi ya da Nazlı'ya söylenmedi | Selim herkesi tahliye eder. Nazlı hiçbir şey öğrenmeden şehre gider. Elif köyün son seslerini kaydetmiştir ama kayıtta bir boşluk vardır. |
-| **Sinyal Yok** | Pil biter ya da bilek + riskli yol + kötü kararlar son günde birleşir | Mesajlar susar. Ertesi sabah bilinmeyen başka bir numaradan Selim yazar: telefonu bir kayıkta buldular, Elif hastanede, iyi. Sır suyun altında kaldı. |
+| **Son Çan** *(gerçek son)* | Son çan beklendi, Nazlı Orhan'ın gerçeğini biliyor, güven ≥ 7 | 21:10'da çanı Elif çalar; Nazlı "Git artık Orhan" der. Yüzleşme olduysa üçü aynı kayıktadır. Bir hafta sonra Nazlı yeni telefonundan yazar: Orhan'ı Ankara'ya, yanına taşımışlar (yüzleşme olduysa mezarı Rıza kazmıştır). "Cevap verdiğin için teşekkür ederim." |
+| **Kuru Toprak** | 18:00'deki araçla çıkıldı ya da son çan çalındı ama Nazlı gerçeği bilmiyor / güven düşük | Çan ya hiç çalınmaz ya da son kez "gel artık" için çalınır. Birkaç gün sonra Elif yeni numarasından yazar: Nazlı Nine yanında; gerçeği biliyorsa her akşam 21:10'da pencereye gider, bilmiyorsa hâlâ bekler. |
+| **Sinyal Yok** | 7. gün sabahı Nazlı'yla göğüs boyu geçitten geçmeye çalışmak | Nazlı kayar, Elif onu tutar, telefon suya düşer. "Mesaj iletilemedi." Ertesi gün Selim yazar: Rıza ikisini de sudan çıkarmış, hastanedeler, iyiler. "Çanı çalamadık." |
 | **Engellendin** *(erken son)* | Oyuncu sürekli alaycı/kaba ya da Elif'i oyalayan seçimler yapar, güven 0'a iner | Elif "yardım etmeyeceksen yazma" der ve konuşmayı bırakır. Erken ve sert ama adil bir son; oyuncu geri sarabilir. |
 
 ## Değişkenler

@@ -401,3 +401,84 @@ EXTRA_SCENES['gun6_son'] = {
         (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '7. gün · Son Çan')]),
     ],
 }
+
+
+# ---------------------------------------------------------------- 7. gün ve sonlar
+def boat(img, x, y, s=1.0, dim=1.0, lantern=True, people=3):
+    hull = mask_poly(H, W, [(x - 120 * s, y), (x + 120 * s, y), (x + 95 * s, y + 26 * s), (x - 95 * s, y + 26 * s)])
+    img = comp(img, np.array((0.20, 0.14, 0.09)) * dim, hull)
+    for k in range(people):
+        px = x - 60 * s + k * 60 * s
+        body = mask_poly(H, W, [(px - 14 * s, y), (px + 14 * s, y), (px + 10 * s, y - 50 * s), (px - 10 * s, y - 50 * s)])
+        body = np.maximum(body, mask_ellipse(H, W, px, y - 62 * s, 10 * s, 11 * s))
+        img = comp(img, np.array((0.06, 0.06, 0.07)), body)
+    if lantern:
+        img = glow(img, x + 100 * s, y - 40 * s, 140 * s, (0.85, 0.45, 0.12), 0.8)
+        img = glow(img, x + 100 * s, y - 40 * s, 14 * s, (1.0, 0.85, 0.5), 1.4)
+    return img
+
+
+def c_son_can():
+    """Gece: kule suyun ortasında, postanenin penceresinin önünde fenerli bir kayık."""
+    img = vgrad(H, W, [(0, (0.03, 0.04, 0.09)), (0.5, (0.08, 0.10, 0.17)), (0.62, (0.16, 0.16, 0.24))])
+    img = stars(img, 2200, 15)
+    img = mountains(img, [(700, 200, (0.07, 0.08, 0.11), 520, 0.0), (760, 150, (0.05, 0.05, 0.07), 420, 0.0)], seed=151)
+    img = put_tower(img, [(1060, 150), (1300, 144), (1330, 900), (1030, 906)], 0.25)
+    post = mask_poly(H, W, [(1340, 720), (1700, 720), (1700, 900), (1340, 900)])
+    img = comp(img, (0.06, 0.06, 0.07), post)
+    img = comp(img, (0.30, 0.18, 0.06), mask_poly(H, W, [(1420, 780), (1480, 780), (1480, 840), (1420, 840)]) * 0.8)
+    wy = 860
+    img = water(img, wy, H, None, 12, (0.03, 0.035, 0.06), 0.55, 152)
+    img = boat(img, 1520, 900, 1.0, 0.3)
+    refl = np.exp(-((np.arange(W)[None, :] - 1620) / 24) ** 2) * np.clip(1 - (np.arange(H)[:, None] - 930) / 300, 0, 1) * (np.arange(H)[:, None] > 930)
+    img += refl[..., None] * np.array([0.45, 0.24, 0.06]) * (0.5 + 0.8 * fbm(H, W, 10, 3, 153, aspect=(0.05, 1.0)))[..., None]
+    return phone_photo(img, 154, grain=0.04, vignette=0.5, sharpen=0.25, soft=1.0, noise_dark=1.6)
+
+
+def c_safak():
+    """Şafak: durgun göl, yalnızca kulenin çatısı sudan çıkıyor, uzakta küçük bir kayık."""
+    img = vgrad(H, W, [(0, (0.42, 0.52, 0.66)), (0.4, (0.70, 0.72, 0.78)), (0.56, (0.96, 0.84, 0.70)), (0.6, (0.98, 0.88, 0.74))])
+    img = glow(img, 1500, 780, 900, (0.30, 0.16, 0.05), 1.0)
+    img = mountains(img, [(720, 200, (0.56, 0.58, 0.66), 600, 0.5), (780, 150, (0.44, 0.43, 0.46), 420, 0.3)], seed=161)
+    roof = mask_poly(H, W, [(1110, 812), (1180, 740), (1250, 812)])
+    img = comp(img, (0.30, 0.18, 0.13), roof)
+    img = comp(img, (0.40, 0.36, 0.32), mask_poly(H, W, [(1120, 812), (1240, 812), (1240, 822), (1120, 822)]))
+    img = mist(img, 810, 30, 0.6, (0.94, 0.90, 0.84), 6)
+    img = water(img, 822, H, None, 3, (0.60, 0.62, 0.66), 0.15, 162)
+    img = boat(img, 1800, 900, 0.45, 0.4, lantern=False)
+    return phone_photo(img, 163, grain=0.02, vignette=0.32, warm=0.03, sharpen=0.3, soft=1.0, contrast=1.04)
+
+
+EXTRA_FRAMES['c_son_can'] = c_son_can
+EXTRA_FRAMES['c_safak'] = c_safak
+EXTRA_SCENES['son_can'] = {
+    'baslik': 'Son Çan',
+    'ses': 'sinema/son_can.ogg',
+    'kapak': 'sinema/c_son_can.jpg',
+    'kareler': [
+        ('c_son_can', 11.0, [0.50, 1.10], [0.58, 1.02], [(0.6, 5.0, 'Dokuzu on geçe, Ilgındere’de son kez çan çaldı.'),
+                                                       (5.4, 10.6, 'Bu sefer gelmesi için değil. Gitmesi için.')]),
+        ('c_safak', 10.0, [0.45, 1.12], [0.55, 1.02], [(0.6, 4.8, 'Sabah göl durgundu.'), (5.0, 9.6, 'Saat kulesinin yalnızca çatısı görünüyordu.')]),
+        (None, 6.0, [0.5, 1], [0.5, 1], [(0.4, 5.8, 'Son Çan')]),
+    ],
+}
+EXTRA_SCENES['son_kuru'] = {
+    'baslik': 'Kuru Toprak',
+    'ses': 'sinema/son_kuru.ogg',
+    'kapak': 'sinema/c_safak.jpg',
+    'kareler': [
+        ('c_baraj', 8.0, [0.70, 1.10], [0.62, 1.02], [(0.6, 7.6, 'Ilgın Barajı’nın gölü yedinci günün gecesi doldu.')]),
+        ('c_safak', 9.0, [0.48, 1.04], [0.52, 1.14], [(0.6, 4.4, 'Ilgındere suyun altında kaldı.'), (4.6, 8.6, 'O gece çan çalmadı.')]),
+        (None, 5.0, [0.5, 1], [0.5, 1], [(0.4, 4.8, 'Kuru Toprak')]),
+    ],
+}
+EXTRA_SCENES['son_sinyal'] = {
+    'baslik': 'Sinyal Yok',
+    'ses': 'sinema/son_sinyal.ogg',
+    'kapak': 'sinema/c_telefon.jpg',
+    'kareler': [
+        ('c_telefon', 7.0, [0.47, 1.05], [0.47, 1.20], [(0.6, 6.6, 'Telefon ikinci kez suya düştü.')]),
+        ('c_safak', 9.0, [0.48, 1.04], [0.52, 1.14], [(0.6, 4.4, 'Ilgındere suyun altında kaldı.'), (4.6, 8.6, 'Son çan hiç çalınmadı.')]),
+        (None, 5.0, [0.5, 1], [0.5, 1], [(0.4, 4.8, 'Sinyal Yok')]),
+    ],
+}

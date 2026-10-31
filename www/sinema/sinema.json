@@ -555,5 +555,220 @@
     ]
    }
   ]
+ },
+ "son_can": {
+  "baslik": "Son Çan",
+  "ses": "sinema/son_can.ogg",
+  "kapak": "sinema/c_son_can.jpg",
+  "sure": 27.0,
+  "kareler": [
+   {
+    "img": "sinema/c_son_can.jpg",
+    "sure": 11.0,
+    "bas": [
+     0.5,
+     1.1
+    ],
+    "son": [
+     0.58,
+     1.02
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 5.0,
+      "metin": "Dokuzu on geçe, Ilgındere’de son kez çan çaldı."
+     },
+     {
+      "bas": 5.4,
+      "son": 10.6,
+      "metin": "Bu sefer gelmesi için değil. Gitmesi için."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_safak.jpg",
+    "sure": 10.0,
+    "bas": [
+     0.45,
+     1.12
+    ],
+    "son": [
+     0.55,
+     1.02
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 4.8,
+      "metin": "Sabah göl durgundu."
+     },
+     {
+      "bas": 5.0,
+      "son": 9.6,
+      "metin": "Saat kulesinin yalnızca çatısı görünüyordu."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 6.0,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 5.8,
+      "metin": "Son Çan"
+     }
+    ]
+   }
+  ]
+ },
+ "son_kuru": {
+  "baslik": "Kuru Toprak",
+  "ses": "sinema/son_kuru.ogg",
+  "kapak": "sinema/c_safak.jpg",
+  "sure": 22.0,
+  "kareler": [
+   {
+    "img": "sinema/c_baraj.jpg",
+    "sure": 8.0,
+    "bas": [
+     0.7,
+     1.1
+    ],
+    "son": [
+     0.62,
+     1.02
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 7.6,
+      "metin": "Ilgın Barajı’nın gölü yedinci günün gecesi doldu."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_safak.jpg",
+    "sure": 9.0,
+    "bas": [
+     0.48,
+     1.04
+    ],
+    "son": [
+     0.52,
+     1.14
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 4.4,
+      "metin": "Ilgındere suyun altında kaldı."
+     },
+     {
+      "bas": 4.6,
+      "son": 8.6,
+      "metin": "O gece çan çalmadı."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 5.0,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 4.8,
+      "metin": "Kuru Toprak"
+     }
+    ]
+   }
+  ]
+ },
+ "son_sinyal": {
+  "baslik": "Sinyal Yok",
+  "ses": "sinema/son_sinyal.ogg",
+  "kapak": "sinema/c_telefon.jpg",
+  "sure": 21.0,
+  "kareler": [
+   {
+    "img": "sinema/c_telefon.jpg",
+    "sure": 7.0,
+    "bas": [
+     0.47,
+     1.05
+    ],
+    "son": [
+     0.47,
+     1.2
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 6.6,
+      "metin": "Telefon ikinci kez suya düştü."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_safak.jpg",
+    "sure": 9.0,
+    "bas": [
+     0.48,
+     1.04
+    ],
+    "son": [
+     0.52,
+     1.14
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 4.4,
+      "metin": "Ilgındere suyun altında kaldı."
+     },
+     {
+      "bas": 4.6,
+      "son": 8.6,
+      "metin": "Son çan hiç çalınmadı."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 5.0,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 4.8,
+      "metin": "Sinyal Yok"
+     }
+    ]
+   }
+  ]
  }
 }

@@ -636,6 +636,60 @@ def cine_gun6_son():
     return out * env_adsr(n, 0.6, 1.2)[:, None]
 
 
+def rec_son_can():
+    """0:24 — kayıktan: suyun üstünde yankılanan son çan, kürek suyu, sonunda fısıltı."""
+    D = 24.0
+    n = secs(D)
+    x = bp(pink(n), 120, 1200) * 0.06 + crickets(n, 0.5) * 0.6
+    t = 1.0
+    for k in range(19):
+        if k == 9:
+            t += 1.6
+        place(x, creak(0.3, 0.06), t - 0.2)
+        place(x, lp(bell_strike(392 * rng.uniform(0.998, 1.002), 6.0), 3800), t, 0.5)
+        t += 1.0
+    x = reverb(x, 3.2, 0.5, 0.05)
+    place(x, whisper(1.6, 0.06), 21.4)
+    return x * env_adsr(n, 0.05, 0.6)
+
+
+def _ending(D, dark=True, seed_seq=None):
+    n = secs(D)
+    out = np.zeros((n, 2))
+    lap = bp(pink(n), 120, 1400) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.3 * np.arange(n) / SR)) * 0.10
+    out += stereo(lap, bp(pink(n), 120, 1400) * 0.08)
+    out += stereo(drone(n, 55, 1.0) * env_adsr(n, 3, 5))
+    if dark:
+        out += stereo(crickets(n, 0.7) * np.clip(1 - np.arange(n) / SR / 11, 0, 1))
+    seq = seed_seq or [('la', 2), ('si', 1), ('do', 1), ('re', 2), ('do', 1), ('si', 1), ('la', 3), (None, 1),
+                       ('do', 1), ('re', 1), ('mi', 2), ('re', 1), ('do', 1), ('si', 2), ('la', 4)]
+    out += melody_plucks(seq, 1.5, 0.9, 0.5, 0.0, D)
+    out = reverb_st(out, 2.2, 0.24)
+    return out * env_adsr(n, 0.8, 2.5)[:, None]
+
+
+def cine_son_can():
+    out = _ending(27.0)
+    far = np.zeros(len(out))
+    t = 1.2
+    for k in range(9):
+        place(far, lp(bell_strike(392, 6.0), 2400), t, 0.2)
+        t += 1.0
+    out += pan(reverb(far, 4.0, 0.6), 0.0)
+    return out
+
+
+def cine_son_kuru():
+    return _ending(22.0, dark=False, seed_seq=[('mi', 2), ('re', 1), ('do', 1), ('si', 2), ('la', 4), (None, 2), ('sol_', 1), ('la', 4)])
+
+
+def cine_son_sinyal():
+    out = _ending(21.0, dark=False, seed_seq=[('la', 3), (None, 2), ('si', 1), ('la', 4), (None, 2), ('la', 4)])
+    uw = underwater(secs(6.0)) * env_adsr(secs(6.0), 0.1, 2.0)
+    out[: len(uw)] += stereo(uw * 1.2)
+    return out
+
+
 def reverb_st(x, t60, mix):
     return np.stack([reverb(x[:, 0], t60, mix), reverb(x[:, 1], t60 * 1.07, mix)], 1)
 
@@ -664,8 +718,8 @@ def peaks(x, bars=44):
     return [round(float(max(0.08, a ** 0.6)), 2) for a in v]
 
 
-RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice, 'postane': rec_postane, 'meydan_su': rec_meydan_su, 'itiraf': rec_itiraf, 'nazli_turku': rec_nazli_turku}
-CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son, 'gun4_son': cine_gun4_son, 'gun5_son': cine_gun5_son, 'gun6_son': cine_gun6_son}
+RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice, 'postane': rec_postane, 'meydan_su': rec_meydan_su, 'itiraf': rec_itiraf, 'nazli_turku': rec_nazli_turku, 'son_can': rec_son_can}
+CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son, 'gun4_son': cine_gun4_son, 'gun5_son': cine_gun5_son, 'gun6_son': cine_gun6_son, 'son_can': cine_son_can, 'son_kuru': cine_son_kuru, 'son_sinyal': cine_son_sinyal}
 
 
 def main():

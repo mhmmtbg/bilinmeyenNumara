@@ -1,0 +1,314 @@
+# ============================================================
+# GÜN 7 — Son Çan
+# Değirmenden çıkış, Rıza ile Nazlı'nın karşılaşması, 18:00'deki son araç
+# ya da 21:10'daki son çan. Sonlar: Son Çan, Kuru Toprak, Sinyal Yok.
+# ============================================================
+
+=== gun7
+!durum çevrimdışı
+~ @08:00 en az 6sa
+!gun 7 Son Çan
+!durum çevrimiçi
+!pil 14
+günaydın
+su değirmenin içinde. alt kat diz boyu. keçiler, Nazlı ve ben üst kattayız
+fırtına dindi ama dere köpürüyo
+bugün buradan çıkmamız lazım. Nazlı yürüyebiliyo ama yavaş
+nasıl çıkalım?
+* Rıza'nın kayığını bekleyin. -> cikis_bekle
+* [bilek==0] Geçitten geçin, Nazlı'yı tutarak. -> cikis_gecit
+* Kuzeydeki yoldan ana yola yürüyün. -> cikis_yol
+
+# ---------- Sinyal Yok ----------
+
+=== cikis_gecit
+$ guven - 1
+geçit göğüs boyu artık. ama başka yol yok gibi
+Nazlı'nın koluna girdim. gidiyoruz
+!durum çevrimdışı
+~ 8dk
+!durum çevrimiçi
+ortadayız. su çok güçlü
+Nazlı kaydı
+tuttum onu
+telefon
+-> sinyal_yok
+
+=== sinyal_yok
+!durum çevrimdışı
+~ 1dk
+>> Mesaj iletilemedi
+~ 4sa
+>> Mesaj iletilemedi
+!ad Bilinmeyen Numara
+~ @11:00 en az 14sa
+!durum çevrimiçi
+Bilinmeyen: Merhaba. Ben Selim Aydın, baraj şirketinden.
+Bilinmeyen: Bu telefonu dün akşam Rıza ustanın kayığının dibinde bulduk. Islak ama açıldı.
+Bilinmeyen: Telefonun sahibi Elif Hanım hastanede. İyi, merak etmeyin. Yanında yaşlı bir teyze var, o da iyi.
+Bilinmeyen: Rıza usta ikisini de geçidin aşağısında sudan çıkarmış.
+Bilinmeyen: Elif Hanım bu numaraya haber vermemi istedi.
+Bilinmeyen: Bir de şunu söylememi istedi: “Çanı çalamadık.”
+~ 1dk
+Bilinmeyen: Köy dün gece tamamen suyun altında kaldı.
+!durum çevrimdışı
+~ 8sn
+!sinema son_sinyal
+!son sinyal_yok | Sinyal Yok
+
+# ---------- Yol ----------
+
+=== cikis_yol
+$ yol_denedi = 1
+tamam. kuzey yolu. ana yola iki saat, Nazlı'yla dört
+!durum çevrimdışı
+~ 1sa
+!durum çevrimiçi
+olmuyo
+Nazlı yolun kenarına oturdu. nefes nefese
+“ben bu yolu bir kere yürüdüm” dedi. “kırk yıl önce, traktörün arkasında”
+“bir daha yürüyemem”
+geri dönüyoruz değirmene. Rıza'yı bekliycez
+!durum çevrimdışı
+~ 1sa
+!durum çevrimiçi
+-> cikis_bekle
+
+=== cikis_bekle
+? riza_soz == 1 -> riza_erken
+? riza_gitti == 1 -> riza_erken
+? riza_kurtardi == 1 -> riza_erken
+? riza_guven >= 2 -> riza_erken
+bekliyoruz. pencereden dereye bakıyoruz
+!durum çevrimdışı
+~ 3sa
+!durum çevrimiçi
+!pil 9
+bi kayık
+Rıza
+öğlen olmuş. kimse gelmeyecek sandım
+-> kayik
+
+=== riza_erken
+bekliyoruz
+!durum çevrimdışı
+~ 40dk
+!durum çevrimiçi
+geldi
+Rıza. kayıkla. sabah sabah, fırtınadan sonra
+=== kayik
+kayığı değirmenin kapısına yanaştırdı. içeri girmedi
+Nazlı merdivenden indi. kapının eşiğinde durdu
+birbirlerine baktılar
+~ 1dk
+? nazli_riza_bildi == 1 -> karsilasma_bildi
+? riza_soz == 1 -> karsilasma_soz
+? nazli_bildi == 1 -> karsilasma_yarim
+-> karsilasma_bilmiyor
+
+=== karsilasma_bildi
+$ yuzlesme = 1
+Rıza “söyledi mi sana?” dedi. bana bakmadan
+Nazlı “söyledi” dedi
+Rıza kürekleri bıraktı
+“Atlamadım. O gece atlamadım. Kırk yıl her gece atladım ama.”
+Nazlı uzun süre hiçbişey demedi
+sonra “ikimiz de yanlış yerde bekledik” dedi
+“kürek çek Rıza”
+bindi kayığa
+-> kayik_sonra
+
+=== karsilasma_soz
+$ yuzlesme = 1
+$ nazli_riza_bildi = 1
+Rıza sözünü tuttu
+kayıkta, suyun ortasında anlattı. hepsini. bana anlattığının aynısını
+Nazlı dinledi. bir kere bile sözünü kesmedi
+? nazli_bildi == 1 -> karsilasma_soz_bildi
+Nazlı Orhan'ın öldüğünü bile bilmiyodu. kırk yıl sonra, bi kayığın içinde öğrendi
+$ nazli_bildi = 1
+-> karsilasma_soz_son
+
+=== karsilasma_soz_bildi
+Orhan'ın öldüğünü dün öğrenmişti. nasıl öldüğünü bugün öğrendi
+=== karsilasma_soz_son
+Rıza bitirince Nazlı “kırk yıl” dedi. “kırk yıl sustun”
+“sustum” dedi Rıza
+sonra Nazlı elini Rıza'nın küreği tutan elinin üstüne koydu. bi saniye. çekti
+-> kayik_sonra
+
+=== karsilasma_yarim
+Rıza “bin” dedi. Nazlı bindi
+Nazlı “sağ ol Rıza” dedi
+Rıza bişey diycek gibi oldu. demedi
+o gece köprüde ne olduğunu Nazlı hala bilmiyo. Rıza'dan duymadıkça bilmicek de
+-> kayik_sonra
+
+=== karsilasma_bilmiyor
+Rıza “bin” dedi. Nazlı bindi
+ikisi de konuşmadı. kırk yıllık iki yabancı gibi
+=== kayik_sonra
+köy tarafına geçiyoruz. meydanın üstünden. kulenin yanından
+!foto kule_su | Saat kulesi, kayıktan
+saat hala dokuzu on geçeyi gösteriyo. kapısı artık suyun altında
+-> son_karar_oncesi
+
+# ---------- Karar: 18:00 son araç ya da 21:10 son çan ----------
+
+=== son_karar_oncesi
+şantiyedeyiz. Rıza çay koydu. Nazlı battaniyeye sarındı
+!pil 7
+!durum çevrimdışı
+? saat >= 17 -> son_karar
+~ @17:10 en az 30dk
+=== son_karar
+!durum çevrimiçi
+Selim bey telsizden aradı. altıda burda olcakmış. son araç
+bu gece savaklar tamamen kapanıyomuş. su bi gecede metrelerce yükselcek, kuleyi yutcakmış
+Nazlı “son çanı çalmadan gitmem” diyo
+Rıza “gece kayıkla gölün üstünden barajın iskelesine gideriz, sabah Selim bey alır” diyo
+ama gece, göl, kayık... risk
+pilim %7. bu son kararım olabilir, düzgün yazıyorum
+ne yapalım?
+* Selim'in aracıyla çıkın. Hayat önemli. -> karar_arac
+* Son çanı bekleyin, kayıkla çıkın. -> karar_can
+
+=== karar_arac
+$ son_secim = 1
+haklısın
+Nazlı'ya söyledim. bi süre sustu
+“peki” dedi. “Kemal de beni bir sabah böyle aldı götürdü. aileden demek”
+!durum çevrimdışı
+~ @18:00 en az 20dk
+!durum çevrimiçi
+Selim bey geldi. Nazlı'yı öne oturttu. ben arkaya, Rıza'nın yanına
+Rıza da geliyo. kayığı bırakıyo
+yola çıkıyoruz. baraj yolundan
+? nazli_bildi == 1 -> arac_bildi
+Nazlı arkasına bakmıyo
+-> kuru_toprak
+
+=== arac_bildi
+Nazlı cebinden Orhan'ın mektubunu çıkardı. açmadı. sadece tuttu
+=== kuru_toprak
+~ 30dk
+barajın tepesindeyiz. aşağıda göl. köy artık yok gibi
+kule yarıya kadar suda. yarın sabah sadece çatısı kalcakmış
+dokuzu on geçeye daha üç saat var
+bu akşam kimse çalmıcak o çanı
+!durum çevrimdışı
+>> Elif çevrimdışı
+~ 8sn
+!sinema son_kuru
+!ad Bilinmeyen Numara
+~ @12:00 en az 12sa
+>> Birkaç gün sonra
+!durum çevrimiçi
+Bilinmeyen: merhaba, ben Elif
+Bilinmeyen: yeni telefonum bu. eskisi dün tamamen öldü
+Bilinmeyen: Nazlı Nine benimle Ankara'da kalıyo şimdilik
+? nazli_bildi == 1 -> epilog_kuru_bildi
+Bilinmeyen: hala Orhan'ın onu bıraktığını sanıyo. bazen söylemek istiyorum. sonra vazgeçiyorum
+Bilinmeyen: köyün son seslerini kaydettim. ama kayıtta bi boşluk var. hep olcak
+-> epilog_kuru_son
+
+=== epilog_kuru_bildi
+Bilinmeyen: her akşam dokuzu on geçe pencereye gidiyo. çan yok tabi
+Bilinmeyen: son çanı çalamadık. ama en azından artık neyi beklediğini biliyo
+=== epilog_kuru_son
+Bilinmeyen: teşekkür ederim. her şey için
+!son kuru_toprak | Kuru Toprak
+
+=== karar_can
+$ son_secim = 2
+tamam. kalıyoruz
+Nazlı'ya söyledim. ilk defa güldü bugün
+Selim bey geldiğinde saklanmadık. konuştuk. ikna olmadı ama zorla da götürmedi
+“baraj iskelesinde sabah altıda olun” dedi. “olmazsanız jandarmayı gönderirim”
+!durum çevrimdışı
+~ @20:55 en az 20dk
+!durum çevrimiçi
+!pil 4
+kayıktayız. postanenin penceresinin önünde
+alt kat tamamen suyun altında. çan ipi pencereden içeri sarkıyo, Rıza tuttu
+pilim bitmek üzere. son mesajlarım bunlar galiba
+? nazli_bildi == 0 -> son_can_eksik
+? orhan_ogrendi == 0 -> son_can_eksik
+? guven < 7 -> son_can_eksik
+-> son_can
+
+=== son_can_eksik
+Nazlı ipi aldı
+~ @21:10 en az 20sn
+çekiyo
+dokuz. sonra on
+son kere fısıldadı. “gel artık Orhan”
+Orhan'ın gelmeyeceğini hala bilmeden
+Rıza başını eğdi. küreklere asıldı
+!durum çevrimdışı
+>> Elif çevrimdışı
+~ 8sn
+!sinema son_kuru
+!ad Bilinmeyen Numara
+~ @12:00 en az 12sa
+>> Birkaç gün sonra
+!durum çevrimiçi
+Bilinmeyen: merhaba, ben Elif. yeni telefonum bu
+Bilinmeyen: sabaha karşı iskeleye vardık. Selim bey bekliyomuş
+Bilinmeyen: Nazlı Nine benimle kalıyo şimdi. Rıza köyün yukarısındaki kasabaya yerleşti
+Bilinmeyen: son çanı çaldık. ama bişey eksik kaldı, biliyosun
+? nazli_bildi == 0 -> epilog_eksik_bilmiyor
+Bilinmeyen: teşekkür ederim. her şey için
+!son kuru_toprak | Kuru Toprak
+
+=== epilog_eksik_bilmiyor
+Bilinmeyen: hala her akşam “gel artık” diyo. ve ben ona söyleyemiyorum
+Bilinmeyen: teşekkür ederim. her şey için
+!son kuru_toprak | Kuru Toprak
+
+# ---------- Gerçek son ----------
+
+=== son_can
+Nazlı ipi bana uzattı
+“bu sefer sen çal” dedi. “Kemal'in torunu çalsın. o gece Kemal çalmıştı”
+~ @21:10 en az 20sn
+çekiyorum
+!ses son_can | Kayıktan, postanenin penceresinden: suyun üstünde yankılanan çan. Dokuz vuruş, sessizlik, on vuruş. Sonunda bir kadın fısıltıyla bir şey söylüyor.
+dokuz. sonra on
+Nazlı fısıldadı
+“git artık Orhan. ben de gidiyorum”
+...
+Rıza kayığı çevirdi. göle doğru
+kule arkamızda kalıyo
+? yuzlesme == 1 -> son_can_ucumuz
+-> son_can_bitis
+
+=== son_can_ucumuz
+üçümüz bi kayıkta. kırk yıl önce bu üç kişiden biri hep eksikti
+=== son_can_bitis
+!pil 1
+telefon kapanıyo
+iyi ki o numara sendeymiş
+iyi geceler bilinmeyen numara
+!durum çevrimdışı
+>> Elif çevrimdışı
+~ 8sn
+!sinema son_can
+!ad Bilinmeyen Numara
+~ @12:00 en az 12sa
+>> Bir hafta sonra
+!durum çevrimiçi
+Bilinmeyen: Merhaba evladım.
+Bilinmeyen: Ben Nazlı.
+Bilinmeyen: Elif yeni telefon aldı. Bana da bir tane aldı. İlk numara olarak seninkini yazdı.
+Bilinmeyen: Kemal'in numarası artık sende kalsın.
+Bilinmeyen: Orhan'ı Ankara'ya getirdik. Kimsesizler mezarlığına değil. Benim yanıma.
+? yuzlesme == 1 -> epilog_riza
+-> epilog_son
+
+=== epilog_riza
+Bilinmeyen: Rıza da geldi cenazeye. Mezarı o kazdı. Kimseye bırakmadı.
+=== epilog_son
+Bilinmeyen: Kırk yıl bir cevap bekledim.
+Bilinmeyen: Cevap verdiğin için teşekkür ederim.
+!son son_can | Son Çan

@@ -447,13 +447,15 @@ def photo_kopru_su():
     return np.asarray(to_pil(crop).resize((W, H), Image.LANCZOS), np.float32) / 255
 
 
-def photo_crop(frame_fn, cx=0.5):
-    """Bir sinema karesinden 4:3 kesit (Elif'in telefonla çektiği hâli)."""
+def photo_crop(frame_fn, cx=0.5, zoom=1.0, cy=0.5):
+    """Bir sinema karesinden 4:3 kesit (Elif'in telefonla çektiği hâli); zoom > 1 yaklaştırır."""
     big = frame_fn()
     h, w, _ = big.shape
-    cw = int(h * 4 / 3)
+    ch = int(h / zoom)
+    cw = int(ch * 4 / 3)
     x0 = int(np.clip(w * cx - cw / 2, 0, w - cw))
-    return np.asarray(to_pil(big[:, x0:x0 + cw]).resize((W, H), Image.LANCZOS), np.float32) / 255
+    y0 = int(np.clip(h * cy - ch / 2, 0, h - ch))
+    return np.asarray(to_pil(big[y0:y0 + ch, x0:x0 + cw]).resize((W, H), Image.LANCZOS), np.float32) / 255
 
 
 def _scene(name, *args):
@@ -469,6 +471,7 @@ PHOTOS = {'defter': photo_defter, 'duvar': photo_duvar, 'kule': photo_kule,
           'mezar': lambda: photo_crop(_scene('photo_mezar'), 0.5),
           'liste': lambda: photo_crop(_scene('photo_liste'), 0.5),
           'meydan': lambda: photo_crop(_scene('c_meydan', 'gun'), 0.5),
+          'kule_su': lambda: photo_crop(_scene('c_meydan', 'gun'), 0.49, 1.6, 0.42),
           'kule_gun': lambda: photo_kule('gun'), 'kule_gece': lambda: photo_kule('gece')}
 
 
