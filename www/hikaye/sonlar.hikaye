@@ -1,0 +1,17 @@
+# ============================================================
+# SONLAR — günlerin dışından atlanan sonlar
+# (Ana sonlar 7. günün dosyasındadır.)
+# ============================================================
+
+# Oyuncu sürekli kaba ya da umursamaz seçimler yaptıysa (güven ≤ 1), Elif yazışmayı bırakır.
+=== engellendin
+!durum çevrimiçi
+~ 2sa
+bi şey söylicem
+yardım etmeyeceksen yazma bana
+ben burda tek başıma bişey bulmaya çalışıyorum, sen...
+neyse
+telefonun kalan pilini başka işe harcıyım
+!durum çevrimdışı
+>> Elif seni engelledi
+!son engellendin | Engellendin

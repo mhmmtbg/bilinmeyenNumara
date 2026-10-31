@@ -123,7 +123,7 @@ export function renderDock(st, status, h) {
 
   if (status.kind === 'choice') {
     st.waiting.opts.forEach((o, i) => {
-      const b = el('button', 'choice', esc(o.text));
+      const b = el('button', /^\(.*\)$/.test(o.text) ? 'choice action' : 'choice', esc(o.text));
       b.addEventListener('click', () => h.choose(i), { once: true });
       dock.append(b);
     });

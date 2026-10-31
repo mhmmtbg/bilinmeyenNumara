@@ -103,4 +103,4 @@ Motor "şimdi"yi parametre olarak alır ve o ana kadar olması gereken her şeyi
 | `!pil 41` · `!ad Elif` · `!durum çevrimdışı` · `!gun 2 Bekçi` | Başlık ve durum |
 | `!son anahtar \| Sonun adı` · `!ara` | Son / yazılmamış bölüm sınırı |
 
-Koşullarda `saat` değişkeni Elif'in o anki yerel saatidir (0–23).
+Koşullarda `saat` değişkeni Elif'in o anki yerel saatidir (0–23), `dk` ise günün dakikasıdır (0–1439; 21:10 = 1270). `* (Sessizce bekle) -> hedef` gibi parantezli seçenek mesaj göndermez, eylem olarak görünür.

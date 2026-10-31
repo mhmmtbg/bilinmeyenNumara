@@ -1,0 +1,386 @@
+# ============================================================
+# GÜN 3 — Değirmen
+# Geçitten karşı yakaya geçiş, değirmende Hatice Nine, yanık izi, mırıltı,
+# defteri gösterip göstermeme, gece değirmende kalırsa fenerin peşi.
+# ============================================================
+
+=== gun3
+!durum çevrimdışı
+~ @08:40 en az 6sa
+!gun 3 Değirmen
+!durum çevrimiçi
+? riza_yaklasim == 1 -> gun3_pil_iyi
+!pil 21
+-> gun3_sabah
+
+=== gun3_pil_iyi
+!pil 49
+=== gun3_sabah
+günaydın :)
+bugün değirmene gidiyorum. kararımı verdim
+? rizayi_gordu == 1 -> gecit_biliyor
+geçit olmalı bi yerde. bu kadar yıl biri karşıya gidip geliyosa...
+nasıl bulayım sence?
+* Rıza'ya sor, o bilir. -> gecit_riza
+* Dere boyunca yukarı yürü, ara. -> gecit_ara
+* Boşver, Rıza'nın kayığını iste. -> gecit_kayik
+
+=== gecit_biliyor
+!durum çevrimdışı
+~ 15dk
+!durum çevrimiçi
+dün gece fenerin geçtiği yeri biliyorum. köprünün yukarısı, söğütlerin olduğu yer
+gün ışığında bakınca belli oluyo. su orda geniş ama sığ, köpürmüyo
+-> gecit_basi
+
+=== gecit_riza
+!durum çevrimdışı
+~ 15dk
+!durum çevrimiçi
+? riza_guven >= 1 -> gecit_riza_soyler
+şantiyeye çıktım, sordum
+“bilmem” dedi. yüzüme bile bakmadı
+yalan söylediğini ikimiz de biliyoduk
+dere boyunca kendim arıycam
+-> gecit_ara
+
+=== gecit_riza_soyler
+şantiyeye çıktım, sordum
+uzun uzun baktı bana. sonra “söğütlerin orda” dedi
+“sığdır ama dizini geçer. suya yan dur, akıntıya karşı yürüme”
+bi de... “ona iyi davran” dedi. kime diye sordum. cevap vermedi
+$ riza_ipucu = 1
+-> gecit_basi
+
+=== gecit_kayik
+$ guven - 1
+sordum. “kayık su yükselince” dedi Rıza, “gezinti için değil”
+haklı da. motoru yok, kürekle karşı yakaya akıntıda çıkamazsın
+dere boyunca kendim arıycam
+=== gecit_ara
+yürüyorum dere boyunca. yukarı doğru
+!durum çevrimdışı
+~ 25dk
+!durum çevrimiçi
+buldum galiba. söğütlerin olduğu yerde su genişliyo ama sığ
+dipte düz taşlar var, biri dizmiş gibi
+=== gecit_basi
+!foto gecit | Söğütlerin altındaki geçit
+karşıya kırk elli metre var
+iki yol var. söğütlerin dibinden, kıyıya yakın dolanarak gitmek. uzun ama sığ
+ya da düz karşıya. kısa ama ortası daha hızlı akıyo
+* Uzun yoldan, kıyıya yakın git. -> gecit_uzun
+* Düz karşıya, çabuk ol. -> gecit_kisa
+
+=== gecit_uzun
+$ guven + 1
+tamam uzun yoldan
+!durum çevrimdışı
+~ 10dk
+!durum çevrimiçi
+söğütlerin dibindeyim. ayakkabıları çıkarıp boynuma astım. su buz gibi
+!durum çevrimdışı
+~ 12dk
+!durum çevrimiçi
+geçtim!!
+ayaklarımı hissetmiyorum ama geçtim :D
+-> degirmene
+
+=== gecit_kisa
+$ bilek = 1
+tamam hızlı olayım
+!durum çevrimdışı
+~ 4dk
+!durum çevrimiçi
+geçtim ama
+ortada ayağım taşın arasına girdi
+bileğim. galiba burktum
+basabiliyorum ama acıyo :(
+bi şey yok, yürürüm
+=== degirmene
+değirmene gidiyorum
+? bilek == 1 -> degirmene_topal
+~ 6dk
+-> degirmen_kapi
+
+=== degirmene_topal
+yavaş yavaş
+~ 12dk
+=== degirmen_kapi
+değirmenin önündeyim
+taştan, iki katlı. çarkı durmuş, yosun bağlamış. bahçede üç keçi var
+bacadan duman çıkıyo. kapının önünde bi çift lastik ayakkabı
+? iz_kopruye == 1 -> degirmen_iz
+-> degirmen_foto
+
+=== degirmen_iz
+lastik ayakkabı. okulun önündeki izler gibi
+=== degirmen_foto
+!foto degirmen | Eski değirmen
+kapıyı çalıcam
+~ 1dk
+...
+açıldı
+=== hatice
+yaşlı bi kadın. küçücük. başında yazma, elinde yün çorap örüyo
+bana baktı. hiçbişey söylemedi önce
+sonra “Kemal'in torunusun” dedi
+“gözlerin aynı”
+!durum çevrimdışı
+~ 3dk
+!durum çevrimiçi
+içerdeyim. sobanın yanında. çay koydu
+“bana Hatice derler” dedi. Hatice Nine
+dedemin öldüğünü söyledim
+...
+sırtını döndü bana. çaydanlıkla uğraşıyomuş gibi yaptı
+uzun süre dönmedi
+sonra “Allah rahmet eylesin” dedi. sesi titriyodu
+* Dedeni tanıyor muymuş, sor. -> hatice_tanidi
+* Nazlı'yı sor. -> hatice_nazli
+* Bir şey sorma, sadece dinle. -> hatice_dinle
+
+=== hatice_tanidi
+sordum. “herkes herkesi tanırdı burda” dedi
+“iyi çocuktu Kemal. çok iyi çocuktu”
+çocuktu dedi. dedem öldüğünde seksen yaşındaydı
+-> hatice_el
+
+=== hatice_nazli
+$ sordu_nazli_hatice = 1
+sordum. Nazlı Doğan'ı tanıdınız mı dedim
+“dere aldı derler” dedi. Rıza'yla aynı cümle
+“ben o zaman burda değildim. sonradan geldim, evlenip”
+ama kocasından hiç bahsetmedi. evde de bi erkeğe ait tek bişey yok
+-> hatice_el
+
+=== hatice_dinle
+$ guven + 1
+hiçbişey sormadım. çayımı içtim
+bi süre sonra kendisi konuştu. köyü anlattı
+düğünleri, harman yerini, kulenin saati çalışırken her saat başı vurduğunu
+“sonra durdu” dedi. “dokuzu on geçe durdu.” başka bişey demedi
+=== hatice_el
+bi şey fark ettim
+sol elinin üstünde eski bi yanık izi var. büyük
+dedemin defterinde bi şey yazıyodu yanıkla ilgili... neyse
+? kayit_mirilti == 1 -> hatice_mirilti
+-> hatice_defter
+
+=== hatice_mirilti
+$ ezgi_tanidi = 1
+şuan mırıldanıyo. örgü örerken
+o ezgi
+ilk gece kayıtta duyduğum. aynısı
+gizlice kaydettim, dinle
+!ses hatice | Değirmenin içi. Sobanın çıtırtısı. Yakından, yaşlı bir kadının mırıldandığı ezgi. Elif'in kayıttaki ezgiyle aynı.
+ben bişey demedim. o da durdu birden. bana baktı
+-> hatice_defter
+
+=== hatice_defter
+defteri çantamda taşıyorum. dedemin notunu, numarayı
+ona göstereyim mi?
+* Defteri ve numarayı göster. -> defter_goster
+* Şimdilik sakla. -> defter_sakla
+* Ona çanı sor. -> hatice_can
+
+=== defter_goster
+$ numarayi_soyledi = 1
+gösterdim
+dedemin el yazısını görünce eli titredi. sayfayı okşadı
+sonra numaraya geldi
+...
+“gözlerim görmez artık kızım” dedi. defteri kapattı, yüzüstü masaya koydu
+gözleri görüyo ama. demin iğneye iplik geçiriyodu
+neden bakmak istemedi?
+-> hatice_gece
+
+=== defter_sakla
+$ guven + 1
+tamam. önce güvenini kazanmam lazım
+ona ses kaydı yaptığımı anlattım. köyün son seslerini
+güldü. ilk defa. “benim sesimi de al o zaman” dedi :)
+-> hatice_gece
+
+=== hatice_can
+sordum. çanı her gece kim çalıyo diye
+“çan mı?” dedi. “ben duymam kızım. kulaklarım ağır”
+ama ben mutfaktan fısıltıyla bişey sorduğumda duyup cevap vermişti
+-> hatice_gece
+
+=== hatice_gece
+biraz kapatıyorum telefonu. yanında telefonla oynamak ayıp olur :)
+!durum çevrimdışı
+? saat >= 14 -> hatice_gece_gec
+~ @15:00 en az 1sa
+!durum çevrimiçi
+öğleden sonra oldu. keçilere yardım ettim, odun taşıdım
+-> hatice_gece_devam
+
+=== hatice_gece_gec
+~ 1sa
+!durum çevrimiçi
+keçilere yardım ettim, odun taşıdım
+=== hatice_gece_devam
+? bilek == 1 -> hatice_bilek
+-> hatice_teklif
+
+=== hatice_bilek
+bileğimi gördü. sarıldı bi bezle, içine bi ot koydu. acı biraz geçti
+“dikkat et” dedi, “su affetmez”
+=== hatice_teklif
+!durum çevrimdışı
+? saat >= 18 -> hatice_teklif_gec
+~ @18:30 en az 30dk
+=== hatice_teklif_gec
+!durum çevrimiçi
+akşam oluyo. Hatice Nine “geçit karanlıkta tehlikeli, bu gece burda kal” dedi
+kalayım mı? gece dokuzu on geçe ne olcak görmüş olurum
+ama Rıza da merak eder, okul da öbür yakada
+* Kal, ondan gözünü ayırma. -> degirmende_kal
+* Okula dön, karanlık basmadan. -> okula_don
+* Senin işin değil, git artık köyden. -> kaba_git
+
+=== kaba_git
+$ guven - 3
+...
+peki
+-> okula_don_sessiz
+
+=== degirmende_kal
+$ degirmende_kaldi = 1
+kalıyorum
+bana yer yatağı serdi. sobanın yanında
+pilim için kapatıyorum. dokuzdan önce açarım
+!durum çevrimdışı
+? dk >= 1235 -> kal_gec
+~ @20:50 en az 15dk
+=== kal_gec
+!durum çevrimiçi
+!pil 30
+uyanığım
+Hatice Nine fenerini yaktı. “keçilere bakıcam” dedi, çıktı
+keçiler ahırda. hepsi içerde. az önce ben kapattım kapıyı
+pencereden bakıyorum
+fener ahıra gitmiyo
+dereye iniyo. söğütlere doğru
+geçide
+~ 6dk
+fener suyun içinde. karşıya geçiyo
+~ @21:10 en az 3dk
+...
+çan çalıyo
+dokuz. sonra on
+ben değirmende, Hatice Nine köyde. ve çan çalıyo
+anladın mı? çanı o çalıyo
+* Peşinden git. -> fener_pesinden
+* Bekle, dönünce yüzleş. -> fener_bekle
+
+=== fener_pesinden
+? bilek == 1 -> fener_pesinden_bilek
+giyiniyorum
+~ 2dk
+geçidin başına geldim. su gece daha yüksek gibi. karanlık
+fener karşı kıyıda, köyün içinde kayboldu
+geçemem karanlıkta. geri döndüm
+-> fener_bekle
+
+=== fener_pesinden_bilek
+bileğim izin vermiyo. merdivenden bile zor indim
+geri yattım
+=== fener_bekle
+~ 25dk
+geldi
+eteğinin ucu ıslak. fenerini söndürdü
+uyuyo numarası yapıyorum
+? numarayi_soyledi == 1 -> fener_defter
+-> fener_son
+
+=== fener_defter
+sonra...
+masadaki defteri aldı. dedemin defterini
+fenerin ışığında son sayfaya baktı. uzun uzun
+numaraya. o “görmez” dediği gözleriyle
+sonra defteri kapattı, göğsüne bastırdı. ağlıyodu
+$ hatice_defteri_okudu = 1
+=== fener_son
+sabah hiçbişey olmamış gibi davranıcam. ne dersin?
+* Davran. Acele etme. -> fener_son_sabir
+* Sabah doğrudan sor. -> fener_son_sor
+
+=== fener_son_sabir
+$ guven + 1
+tamam. bi şey saklıyo ve bunun bi sebebi var
+-> gun3_son
+
+=== fener_son_sor
+$ sabah_sor = 1
+tamam. sabah soracam
+-> gun3_son
+
+=== okula_don
+$ guven + 1
+tamam, dönüyorum. yarın yine gelirim dedim
+kapıda bana bi avuç ceviz verdi. “yolda yersin” dedi :)
+=== okula_don_sessiz
+? bilek == 1 -> okula_don_bilek
+!durum çevrimdışı
+~ 30dk
+!durum çevrimiçi
+-> okula_varis
+
+=== okula_don_bilek
+!durum çevrimdışı
+~ 50dk
+!durum çevrimiçi
+bileğim geçitte iyice şişti. çok yavaş geldim
+=== okula_varis
+okuldayım
+!pil 26
+? riza_guven >= 1 -> okul_riza
+-> okul_dokuz
+
+=== okul_riza
+Rıza okulun önünde bekliyomuş. elinde fener
+“değirmene gittin” dedi. soru değil
+“nasıl o?” dedi. “yiyeceği var mı? soba yanıyo mu?”
+iyi olduğunu söyledim. başını salladı, gitti
+“orda kimse yok” demişti. şimdi “nasıl o” diyo
+$ riza_soru = 1
+=== okul_dokuz
+dokuzu on geçe yazarım yine
+!durum çevrimdışı
+~ @21:10 en az 15dk
+!durum çevrimiçi
+çan çaldı. dokuz, sonra on
+pencereden baktım. fener meydandan geçide iniyo, sudan geçip karşıya, değirmene gidiyo
+yani çanı çalan değirmenden gelip değirmene dönüyo
+değirmende Hatice Nine'den başka kimse yok ama
+-> gun3_son
+
+# ---------- Gün sonu ----------
+
+=== gun3_son
+~ 30sn
+? guven <= 1 -> gun3_kopuk
+bugün çok şey oldu
+? degirmende_kaldi == 1 -> gun3_son_degirmen
+yarın erkenden değirmene gidicem. bu sefer soracam
+-> gun3_iyi_geceler
+
+=== gun3_son_degirmen
+yarın sabah ne olcak bilmiyorum. ama artık eminim, o bişey biliyo
+dedemin “o bilir” dediği kişi belki de o
+=== gun3_iyi_geceler
+iyi geceler :)
+-> gun3_bitti
+
+=== gun3_kopuk
+iyi geceler
+=== gun3_bitti
+!durum çevrimdışı
+>> Elif çevrimdışı
+~ 8sn
+!sinema gun3_son
+? guven <= 1 -> engellendin
+!ara 4. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.

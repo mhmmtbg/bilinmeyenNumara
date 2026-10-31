@@ -100,12 +100,14 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - **21:10:** içeride kal (Rıza battaniye ve çorba getirir: "Kemal'e benziyorsun") / kuleye git (postanenin duvarındaki delikten sarkan yeni bir ip: çan postaneden çalınıyor) / kıyıya in (fener köprünün yukarısındaki sığlıktan suyu geçip değirmene gider; yamaçta Rıza'nın feneri de değirmene bakar).
 - Gün sonu: oyuncuya "o bilir"deki "o" kim diye sorulur (Rıza / değirmendeki kişi / bilmiyoruz). İleride geri dönülür.
 
-### Gün 3 — Değirmen
-- Köprünün yukarısındaki sığ geçitten karşıya geçiş (2. gece fener oradan geçmişti). Oyuncunun önerisine göre güvenli ama uzun yol ya da hızlı ama riskli yol (riskli → **burkulan bilek** bayrağı; sonraki günlerde Elif yavaşlar).
-- Hatice Nine. "Kemal'in torunusun." Efsaneyi anlatır, ama gözünü kaçırır. Elinde eski bir yanık izi.
-- Gün 1'de kayıt seçildiyse: Elif mırıltıyı tanır. Hatice'nin mırıldandığı türküyle aynı.
-- **Seçim:** Elif defterdeki numaradan Hatice'ye bahsetsin mi? (Bahsederse Hatice susar, numaraya bakmayı reddeder — oyuncu bir şey sezmeye başlar.)
-- **21:10:** Elif değirmende kalırsa: Hatice o saatte dışarı çıkar ve kaybolur… ve çan çalar.
+### Gün 3 — Değirmen  *(yazıldı, oynanabilir)*
+- Geçidin yeri: 2. gece fener izlendiyse bilinir; yoksa Rıza'ya sorulur (güveni varsa söyler: "söğütlerin orda… ona iyi davran") ya da dere boyunca aranır. Kayık istemek geri çevrilir (güven düşer).
+- Geçiş: uzun ve sığ yol ya da kısa yol (**bilek** burkulur; sonraki günlerde Elif yavaşlar, bazı yolları yürüyemez).
+- Değirmen: taş, iki katlı, durmuş yosunlu çark, keçiler, kapıda lastik ayakkabılar (1. gecenin izleri). Hatice Nine: "Kemal'in torunusun, gözlerin aynı." Kemal'in öldüğünü duyunca sırtını döner. "Bana Hatice derler." Kocasından söz eder ama evde hiçbir iz yoktur.
+- Sol elinde eski bir yanık izi (2. gün defterde: "Nazlı tandırda sol elini yaktı… 1975").
+- 1. gece kayıt seçildiyse Hatice'nin mırıldandığı ezgi kayıttakiyle aynıdır; Elif gizlice kaydeder.
+- Defteri göstermek: Hatice "gözlerim görmez" deyip defteri yüzüstü kapatır (oysa iğneye iplik geçirmektedir). Gece Elif değirmende kalırsa Hatice'yi fenerin ışığında son sayfayı okurken, ağlarken görür.
+- Kalmak ya da dönmek: kalırsa 20:50'de Hatice "keçilere bakmaya" çıkar, fener geçitten köye gider ve 21:10'da çan çalar. **Çanı Hatice çalıyor.** Dönerse Rıza okulun önünde bekler: "Nasıl o? Yiyeceği var mı?" ("Orada kimse yok" diyen adam.)
 
 ### Gün 4 — Kamulaştırma
 - Selim ve jandarma köyü son kez tarar. Elif saklanır: **"Şimdi yazma. Telefon titrerse duyarlar."**

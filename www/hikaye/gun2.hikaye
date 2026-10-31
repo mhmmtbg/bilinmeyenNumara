@@ -218,6 +218,7 @@ sayı çiftleri. en üstte de “Notu oku. Kelime, harf.”
 en alttaki satırı karalamış ama okunuyo, “Ona söylemeliydim.”
 kime? neyi? bilmiyorum. önce şu sayılar
 dedem bulmaca çözerdi, gazetelerin hepsini. buna benziyo
+defter anılarla dolu bu arada. bi yerde “Nazlı tandırda sol elini yaktı. Ağlamadı bile. 1975” yazıyo
 çözebilir misin? ben de bakıyorum
 -> sifre_sor
 
@@ -493,4 +494,4 @@ iyi geceler bilinmeyen numara
 >> Elif çevrimdışı
 ~ 8sn
 !sinema gun2_son
-!ara 3. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.
+? guven <= 1 -> engellendin

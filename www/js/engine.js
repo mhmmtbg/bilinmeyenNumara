@@ -38,7 +38,8 @@ export function nextClock(from, h, m) {
 }
 
 function evalCond(st, c) {
-  const val = c.v === 'saat' ? new Date(st.cursor).getHours() : (st.vars[c.v] ?? 0);
+  const d = new Date(st.cursor);
+  const val = c.v === 'saat' ? d.getHours() : c.v === 'dk' ? d.getHours() * 60 + d.getMinutes() : (st.vars[c.v] ?? 0);
   switch (c.op) {
     case '>=': return val >= c.n;
     case '<=': return val <= c.n;
@@ -174,7 +175,10 @@ export function choose(story, st, idx, now, opt = {}) {
   const o = w.opts[idx];
   if (!o) throw new Error('Geçersiz seçenek');
   snapshot(st);
-  addLog(st, { kind: 'me', text: o.text, at: now });
+  // "(Sessizce bekle)" gibi parantezli seçenek bir eylemdir: mesaj gönderilmez, ortada not olarak görünür
+  const action = /^\(.*\)$/.test(o.text);
+  if (action) addLog(st, { kind: 'sys', text: o.text.slice(1, -1), at: now });
+  else addLog(st, { kind: 'me', text: o.text, at: now });
   st.waiting = null;
   st.cursor = now + READ_PAUSE / (opt.scale || 1);
   jump(story, st, o.to);

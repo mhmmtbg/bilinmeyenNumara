@@ -596,6 +596,9 @@ def write_scenes():
 
 
 def main():
+    from scenes import EXTRA_FRAMES, EXTRA_SCENES
+    FRAMES.update(EXTRA_FRAMES)
+    SCENES.update(EXTRA_SCENES)
     only = [a for a in sys.argv[1:] if not a.startswith('--')]
     for key, fn in FRAMES.items():
         if only and key not in only:

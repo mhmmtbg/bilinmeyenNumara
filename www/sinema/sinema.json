@@ -275,5 +275,75 @@
     ]
    }
   ]
+ },
+ "gun3_son": {
+  "baslik": "Değirmen",
+  "ses": "sinema/gun3_son.ogg",
+  "kapak": "sinema/c_degirmen.jpg",
+  "sure": 20.0,
+  "kareler": [
+   {
+    "img": "sinema/c_degirmen.jpg",
+    "sure": 9.0,
+    "bas": [
+     0.48,
+     1.12
+    ],
+    "son": [
+     0.52,
+     1.02
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 4.4,
+      "metin": "Değirmenin penceresinde gece geç saate kadar ışık yandı."
+     },
+     {
+      "bas": 4.6,
+      "son": 8.6,
+      "metin": "Su okulun bahçe duvarına ulaştı."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_gece.jpg",
+    "sure": 6.5,
+    "bas": [
+     0.6,
+     1.05
+    ],
+    "son": [
+     0.75,
+     1.12
+    ],
+    "yazi": [
+     {
+      "bas": 0.5,
+      "son": 6.0,
+      "metin": "Çan yine dokuzu on geçe çaldı."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 4.5,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 4.3,
+      "metin": "4. gün · Kamulaştırma"
+     }
+    ]
+   }
+  ]
  }
 }

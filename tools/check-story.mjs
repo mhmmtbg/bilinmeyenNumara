@@ -40,7 +40,8 @@ let paths = 0;
 let minActive = Infinity, maxActive = 0, minTotal = Infinity, maxTotal = 0;
 let maxChoices = 0;
 
-const LIMIT = Number(process.env.STORY_LIMIT || 400000);
+const LIMIT = Number(process.env.STORY_LIMIT || 60000);
+const SAMPLES = Number(process.env.STORY_SAMPLES || 6000);
 let truncated = false;
 const seen = new Set();
 function walk(st, depth, choices) {
@@ -69,16 +70,37 @@ function walk(st, depth, choices) {
     }
     return;
   }
+  record(st, s, choices);
+}
+
+function record(st, s, choices) {
   paths++;
   const key = s.kind === 'ended' ? `Son: ${st.ended.title}` : `Ara: ${st.paused.text || '(dosya sonu)'}`;
   outcomes.set(key, (outcomes.get(key) || 0) + 1);
   const total = st.cursor - st.startedAt;
-  // "Etkin" süre: 2 dakikadan kısa boşluklar (yazışma) toplamı
   let active = 0, prev = st.startedAt;
   for (const e of st.log) { const gap = e.at - prev; if (gap < 120000) active += gap; prev = e.at; }
   minActive = Math.min(minActive, active); maxActive = Math.max(maxActive, active);
   minTotal = Math.min(minTotal, total); maxTotal = Math.max(maxTotal, total);
   maxChoices = Math.max(maxChoices, choices);
+}
+
+// Rastgele yürüyüş: her seçimde rastgele bir seçenek (tam dolaşım sınıra takılırsa örneklem)
+let seed = 12345;
+const rand = n => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed % n; };
+function randomWalk(st) {
+  let choices = 0;
+  for (let k = 0; k < 500; k++) {
+    const s = advance(story, st, FAR);
+    if (s.kind === 'choice') { choose(story, st, rand(st.waiting.opts.length), st.cursor + 8000); choices++; continue; }
+    if (s.kind === 'input') {
+      const tries = [...new Set(st.waiting.answers.filter(a => !a.any).map(a => a.words[0])), 'bilmiyorum zzz'];
+      answer(story, st, tries[rand(tries.length)], st.cursor + 20000, normalize); choices++; continue;
+    }
+    record(st, s, choices);
+    return;
+  }
+  throw new Error('rastgele yürüyüş 500 seçimde bitmedi (döngü?)');
 }
 
 const fmt = ms => {
@@ -91,6 +113,7 @@ if (!errors.length) {
   for (const [label, t0] of START_TIMES) {
     try {
       walk(newState(t0), 0, 0);
+      if (truncated) for (let k = 0; k < SAMPLES; k++) randomWalk(newState(t0));
     } catch (e) { errors.push(`${label}: ${e.message}`); }
   }
   // Durağan erişilebilirlik: seçenek/atlama hedefleri + düğüm sonu atlama değilse sıradaki düğüm

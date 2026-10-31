@@ -447,9 +447,25 @@ def photo_kopru_su():
     return np.asarray(to_pil(crop).resize((W, H), Image.LANCZOS), np.float32) / 255
 
 
+def photo_crop(frame_fn, cx=0.5):
+    """Bir sinema karesinden 4:3 kesit (Elif'in telefonla çektiği hâli)."""
+    big = frame_fn()
+    h, w, _ = big.shape
+    cw = int(h * 4 / 3)
+    x0 = int(np.clip(w * cx - cw / 2, 0, w - cw))
+    return np.asarray(to_pil(big[:, x0:x0 + cw]).resize((W, H), Image.LANCZOS), np.float32) / 255
+
+
+def _scene(name, *args):
+    import scenes
+    return lambda: getattr(scenes, name)(*args)
+
+
 PHOTOS = {'defter': photo_defter, 'duvar': photo_duvar, 'kule': photo_kule,
           'defter2': lambda: photo_defter(notebook_cipher, 23, ((0.30, 0.24, 0.18), (0.50, 0.42, 0.32))),
           'kopru_su': photo_kopru_su,
+          'gecit': lambda: photo_crop(_scene('c_gecit'), 0.45),
+          'degirmen': lambda: photo_crop(_scene('c_degirmen', 'gun'), 0.5),
           'kule_gun': lambda: photo_kule('gun'), 'kule_gece': lambda: photo_kule('gece')}
 
 
