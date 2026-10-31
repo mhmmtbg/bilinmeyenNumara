@@ -415,5 +415,75 @@
     ]
    }
   ]
+ },
+ "gun5_son": {
+  "baslik": "Meydan",
+  "ses": "sinema/gun5_son.ogg",
+  "kapak": "sinema/c_meydan.jpg",
+  "sure": 20.0,
+  "kareler": [
+   {
+    "img": "sinema/c_meydan.jpg",
+    "sure": 9.5,
+    "bas": [
+     0.4,
+     1.02
+    ],
+    "son": [
+     0.55,
+     1.16
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 4.4,
+      "metin": "Su meydana ulaştı."
+     },
+     {
+      "bas": 4.6,
+      "son": 9.2,
+      "metin": "O gece, yıllardır ilk kez, çan çalmadı."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_degirmen.jpg",
+    "sure": 6.0,
+    "bas": [
+     0.5,
+     1.1
+    ],
+    "son": [
+     0.5,
+     1.02
+    ],
+    "yazi": [
+     {
+      "bas": 0.5,
+      "son": 5.6,
+      "metin": "Değirmende soba sabaha kadar yandı."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 4.5,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 4.3,
+      "metin": "6. gün · Nazlı"
+     }
+    ]
+   }
+  ]
  }
 }

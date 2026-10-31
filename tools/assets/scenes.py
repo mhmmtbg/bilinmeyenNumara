@@ -309,3 +309,43 @@ EXTRA_SCENES['gun4_son'] = {
         (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '5. gün · İtiraf')]),
     ],
 }
+
+
+# ---------------------------------------------------------------- 5. gün
+def c_meydan(variant='aksam'):
+    """Meydan suyun altında: kulenin dibi suda, kapıları çarpılı evler, suda yansımalar."""
+    aksam = variant == 'aksam'
+    img = sky_dusk(H, W, 71, [(0, (0.18, 0.22, 0.36)), (0.45, (0.42, 0.42, 0.52)), (0.62, (0.80, 0.58, 0.46)), (0.7, (0.86, 0.64, 0.48))]) if aksam \
+        else vgrad(H, W, [(0, (0.56, 0.61, 0.67)), (0.6, (0.74, 0.76, 0.78)), (1, (0.80, 0.80, 0.79))])
+    dim = 0.6 if aksam else 1.0
+    img = mountains(img, [(640, 200, np.array((0.40, 0.40, 0.48)) * (1 if aksam else 1.3), 520, 0.4),
+                          (700, 150, np.array((0.30, 0.28, 0.30)) * (1 if aksam else 1.4), 420, 0.3)], seed=72)
+    r = rng(9)
+    items = [(80, 640, 420, 260, 501, True), (560, 680, 300, 200, 502, True), (1580, 670, 360, 230, 503, True), (1980, 630, 420, 270, 504, False)]
+    img = cluster_houses(img, items, dim)
+    img = put_tower(img, [(1060, 150), (1300, 144), (1330, 900), (1030, 906)], dim, warm_top=0.3 if aksam else 0.0)
+    # su: kulenin ve evlerin alt kısmını örter
+    wy = 860
+    img = water(img, wy, H, None, 10, (0.22, 0.20, 0.18) if aksam else (0.42, 0.40, 0.34), 0.5, 73)
+    # suda yüzen bir sandalye ve dallar
+    img = comp(img, np.array((0.30, 0.24, 0.18)) * dim, mask_poly(H, W, [(700, 1000), (780, 1000), (790, 1010), (690, 1012)]))
+    img = comp(img, np.array((0.30, 0.24, 0.18)) * dim, mask_poly(H, W, [(706, 960), (716, 960), (716, 1002), (706, 1002)]))
+    for i in range(12):
+        x, y = r.uniform(0, W), r.uniform(900, 1300)
+        img = comp(img, np.array((0.20, 0.17, 0.13)) * dim, mask_poly(H, W, [(x, y), (x + r.uniform(40, 120), y + r.uniform(-8, 8)), (x + 2, y + 3)]))
+    if aksam:
+        return phone_photo(img, 74, grain=0.03, vignette=0.4, sharpen=0.35, soft=0.9, noise_dark=1.3)
+    return phone_photo(img, 75, grain=0.022, vignette=0.3, sharpen=0.45, soft=0.8, contrast=1.05)
+
+
+EXTRA_FRAMES['c_meydan'] = lambda: c_meydan('aksam')
+EXTRA_SCENES['gun5_son'] = {
+    'baslik': 'Meydan',
+    'ses': 'sinema/gun5_son.ogg',
+    'kapak': 'sinema/c_meydan.jpg',
+    'kareler': [
+        ('c_meydan', 9.5, [0.40, 1.02], [0.55, 1.16], [(0.6, 4.4, 'Su meydana ulaştı.'), (4.6, 9.2, 'O gece, yıllardır ilk kez, çan çalmadı.')]),
+        ('c_degirmen', 6.0, [0.50, 1.10], [0.50, 1.02], [(0.5, 5.6, 'Değirmende soba sabaha kadar yandı.')]),
+        (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '6. gün · Nazlı')]),
+    ],
+}

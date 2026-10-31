@@ -117,11 +117,15 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - **21:10:** Elif postanede saklanır; eski telefon santrali, ipin kancası. **Hatice Nine** gelir, ipi çeker (9+10), santrale bir fiş takar, ılgın dalı bırakır ve fısıldar: **"Gel artık Orhan."** Oyuncu izlemeyi ya da yüzleşmeyi seçer ("Kırk yıl oldu. Gelmedi.").
 - Gün sonu: oyuncunun teorisi sorulur (kaçış / Rıza bir şey yaptı / "sıkıldım" — güveni düşürür).
 
-### Gün 5 — İtiraf
-- Elif tutanakla Rıza'nın karşısına çıkar. **Ahlaki seçim:** Rıza'nın sözlerini gizlice mi kaydetsin, izin mi istesin?
-- Rıza anlatır (sesli mesaj): kavga, düşüş, kaçış. Hatice'nin kim olduğunu bildiğini de söyler ama ona hiç anlatmamıştır.
-- Su meydanda. Selim yarın her şeyin biteceğini söyler.
-- **21:10:** Çan çalmaz. İlk kez. Elif endişelenir — Hatice'ye ne oldu?
+### Gün 5 — İtiraf  *(yazıldı, oynanabilir)*
+- Su okulun bahçesinde. Elif Rıza'ya gider (doğrudan / şarj bahanesiyle / postanedeki "gel artık Orhan"ı anlatarak).
+- **Kayıt etiği:** izin isteyip kaydetmek ("Al. Bir kere söyleyeceğim.") / gizlice kaydetmek (güven düşer, 7. günde karşılığı olur) / kaydetmemek.
+- **İtiraf** (Rıza'nın sözleri düzgün yazımla, aynen): çanı duydu, köprüye koştu, Orhan elinde valizle ortada bekliyordu, itiştiler, eski korkuluk kırıldı, Orhan taşkın dereye düştü; Rıza atlamadı, kaçtı. "Kaza dediler. Ben de kaza dedim." Kemal ertesi sabah onu köprünün başında buldu, bir şey demedi, bir hafta sonra gitti.
+- "Değirmendekine söyleme. O bilmesin. Kırk yıldır bilmeden yaşadı." Kim olduğunu söylemez.
+- Oyuncunun kararı: Rıza Nazlı'ya kendisi anlatsın (güveni yüksekse söz verir: "Yarın. Son gün.") / jandarmaya söylenecek ("Anlat. Kırk yıldır birinin gelip sormasını bekliyorum.") / geçmişte kalsın.
+- Selim'in haberi: yarın 18:00'de son araç, sonra baraj yolu kapanıyor; geriye yalnızca kayık kalır.
+- Öğleden sonra su meydanda; Elif köyün son seslerini kaydeder.
+- **21:10: çan çalmaz.** Değirmende ışık yok. Elif geçitten gider (bilek varsa gidemez; Hatice ateşler içinde: "Bu gece çalmadım. Gelmeyecek artık.") ya da Rıza kayıkla gider ("Kırk yıldır ilk defa girdim o kapıdan.") ya da sabahı bekler.
 
 ### Gün 6 — Nazlı
 - Elif değirmene gider. Hatice hasta değil; sadece yorgun. Elif boy çizgilerinin fotoğrafını gösterir.

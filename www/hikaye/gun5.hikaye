@@ -1,0 +1,275 @@
+# ============================================================
+# GÜN 5 — İtiraf
+# Rıza'nın itirafı (kayıt etiği), su meydanda, Selim'in son tarihi,
+# ilk kez çalmayan çan.
+# ============================================================
+
+=== gun5
+!durum çevrimdışı
+~ @08:40 en az 6sa
+!gun 5 İtiraf
+!durum çevrimiçi
+!pil 17
+günaydın
+su okulun bahçesine girmiş. bahçe duvarının dibinde şimdi küçük bi göl var
+bugün Rıza'yla konuşcam. mezarı, köprüyü, her şeyi
+nasıl açayım konuyu?
+* Mezarı doğrudan sor. -> acilis_dogrudan
+* Önce şarj bahanesiyle git, konuşturmaya çalış. -> acilis_bahane
+* [gel_artik==1] Hatice'nin postanedeki sözünü anlat. -> acilis_gel_artik
+
+=== acilis_dogrudan
+$ acilis = 1
+tamam. dolandırmadan
+-> riza_yolu
+
+=== acilis_bahane
+$ acilis = 2
+mantıklı. pilim de zaten %17
+-> riza_yolu
+
+=== acilis_gel_artik
+$ acilis = 3
+$ guven + 1
+evet. bunu duyunca bişey olcak yüzünde, eminim
+=== riza_yolu
+!durum çevrimdışı
+~ 15dk
+!durum çevrimiçi
+şantiyedeyim. Rıza konteynerin önünde. bütün araçlar gitmiş, bi o kalmış bi de kayık
+? riza_guven >= 1 -> riza_sarj
+-> kayit_karar
+
+=== riza_sarj
+telefonu prize taktı yine, sormadan
+!pil 81
+=== kayit_karar
+kaydediciyi açayım mı? konuşursa... bu belki bi daha hiç söylenmicek bişey
+* İzin iste, sonra kaydet. -> kayit_izin
+* Gizlice kaydet. -> kayit_gizli
+* Kaydetme, sadece dinle. -> kayit_yok
+
+=== kayit_izin
+$ itiraf_kayit = 1
+$ guven + 1
+sordum. “konuşursak kaydedebilir miyim?” dedim
+uzun uzun baktı kaydediciye
+“al” dedi. “bir kere söyleyeceğim”
+-> itiraf_basla
+
+=== kayit_gizli
+$ itiraf_kayit = 2
+$ guven - 1
+cebimde açtım. kırmızı ışığı elimle kapattım
+kendimi kötü hissediyorum ama
+-> itiraf_basla
+
+=== kayit_yok
+$ itiraf_kayit = 0
+tamam. sadece dinlicem
+=== itiraf_basla
+? acilis == 1 -> soru_mezar
+? acilis == 3 -> soru_gel_artik
+çay koydu. havadan sudan konuştuk. suyun ne kadar yükseldiğinden
+sonra dayanamadım. Orhan Akın'ı sordum
+-> itiraf
+
+=== soru_mezar
+selam bile vermeden sordum. “Orhan Akın kimdi?”
+-> itiraf
+
+=== soru_gel_artik
+ona dün geceyi anlattım. postaneyi, ipi, fişi
+sonra fısıltıyı. “gel artık Orhan”
+çay bardağını yere koydu. yüzünü elleriyle kapattı
+=== itiraf
+$ itiraf = 1
+~ 1dk
+uzun süre konuşmadı
+sonra anlattı. aynen yazıyorum, hiç bozmadan
+“O gece çanı duydum. Rüzgâr değildi. Kemal'in çaldığını sonradan anladım.”
+“Orhan'ın Nazlı'ya mektup yazdığını bütün köy biliyordu. Bir ben bilmezden geliyordum.”
+“Köprüye koştum. Orhan ortada duruyordu. Elinde bir valiz.”
+“Bağırdım. İttim. O da beni itti. Dere o hafta taşkındı.”
+“Korkuluk eskiydi. Kırıldı.”
+~ 30sn
+“Atlayabilirdim. Atlamadım. Koştum. Sabaha kadar koştum.”
+“Ertesi gün aşağıda buldular. Kaza dediler. Ben de kaza dedim.”
+“Kemal ertesi sabah beni köprünün başında buldu. Gözlerime baktı. Bir şey demedi. Bir hafta sonra gitti.”
+? itiraf_kayit == 1 -> itiraf_ses
+-> itiraf_sonra
+
+=== itiraf_ses
+!ses itiraf | Konteynerin içi. Jeneratörün uğultusu. Uzun bir sessizlik, bir adamın derin nefesi; çay bardağının tahtaya konuşu. Rıza'nın sözleri Elif'in mesajlarında.
+=== itiraf_sonra
+...
+elim titriyo
+kırk yıl. kırk yıl bu adam o köprüye bakarak yaşamış
+? riza_kurtardi == 1 -> itiraf_kurtardi
+-> itiraf_nazli
+
+=== itiraf_kurtardi
+ve iki gün önce o köprüden beni çekip çıkardı
+=== itiraf_nazli
+Nazlı'yı sordum. o gece Nazlı'ya ne oldu diye
+“Bilmiyorum” dedi. sonra durdu
+“Değirmendekine söyleme” dedi. “O bilmesin. Kırk yıldır bilmeden yaşadı.”
+kim o dedim. Hatice Nine kim?
+“Sorma” dedi
+* Bunu ona sen anlatmalısın. -> karar_sen
+* Jandarmaya söylemem gerek. -> karar_jandarma
+* Geçmiş geçmişte kalsın. -> karar_gecmis
+
+=== karar_sen
+$ riza_soz_istendi = 1
+? riza_guven >= 2 -> karar_sen_soz
+söyledim. “bunu ona sen anlatmalısın” dedim
+kafasını salladı. hayır mı evet mi anlamadım
+-> itiraf_bitis
+
+=== karar_sen_soz
+$ riza_soz = 1
+söyledim. “bunu ona sen anlatmalısın” dedim
+çok uzun sustu
+“Yarın” dedi. “Son gün. Söz.”
+-> itiraf_bitis
+
+=== karar_jandarma
+$ riza_teslim = 1
+söyledim. jandarmaya anlatmam gerektiğini
+şaşırmadı bile
+“Anlat” dedi. “Kırk yıldır birinin gelip sormasını bekliyorum.”
+-> itiraf_bitis
+
+=== karar_gecmis
+$ gecmis = 1
+hiçbişey demedim
+o da başka bişey demedi. ikimiz de dereye baktık
+=== itiraf_bitis
+kalkıyorum. kafam çok dolu
+~ 30sn
+ağlıyorum galiba. saçma
+* Ağla. Çok ağır bir şey duydun. -> agla_iyi
+* Abartma, senin başına gelmedi. -> agla_kaba
+
+=== agla_iyi
+$ guven + 1
+sağol :(
+dedem bunu biliyodu. kırk yıl taşıdı. kimseye söylemedi
+şimdi ben taşıyorum
+-> oglen
+
+=== agla_kaba
+$ guven - 2
+...
+haklısın belki
+ama dedemin başına geldi. benim de geliyo şuan
+=== oglen
+? guven <= 1 -> gun5_kopuk
+Rıza bi şey daha söyledi giderken
+“Selim bey telsizden aradı. yarın akşam altıda son araç. baraj yolu kapanıyo”
+“ondan sonra bir tek kayık kalır”
+-> meydan
+
+=== gun5_kopuk
+!durum çevrimdışı
+>> Elif çevrimdışı
+-> engellendin
+
+# ---------- Öğleden sonra: meydan ----------
+
+=== meydan
+!durum çevrimdışı
+? saat >= 15 -> meydan_gec
+~ @15:30 en az 1sa
+=== meydan_gec
+!durum çevrimiçi
+meydandayım
+su gelmiş. kulenin dibinde bilek boyu
+!foto meydan | Ilgındere meydanı, su altında
+kapıların altından içeri giriyo. dedemin evinin eşiği de suda
+kaydettim. köyün son sesleri bunlar işte
+!ses meydan_su | Meydan. Taş eşiklere vuran sığ su, açık kalmış bir kapının rüzgârla gıcırdaması, uzakta bir keçi.
+~ 20sn
+bugün ilk defa korktum biliyo musun
+sudan değil. hikayeden
+* Korkmakta haklısın. -> meydan_hakli
+* Ben buradayım. -> meydan_burda
+
+=== meydan_hakli
+evet. ama bitirmem lazım
+-> aksam5
+
+=== meydan_burda
+$ guven + 1
+biliyorum :) iyi ki
+=== aksam5
+dokuzu on geçe yazarım. her zamanki gibi
+!durum çevrimdışı
+~ @21:10 en az 20dk
+!durum çevrimiçi
+dokuzu on geçiyo
+~ 2dk
+...
+~ 3dk
+çalmadı
+çan çalmadı
+ilk defa. geldiğimden beri ilk defa
+değirmene baktım. ışık yok
+* [bilek==0] Geçitten değirmene git. -> gece_git
+* Rıza'ya haber ver. -> gece_riza
+* Sabaha kadar bekle. -> gece_bekle
+
+=== gece_git
+$ gece_degirmen = 1
+gidiyorum
+fener açık bu sefer. umrumda değil kimin gördüğü
+!durum çevrimdışı
+~ 25dk
+!durum çevrimiçi
+geçtim. su dün geceden daha yüksek. belime kadar geldi bi yerde
+değirmendeyim
+Hatice Nine sobanın yanında, yer yatağında. ateşi var. alnı yanıyo
+gözünü açtı, beni tanıdı
+“bu gece çalmadım” dedi. “gelmeyecek artık”
+başka bişey demedi. uyudu
+yanında kalıyorum. sabaha kadar
+-> gun5_son
+
+=== gece_riza
+$ riza_gitti = 1
+şantiyeye koştum. Rıza zaten dışardaydı. o da değirmene bakıyodu
+kayığı suya itti. “ben bakarım” dedi
+beni almadı. “sen kal” dedi
+~ 40dk
+döndü
+“ateşi var” dedi. “yatırdım. su verdim. yarın sabah sen git yanına”
+sonra bi şey daha dedi
+“kırk yıldır ilk defa girdim o kapıdan”
+-> gun5_son
+
+=== gece_bekle
+? bilek == 1 -> gece_bekle_bilek
+bekliyorum. pencereden değirmene bakıyorum
+ışık yok
+-> gun5_son
+
+=== gece_bekle_bilek
+bileğimle gece o geçide giremem zaten
+bekliyorum. pencereden değirmene bakıyorum. ışık yok
+=== gun5_son
+~ 1dk
+? gece_degirmen == 1 -> gun5_son_degirmen
+yarın sabah ilk iş değirmene gidicem
+-> gun5_iyi_geceler
+
+=== gun5_son_degirmen
+sabah olunca konuşcam onunla. her şeyi
+=== gun5_iyi_geceler
+iyi geceler
+!durum çevrimdışı
+>> Elif çevrimdışı
+~ 8sn
+!sinema gun5_son
+? guven <= 1 -> engellendin
+!ara 6. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.

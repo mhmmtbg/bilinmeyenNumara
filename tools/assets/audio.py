@@ -549,6 +549,54 @@ def cine_gun4_son():
     return out * env_adsr(n, 0.6, 1.2)[:, None]
 
 
+def rec_meydan_su():
+    """0:15 — meydan: eşiklere vuran sığ su, rüzgârla gıcırdayan kapı, uzakta keçi."""
+    D = 15.0
+    n = secs(D)
+    x = bp(pink(n), 150, 1800) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.4 * np.arange(n) / SR)) * 0.12
+    for _ in range(26):
+        k = secs(rng.uniform(0.15, 0.4))
+        place(x, bp(white(k), 300, 3000) * np.hanning(k) * rng.uniform(0.03, 0.08), rng.uniform(0, D - 0.5))
+    x += wind(n, 0.5)
+    for t in (3.0, 9.5):
+        place(x, creak(1.2, 0.06), t)
+    g = secs(0.5)  # keçi: titrek, burunlu kısa "meee"
+    tt = np.arange(g) / SR
+    f0 = 520 * (1 + 0.06 * np.sin(2 * np.pi * 18 * tt))
+    goat = sum((1 / k) * np.sin(2 * np.pi * k * np.cumsum(f0) / SR) for k in range(1, 8)) * np.hanning(g)
+    place(x, bp(goat, 400, 3000) * 0.02, 12.2)
+    return x * env_adsr(n, 0.1, 0.5)
+
+
+def rec_itiraf():
+    """0:20 — konteyner: jeneratör uğultusu, uzun sessizlik, derin nefes, çay bardağı."""
+    D = 20.0
+    n = secs(D)
+    t = np.arange(n) / SR
+    gen = lp(np.sin(2 * np.pi * 50 * t) + 0.5 * np.sin(2 * np.pi * 100 * t) + 0.3 * np.sign(np.sin(2 * np.pi * 25 * t)), 400) * 0.03
+    x = gen + room_tone(n) * 2
+    x += breath(D, 5.5, 1.6, 3.0)
+    k = secs(0.08)
+    place(x, bp(white(k), 2000, 7000) * np.exp(-np.arange(k) / SR / 0.01) * 0.25, 14.2)
+    return x * env_adsr(n, 0.2, 0.6)
+
+
+def cine_gun5_son():
+    """Gün 5 sonu (~20 sn): su meydanda, beklenen ama gelmeyen çan, soba."""
+    D = 20.0
+    n = secs(D)
+    out = np.zeros((n, 2))
+    lap = bp(pink(n), 120, 1400) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.35 * np.arange(n) / SR)) * 0.14
+    out += stereo(lap * env_adsr(n, 1, 6), lap * env_adsr(n, 1, 6))
+    out += stereo(crickets(n, 0.8) * 1.1)
+    out += stereo(drone(n, 44, 1.3) * env_adsr(n, 2, 3))
+    out += stereo(crackle(n, 4, 0.6) * np.clip((np.arange(n) / SR - 9.5) / 1.5, 0, 1) * env_adsr(n, 0.1, 4))
+    seq = [('la', 2), (None, 2), ('si', 1), ('la', 3), (None, 1), ('sol_', 1), ('la', 4)]
+    out += melody_plucks(seq, 1.0, 1.0, 0.38, 0.0, D)
+    out = reverb_st(out, 2.0, 0.22)
+    return out * env_adsr(n, 0.6, 1.2)[:, None]
+
+
 def reverb_st(x, t60, mix):
     return np.stack([reverb(x[:, 0], t60, mix), reverb(x[:, 1], t60 * 1.07, mix)], 1)
 
@@ -577,8 +625,8 @@ def peaks(x, bars=44):
     return [round(float(max(0.08, a ** 0.6)), 2) for a in v]
 
 
-RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice, 'postane': rec_postane}
-CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son, 'gun4_son': cine_gun4_son}
+RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice, 'postane': rec_postane, 'meydan_su': rec_meydan_su, 'itiraf': rec_itiraf}
+CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son, 'gun4_son': cine_gun4_son, 'gun5_son': cine_gun5_son}
 
 
 def main():

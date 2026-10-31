@@ -468,6 +468,7 @@ PHOTOS = {'defter': photo_defter, 'duvar': photo_duvar, 'kule': photo_kule,
           'degirmen': lambda: photo_crop(_scene('c_degirmen', 'gun'), 0.5),
           'mezar': lambda: photo_crop(_scene('photo_mezar'), 0.5),
           'liste': lambda: photo_crop(_scene('photo_liste'), 0.5),
+          'meydan': lambda: photo_crop(_scene('c_meydan', 'gun'), 0.5),
           'kule_gun': lambda: photo_kule('gun'), 'kule_gece': lambda: photo_kule('gece')}
 
 
