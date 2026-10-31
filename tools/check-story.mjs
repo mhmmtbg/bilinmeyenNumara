@@ -40,9 +40,11 @@ let paths = 0;
 let minActive = Infinity, maxActive = 0, minTotal = Infinity, maxTotal = 0;
 let maxChoices = 0;
 
+const LIMIT = Number(process.env.STORY_LIMIT || 400000);
+let truncated = false;
 const seen = new Set();
 function walk(st, depth, choices) {
-  if (paths > 50000) return;
+  if (paths > LIMIT) { truncated = true; return; }
   if (st.waiting === null) {
     const sig = `${st.node}|${st.i}|${JSON.stringify(st.vars)}|${st.meta.ad}|${st.meta.pil}|${st.startedAt}|${new Date(st.cursor).getHours()}`;
     if (seen.has(sig)) return;
@@ -116,7 +118,7 @@ report.push('## Senaryo denetimi', '');
 report.push(`- Dosyalar: ${STORY_FILES.join(', ')}`);
 report.push(`- Düğüm: ${story.order.length}, mesaj: ${story.order.reduce((n, id) => n + story.nodes[id].filter(o => o.t === 'msg').length, 0)}`);
 if (paths) {
-  report.push(`- Dal sayısı (iki başlangıç saatiyle): ${paths}, bir oyunda en fazla ${maxChoices} seçim`);
+  report.push(`- Dal sayısı (iki başlangıç saatiyle): ${paths}${truncated ? ' (sınıra ulaşıldı, örneklem)' : ''}, bir oyunda en fazla ${maxChoices} seçim`);
   report.push(`- Etkin yazışma süresi: ${fmt(minActive)} – ${fmt(maxActive)}`);
   report.push(`- Gerçek toplam süre: ${fmt(minTotal)} – ${fmt(maxTotal)}`);
   report.push('', '| Sonuç | Dal |', '| --- | --- |');

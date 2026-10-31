@@ -22,7 +22,9 @@ Bir fotoğrafı gerçeğiyle değiştirmek için aynı adla `www/img/foto/` içi
 | Dosya | Çekim |
 | --- | --- |
 | `defter.jpg` | Ahşap masada açık bir defter sayfası, gün ışığı soldan. Tükenmez kalemle el yazısı: "Ilgındere'de başın sıkışırsa / bu numaraya yaz. O bilir." Altında "05" ile başlayıp su lekesiyle dağılmış bir numara, en altta altı çizili "Saat dokuzu geçe." ve "— K." |
-| `kule.jpg` | Alacakaranlıkta, aşağıdan çekilmiş taş saat kulesi. Saat 9:10'da durmuş. Yanlarda kapıları kırmızı çarpılı kerpiç evler, elektrik direği ve telleri. |
+| `kule.jpg`, `kule_gun.jpg`, `kule_gece.jpg` | Aşağıdan çekilmiş taş saat kulesi (alacakaranlık / bulutlu öğle / gece el feneri ışığında). Saat 9:10'da durmuş, kapısı zincirli. Yanlarda kapıları kırmızı çarpılı kerpiç evler, elektrik direği ve telleri. Oyun, Ece'nin o anki saatine uyanı gösterir. |
+| `defter2.jpg` | Defterin başka bir sayfası: "Notu oku. Kelime, harf." altında iki satır sayı çifti (1-6 1-7 1-3 8-2 / 1-8 5-3 1-9 5-1), "Unutma." ve üstü çizili ama okunan "Ona söylemeliydim". Sayılar değişirse 2. gün şifresi bozulur. |
+| `kopru_su.jpg` | Akşamüstü, üstünden su dökülen eski taş köprü; korkuluk taşları sudan çıkıyor. |
 | `duvar.jpg` | Flaşla çekilmiş, boyası dökülmüş mavi kapı kasası; kurşun kalemle boy çizgileri ve isimler: Kemal 1971, Nazlı 1973, Kemal 1974, Nazlı 1976, Kemal 1978, Nazlı 1981, Kemal 1983. |
 
 Sinematik kareler için de aynısı geçerli: `www/sinema/c_baraj.jpg` gibi aynı adla 16:9 bir görüntü koyman yeter. Altyazı ve zamanlamalar `tools/assets/cinema.py` içindeki `SCENES` tablosundadır.

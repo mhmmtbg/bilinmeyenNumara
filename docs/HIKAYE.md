@@ -34,6 +34,12 @@ Oyuncu kimseyi canlandırmaz: **kendisidir**. Telefonuna bilinmeyen bir numarada
 | 6 | Evlerin yarısı |
 | 7 | Saat kulesinin tabanı |
 
+**Coğrafya (bütün günlerde sabit):**
+- **Kuzey yaka:** ana yola çıkan toprak yol (ana yola iki saat yürüyüş) ve biraz aşağıda eski **değirmen**.
+- **Eski taş köprü** iki yakayı bağlar. Köyde telefonun çektiği tek yer köprünün ortasıdır; Ece numarayı orada yazarken kayar ve telefonu dereye düşürür (prolog). 2. gün akşamüstü köprü su altında kalır.
+- **Güney yaka:** köy (meydan, saat kulesi, yanında eski PTT binası, okul, Doğanların mavi kapılı evi). Köyün yukarısında, yamaçta baraj şirketinin **şantiyesi**: Rıza'nın konteyneri, jeneratör, kıyıya çekilmiş kayık.
+- Köprünün yukarısında, derede sığ bir **geçit** vardır; Nazlı geceleri oradan geçer (Ece 2. gece fark edebilir, 3. gün kullanır).
+
 Köyün kalbinde **saat kulesi** var. Saati yıllardır **dokuzu on geçe** durmuş. Kulenin yanında eski postane.
 
 ## Karakterler
@@ -60,6 +66,7 @@ Katman katman açılır; her katman bir önceki "efsaneyi" yıkar.
 2. **Kaçış (Gün 2–3):** Nazlı kaybolmadı, kaçtı. Babası onu istemediği biriyle, Rıza'yla evlendirecekti. Ağabeyi Kemal ona yardım etti: **çanı 21:10'da Kemal çaldı** — dere kenarında arabayla bekleyen Orhan'a "yola çık" işareti.
 3. **Ölüm (Gün 4):** O gece Orhan Akın köprüde boğuldu. Jandarma tutanağı "kaza" diyor. Köyde kimse bundan bahsetmez.
 4. **İtiraf (Gün 5):** Rıza o gece çanı duyup köprüye koştu. Orhan'la kavga ettiler; Orhan taşkın dereye düştü. Rıza onu kurtarmaya çalışmadı — kaçtı. 39 yıldır susuyor. Bekçiliği bu yüzden aldı: dereden ayrılamadı.
+   Kemal de bunu biliyordu: Orhan'ın cesedi bulunduğunda Nazlı çoktan şehre götürülmüştü. Kemal ona hiç söylemedi; Nazlı yıllarca Orhan'ın kendisini bıraktığını sandı. Defterdeki karalanmış satır: *"Ona söylemeliydim."*
 5. **Nazlı (Gün 6):** Hatice Nine, Nazlı'dır. O gece değirmende sabaha kadar Orhan'ı bekledi; Orhan gelmeyince "beni bıraktı" sandı. Kemal onu traktörle şehre götürdü. Yıllarca başka bir isimle yaşadı; Kemal'le tek bağı **bir telefon numarasıydı**. 2016'da köye döndü — çekmeyen bir vadiye. Hattı kapattı. Numara boşa düştü, yıllar sonra başka birine verildi: **oyuncuya.** "O bilir" diyen Kemal, Nazlı'yı kastediyordu. Her gece 21:10'da çanı çalan da Nazlı: hâlâ gelmeyen birine işaret veriyor.
 6. **Seçim (Gün 7):** Nazlı, Orhan'ın onu terk etmediğini — öldüğünü ve nasıl öldüğünü — öğrenecek mi? Kimden? Ve su gelmeden kim, nasıl çıkacak?
 
@@ -82,15 +89,19 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Ece okulda gecelemeye karar verir. 21:10'da yazacağını söyler.
 - **21:10 sahnesi:** Çan kendiliğinden çalar. Üç seçenek: *git bak* / *kapıyı kilitle* / *kayda devam et*. Her biri farklı bir ipucu bırakır (değirmene giden fener ışığı / kapının önünden geçen ayak sesleri / kayıtta bir kadının mırıltısı).
 
-### Gün 2 — Bekçi
-- Çamurdaki izler şantiye kulübesine götürür. Rıza: "Burası yasak. Bugün çık." Ama çay koyar.
-- Doğan soyadını duyunca susar. "Saat dokuzu geçe dışarı çıkma."
-- **Kaynak:** Rıza'ya nasıl yaklaşıldığına göre Ece jeneratörden şarj alır ya da alamaz (pil).
-- **Bulmaca:** Defterde sayı grupları (örn. `3-2 / 7-1 …`). Oyuncu çözer, **yazarak** cevap verir → **DEĞİRMEN**.
-- **21:10:** Çan. Bu sefer derenin karşısında, değirmende bir fener. Köprü artık su altında.
+### Gün 2 — Bekçi  *(yazıldı, oynanabilir)*
+- Sabah: 1. gece seçimine göre ipucu (lastik ayakkabı izleri köprüye gidiyor / değirmenin bacası tütüyor / mırıltı bir türküye benziyor). Su aşağı tarlaları basmış.
+- Pil %17. Şantiyeye şarja gidiş: oyuncu yaklaşımı seçer (dürüst / gazeteci yalanı / gizlice). Pil ve Rıza'nın güveni buna göre değişir.
+- Rıza: 60'larında, bıyıklı, sol bacağını sürür. Doğan soyadına tepki verir. "Akşamüstü köprü suyun altında kalır." "Saat dokuzu geçe dışarı çıkma." Kayık onun.
+- Oyuncunun sordurduğu soru: Nazlı (kaçar, eli titrer) / çan ("rüzgâr"; kuleye hiç bakmaz) / değirmen ("orada kimse yok" der, yalan).
+- Gitmeli mi? Ece her durumda kalır ama oyuncunun sözü güveni etkiler.
+- **Bulmaca:** defterde "Notu oku. Kelime, harf." ve sayı çiftleri; ilk notun kelime ve harfleri → **DEĞİRMEN**. Oyuncu yazarak çözer; iki aşamalı ipucu, üç denemeden sonra Ece çözer. Sayfanın altında karalanmış satır: "Ona söylemeliydim."
+- **Köprü (akşamüstü):** su köprünün üstünden akar. Oyuncu "geçme" derse Ece köprünün batışını izler, yamaçta Rıza da cenazede gibi bakar. "Dene" derse Ece yarı yolda geri döner, Rıza koşup onu çeker: *"Bu köprü bir kere birini aldı. Yeter."* İki durumda da köprü gider: değirmen ve ana yol öbür yakada kalır.
+- **21:10:** içeride kal (Rıza battaniye ve çorba getirir: "Kemal'e benziyorsun") / kuleye git (postanenin duvarındaki delikten sarkan yeni bir ip: çan postaneden çalınıyor) / kıyıya in (fener köprünün yukarısındaki sığlıktan suyu geçip değirmene gider; yamaçta Rıza'nın feneri de değirmene bakar).
+- Gün sonu: oyuncuya "o bilir"deki "o" kim diye sorulur (Rıza / değirmendeki kişi / bilmiyoruz). İleride geri dönülür.
 
 ### Gün 3 — Değirmen
-- Geçitten karşıya geçiş. Oyuncunun önerisine göre güvenli ama uzun yol ya da hızlı ama riskli yol (riskli → **burkulan bilek** bayrağı; sonraki günlerde Ece yavaşlar).
+- Köprünün yukarısındaki sığ geçitten karşıya geçiş (2. gece fener oradan geçmişti). Oyuncunun önerisine göre güvenli ama uzun yol ya da hızlı ama riskli yol (riskli → **burkulan bilek** bayrağı; sonraki günlerde Ece yavaşlar).
 - Hatice Nine. "Kemal'in torunusun." Efsaneyi anlatır, ama gözünü kaçırır. Elinde eski bir yanık izi.
 - Gün 1'de kayıt seçildiyse: Ece mırıltıyı tanır. Hatice'nin mırıldandığı türküyle aynı.
 - **Seçim:** Ece defterdeki numaradan Hatice'ye bahsetsin mi? (Bahsederse Hatice susar, numaraya bakmayı reddeder — oyuncu bir şey sezmeye başlar.)
@@ -100,7 +111,7 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Selim ve jandarma köyü son kez tarar. Ece saklanır: **"Şimdi yazma. Telefon titrerse duyarlar."**
 - **Gerçek zamanlı gizlenme:** Oyuncunun önünde iki seçenek durur: *sessizce bekle* ve *"İyi misin?"* yaz. Yazarsa Ece yakalanır (yakalandı dalı: köyden çıkarılır, gece gizlice geri döner; pil ve güven bedeli).
 - Selim'in bıraktığı dosyada 1987 jandarma tutanağı: **Öğretmen Orhan Akın, Nazlı'nın kaybolduğu gece köprüde boğuldu.**
-- **21:10:** Ece kulede bekler. Çan ipi duvardaki bir delikten postaneye uzanıyor. Postanede fenerli bir kadın gölgesi. Çanı çalan bir insan.
+- **21:10:** Ece postanede saklanır (2. gece ipi gördüyse yerini zaten biliyordur). Fenerli bir kadın gelir, ipi çeker. Çanı çalan bir insan.
 
 ### Gün 5 — İtiraf
 - Ece tutanakla Rıza'nın karşısına çıkar. **Ahlaki seçim:** Rıza'nın sözlerini gizlice mi kaydetsin, izin mi istesin?

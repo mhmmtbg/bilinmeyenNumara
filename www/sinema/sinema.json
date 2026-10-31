@@ -45,7 +45,7 @@
    },
    {
     "img": "sinema/c_kopru.jpg",
-    "sure": 10.4,
+    "sure": 10.2,
     "bas": [
      0.36,
      1.0
@@ -57,19 +57,38 @@
     "yazi": [
      {
       "bas": 0.6,
-      "son": 5.4,
+      "son": 4.8,
       "metin": "Ece Doğan, 27. Dedesinin köyüne ilk kez geliyor."
      },
      {
-      "bas": 5.8,
-      "son": 10.0,
-      "metin": "Köprü eski. Su her saat biraz daha yükseliyor."
+      "bas": 5.0,
+      "son": 9.8,
+      "metin": "Köprünün ortası, köyde telefonun çektiği tek yer."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_dusus.jpg",
+    "sure": 1.9,
+    "bas": [
+     0.5,
+     1.0
+    ],
+    "son": [
+     0.5,
+     1.1
+    ],
+    "yazi": [
+     {
+      "bas": 0.1,
+      "son": 1.85,
+      "metin": "Taşlar ıslak."
      }
     ]
    },
    {
     "img": "sinema/c_telefon.jpg",
-    "sure": 7.1,
+    "sure": 6.0,
     "bas": [
      0.47,
      1.18
@@ -78,11 +97,22 @@
      0.45,
      1.05
     ],
-    "yazi": []
+    "yazi": [
+     {
+      "bas": 0.3,
+      "son": 2.9,
+      "metin": "Telefon dereye düştü."
+     },
+     {
+      "bas": 3.1,
+      "son": 5.9,
+      "metin": "Sudan çıkardığında ekranın yarısı ölmüştü."
+     }
+    ]
    },
    {
     "img": null,
-    "sure": 6.5,
+    "sure": 5.9,
     "bas": [
      0.5,
      1
@@ -93,13 +123,13 @@
     ],
     "yazi": [
      {
-      "bas": 0.4,
-      "son": 3.0,
-      "metin": "Ekranın yarısı karardı."
+      "bas": 0.3,
+      "son": 2.6,
+      "metin": "Rehber yok. Arama yok."
      },
      {
-      "bas": 3.2,
-      "son": 6.3,
+      "bas": 2.8,
+      "son": 5.8,
       "metin": "Açık kalan tek konuşma: bir defterdeki numara."
      }
     ]
@@ -127,12 +157,12 @@
      {
       "bas": 0.8,
       "son": 4.6,
-      "metin": "Gece. Ilgındere’de tek bir ışık yanıyor."
+      "metin": "Gece. Derenin öbür yakasında bir fener yanıyor."
      },
      {
       "bas": 5.0,
       "son": 9.0,
-      "metin": "Derenin öbür yakasında."
+      "metin": "Eski değirmenin olduğu yerde."
      }
     ]
    },
@@ -171,6 +201,76 @@
       "bas": 0.4,
       "son": 4.3,
       "metin": "2. gün · Bekçi"
+     }
+    ]
+   }
+  ]
+ },
+ "gun2_son": {
+  "baslik": "Köprü",
+  "ses": "sinema/gun2_son.ogg",
+  "kapak": "sinema/c_kopru_su.jpg",
+  "sure": 20.0,
+  "kareler": [
+   {
+    "img": "sinema/c_kopru_su.jpg",
+    "sure": 8.5,
+    "bas": [
+     0.4,
+     1.02
+    ],
+    "son": [
+     0.55,
+     1.14
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 4.2,
+      "metin": "Akşamüstü eski köprü suyun altında kaldı."
+     },
+     {
+      "bas": 4.4,
+      "son": 8.2,
+      "metin": "Ana yol da değirmen de artık öbür yakada."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_gece.jpg",
+    "sure": 7.0,
+    "bas": [
+     0.78,
+     1.15
+    ],
+    "son": [
+     0.7,
+     1.05
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 6.6,
+      "metin": "Gece. Değirmende yine bir fener yanıyor."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 4.5,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 4.3,
+      "metin": "3. gün · Değirmen"
      }
     ]
    }

@@ -256,9 +256,13 @@ def c_koy():
     return phone_photo(img, 22, grain=0.026, vignette=0.32, warm=0.02, sharpen=0.35, soft=1.0, noise_dark=0.9)
 
 
-def c_kopru():
-    """Bulutlu öğleden sonra: taş kemer köprü, taşkın dere, köprünün ortasında küçük bir figür."""
-    img = vgrad(H, W, [(0, (0.58, 0.62, 0.66)), (0.5, (0.74, 0.76, 0.77)), (1, (0.80, 0.80, 0.79))])
+def c_kopru(flooded=False):
+    """Bulutlu öğleden sonra: taş kemer köprü, taşkın dere, köprünün ortasında küçük bir figür.
+    flooded=True: 2. günün akşamüstü, su köprünün üstünden aşıyor, kimse yok."""
+    if flooded:
+        img = vgrad(H, W, [(0, (0.30, 0.34, 0.44)), (0.45, (0.56, 0.52, 0.56)), (0.62, (0.82, 0.62, 0.48)), (1, (0.70, 0.55, 0.45))])
+    else:
+        img = vgrad(H, W, [(0, (0.58, 0.62, 0.66)), (0.5, (0.74, 0.76, 0.77)), (1, (0.80, 0.80, 0.79))])
     cl = fbm(H, W, 300, 6, 3, aspect=(0.4, 1.0))
     img *= (0.85 + 0.25 * cl)[..., None]
     img = mountains(img, [(560, 200, (0.50, 0.53, 0.56), 520, 0.6), (640, 190, (0.36, 0.38, 0.36), 420, 0.3)], seed=61)
@@ -293,6 +297,43 @@ def c_kopru():
     img = img * (1 - inside[..., None] * 0.55)
     # korkuluk
     img = comp(img, (0.40, 0.37, 0.33), mask_poly(H, W, [(560, deck_top - 4), (1200, deck_top - 54), (1840, deck_top - 4), (1840, deck_top + 10), (1200, deck_top - 40), (560, deck_top + 10)]))
+    if flooded:
+        # su köprünün sırtından aşıyor: tabliye gömülü, korkuluğun taşları sudan çıkıyor,
+        # önde köprünün üstünden dökülen beyaz su perdesi
+        hump = np.array([max(0, 50 - abs(x - 1200) / 13) for x in range(W)], np.float32)
+        top = deck_top + 6 - hump
+        yy = np.arange(H)[:, None]
+        below = ndimage.gaussian_filter((yy > top[None, :]).astype(np.float32), 1.2)
+        flow2 = plane(fbm(1024, 1024, 40, 5, 68, aspect=(0.1, 1.0)), 640, 600, 90, 1.0)
+        wc = img.copy()
+        wc[640:] = tint(flow2, (0.24, 0.20, 0.15), (0.50, 0.42, 0.33))
+        img = img * (1 - below[..., None]) + wc * below[..., None]
+        # dökülen su: tabliyeden 90 px aşağıya dikey beyaz çizgiler
+        fall = np.clip((yy - top[None, :]) / 90, 0, 1)
+        band = ((yy > top[None, :]) & (yy < top[None, :] + 90)).astype(np.float32)
+        streaks = fbm(H, W, 6, 3, 70, aspect=(8.0, 0.08))
+        cascade = band * np.clip(streaks * 1.6 - 0.25, 0, 1) * (1 - fall * 0.5)
+        xw = np.arange(W)
+        span = (np.clip((xw - 560) / 120, 0, 1) * np.clip((1840 - xw) / 120, 0, 1)).astype(np.float32)[None, :]
+        img = comp(img, (0.80, 0.77, 0.70), ndimage.gaussian_filter(cascade * span, 1.0) * 0.85)
+        foam = np.exp(-((yy - top[None, :] - 100) / 22) ** 2) * span * (0.4 + 0.8 * fbm(H, W, 12, 3, 71))
+        img = comp(img, (0.76, 0.73, 0.66), np.clip(foam, 0, 1) * 0.8)
+        # korkuluğun sudan çıkan taşları
+        rails = np.zeros((H, W), np.float32)
+        r2 = rng(12)
+        x = 600
+        while x < 1800:
+            wdt = r2.uniform(30, 70)
+            if r2.random() < 0.7:
+                y = top[int(x)]
+                rails = np.maximum(rails, mask_poly(H, W, [(x, y + 2), (x + wdt, y + 2), (x + wdt - 3, y - r2.uniform(18, 34)), (x + 3, y - r2.uniform(18, 34))], blur=0.8))
+            x += wdt + r2.uniform(4, 30)
+        img = img * (1 - rails[..., None]) + stone * 0.8 * rails[..., None]
+        splash = np.clip(ndimage.gaussian_filter(rails, 6) * 3 - rails * 3, 0, 1)
+        img = comp(img, (0.82, 0.80, 0.74), splash * 0.6)
+        img = light(img, np.ones((H, W), np.float32) * 0.8, (1.05, 0.95, 0.88))
+        img = mist(img, 620, 50, 0.3, (0.78, 0.70, 0.66), 5)
+        return phone_photo(img, 29, grain=0.03, vignette=0.36, warm=0.02, sharpen=0.4, soft=0.9, contrast=1.06, noise_dark=1.3)
     # figür: sırt çantalı Ece
     fx, fy = 1260, 652
     fig = mask_draw(H, W, lambda d, ss: (d.ellipse([(fx - 7) * ss, (fy - 52) * ss, (fx + 7) * ss, (fy - 38) * ss], fill=255),
@@ -450,7 +491,59 @@ def c_su():
     return phone_photo(img, 26, grain=0.02, vignette=0.32, warm=0.02, sharpen=0.3, soft=1.0, contrast=1.04)
 
 
-FRAMES = {'c_baraj': c_baraj, 'c_koy': c_koy, 'c_kopru': c_kopru, 'c_telefon': c_telefon, 'c_gece': c_gece, 'c_su': c_su}
+def c_dusus():
+    """Kayma anı: telefon elden fırlamış, dereye çarptığı an; üstte uzanan el."""
+    r = rng(31)
+    flow = plane(fbm(1024, 1024, 40, 5, 66, aspect=(0.1, 1.0)), 0, -900, 700, 1.0)
+    img = tint(flow, (0.27, 0.22, 0.15), (0.52, 0.45, 0.34))
+    foam = np.clip((plane(fbm(1024, 1024, 14, 4, 67, aspect=(0.12, 1.0)), 0, -900, 700, 1.0) - 0.62) * 4, 0, 1)
+    img = img * (1 - foam[..., None]) + np.array([0.74, 0.72, 0.66]) * foam[..., None]
+    cx, cy = 1180, 860
+    # telefonun suya girdiği yer: koyu çukur ve halka dalgalar
+    for k, rad in enumerate((120, 190, 270, 360)):
+        ring = mask_ellipse(H, W, cx, cy + 20, rad * 1.6, rad * 0.45, blur=2, ring=6)
+        img = comp(img, (0.70, 0.68, 0.62), ring * (0.55 - k * 0.1))
+    img = comp(img, (0.16, 0.13, 0.09), mask_ellipse(H, W, cx, cy + 10, 160, 50, blur=6) * 0.7)
+    # telefon: yarısı suda, eğik
+    ph = mask_poly(H, W, [(1080, 520), (1290, 600), (1240, 880), (1030, 800)])
+    img = comp(img, (0.06, 0.07, 0.08), ph)
+    scr = mask_poly(H, W, [(1094, 540), (1272, 608), (1228, 860), (1046, 790)])
+    img = comp(img, (0.20, 0.32, 0.34), scr * 0.85)
+    under = mask_poly(H, W, [(1000, 760), (1320, 820), (1320, 1000), (1000, 1000)], blur=10)
+    img = img * (1 - under[..., None] * 0.55) + np.array([0.36, 0.30, 0.21]) * under[..., None] * 0.55
+    # sıçrayan damlalar ve su perdesi
+    # su perdesi (taç)
+    crown = mask_poly(H, W, [(cx - 190, cy + 10), (cx - 150, cy - 150), (cx - 60, cy - 70), (cx, cy - 190), (cx + 70, cy - 80),
+                             (cx + 160, cy - 160), (cx + 200, cy + 10)], blur=8)
+    crown *= 0.35 + 0.5 * fbm(H, W, 12, 3, 41)
+    img = comp(img, (0.78, 0.76, 0.70), crown * 0.7)
+    for i in range(110):
+        a = r.uniform(np.pi * 1.08, np.pi * 1.92)
+        L = r.uniform(30, 230)
+        x0 = cx + r.normal(0, 70)
+        y0 = cy + r.normal(0, 18)
+        x1 = x0 + np.cos(a) * L
+        y1 = y0 + np.sin(a) * L
+        w = r.uniform(3, 9)
+        m = mask_poly(H, W, [(x0 - w, y0), (x0 + w, y0), (x1 + 1, y1), (x1 - 1, y1)], blur=2.5)
+        img = comp(img, (0.86, 0.85, 0.80), m * r.uniform(0.15, 0.4))
+        img = comp(img, (0.90, 0.89, 0.85), mask_ellipse(H, W, x1, y1, w * 1.3, w * 1.3, blur=1) * 0.8)
+    # üstten uzanan el (hareket bulanık)
+    hand = mask_poly(H, W, [(1500, 0), (1820, 0), (1760, 120), (1640, 230), (1560, 300), (1500, 280), (1520, 200), (1460, 160)], blur=3)
+    for fx, fy in ((1470, 320), (1520, 350), (1575, 345), (1625, 320)):
+        hand = np.maximum(hand, mask_poly(H, W, [(fx, fy - 120), (fx + 34, fy - 110), (fx + 28, fy), (fx + 6, fy + 6)], blur=3))
+    skin = np.array([0.66, 0.50, 0.40]) * (0.85 + 0.2 * fbm(H, W, 30, 3, 9))[..., None]
+    sleeve = mask_poly(H, W, [(1760, 0), (2400, 0), (2400, 120), (1800, 160)], blur=3)
+    lay = img * (1 - hand[..., None]) + skin * hand[..., None]
+    lay = lay * (1 - sleeve[..., None]) + np.array([0.20, 0.24, 0.30]) * sleeve[..., None]
+    moved = blur(lay, 6)
+    hm = np.clip(np.maximum(hand, sleeve) * 1.2, 0, 1)
+    img = img * (1 - hm[..., None]) + moved * hm[..., None]
+    img = light(img, 0.75 + 0.4 * radial(H, W, 1200, 700, 1700, 1100, 1.0), (1.0, 1.0, 1.0))
+    return phone_photo(img, 27, grain=0.025, vignette=0.4, sharpen=0.4, soft=1.0, contrast=1.1)
+
+
+FRAMES = {'c_kopru_su': lambda: c_kopru(True), 'c_dusus': c_dusus, 'c_baraj': c_baraj, 'c_koy': c_koy, 'c_kopru': c_kopru, 'c_telefon': c_telefon, 'c_gece': c_gece, 'c_su': c_su}
 
 # Sahne tanımları. Zamanlar ses bandıyla (tools/assets/audio.py) eşleşir.
 # kare: (dosya ya da None=siyah, süre sn, başlangıç [x 0..1, ölçek], bitiş [x, ölçek], altyazılar [(başla, bitir, metin)])
@@ -462,10 +555,11 @@ SCENES = {
         'kareler': [
             ('c_baraj', 7.0, [0.62, 1.04], [0.72, 1.12], [(0.8, 6.4, 'Ilgın Barajı’nın kapakları dün kapandı.')]),
             ('c_koy', 7.0, [0.40, 1.12], [0.52, 1.04], [(0.4, 6.4, 'Yedi gün içinde Ilgındere suyun altında kalacak.')]),
-            ('c_kopru', 10.4, [0.36, 1.0], [0.53, 1.22], [(0.6, 5.4, 'Ece Doğan, 27. Dedesinin köyüne ilk kez geliyor.'),
-                                                        (5.8, 10.0, 'Köprü eski. Su her saat biraz daha yükseliyor.')]),
-            ('c_telefon', 7.1, [0.47, 1.18], [0.45, 1.05], []),
-            (None, 6.5, [0.5, 1], [0.5, 1], [(0.4, 3.0, 'Ekranın yarısı karardı.'), (3.2, 6.3, 'Açık kalan tek konuşma: bir defterdeki numara.')]),
+            ('c_kopru', 10.2, [0.36, 1.0], [0.53, 1.22], [(0.6, 4.8, 'Ece Doğan, 27. Dedesinin köyüne ilk kez geliyor.'),
+                                                        (5.0, 9.8, 'Köprünün ortası, köyde telefonun çektiği tek yer.')]),
+            ('c_dusus', 1.9, [0.50, 1.0], [0.50, 1.10], [(0.1, 1.85, 'Taşlar ıslak.')]),
+            ('c_telefon', 6.0, [0.47, 1.18], [0.45, 1.05], [(0.3, 2.9, 'Telefon dereye düştü.'), (3.1, 5.9, 'Sudan çıkardığında ekranın yarısı ölmüştü.')]),
+            (None, 5.9, [0.5, 1], [0.5, 1], [(0.3, 2.6, 'Rehber yok. Arama yok.'), (2.8, 5.8, 'Açık kalan tek konuşma: bir defterdeki numara.')]),
         ],
     },
     'gun1_son': {
@@ -473,9 +567,19 @@ SCENES = {
         'ses': 'sinema/gun1_son.ogg',
         'kapak': 'sinema/c_gece.jpg',
         'kareler': [
-            ('c_gece', 9.5, [0.42, 1.0], [0.70, 1.1], [(0.8, 4.6, 'Gece. Ilgındere’de tek bir ışık yanıyor.'), (5.0, 9.0, 'Derenin öbür yakasında.')]),
+            ('c_gece', 9.5, [0.42, 1.0], [0.70, 1.1], [(0.8, 4.6, 'Gece. Derenin öbür yakasında bir fener yanıyor.'), (5.0, 9.0, 'Eski değirmenin olduğu yerde.')]),
             ('c_su', 8.0, [0.30, 1.1], [0.62, 1.02], [(0.6, 7.4, 'Sabah. Su aşağı tarlalara ulaştı.')]),
             (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '2. gün · Bekçi')]),
+        ],
+    },
+    'gun2_son': {
+        'baslik': 'Köprü',
+        'ses': 'sinema/gun2_son.ogg',
+        'kapak': 'sinema/c_kopru_su.jpg',
+        'kareler': [
+            ('c_kopru_su', 8.5, [0.40, 1.02], [0.55, 1.14], [(0.6, 4.2, 'Akşamüstü eski köprü suyun altında kaldı.'), (4.4, 8.2, 'Ana yol da değirmen de artık öbür yakada.')]),
+            ('c_gece', 7.0, [0.78, 1.15], [0.70, 1.05], [(0.6, 6.6, 'Gece. Değirmende yine bir fener yanıyor.')]),
+            (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '3. gün · Değirmen')]),
         ],
     },
 }

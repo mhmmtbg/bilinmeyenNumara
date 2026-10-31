@@ -19,9 +19,8 @@ W, H = 1200, 900
 
 
 # ---------------------------------------------------------------- defter
-def notebook_page(pw=820, ph=1080, seed=3):
-    """Defter sayfası (RGBA): kâğıt lifi, çizgiler, mürekkep el yazısı, su lekesiyle dağılmış numara."""
-    r = rng(seed)
+def paper_base(pw, ph, seed, back_lines):
+    """Çizgili defter kâğıdı: lif, sararma, kenar çizgisi, arka sayfadan sızan yazı."""
     fib = fbm(ph, pw, 3, 3, seed)
     tone = fbm(ph, pw, 260, 4, seed + 1)
     paper = tint(0.75 * tone + 0.25 * fib, (0.83, 0.79, 0.68), (0.95, 0.92, 0.84))
@@ -41,9 +40,43 @@ def notebook_page(pw=820, ph=1080, seed=3):
     paper = comp(paper, (0.82, 0.46, 0.44), ndimage.gaussian_filter(margin, 0.6) * 0.6)
     # arka sayfadan sızan yazı (ayna)
     back = np.zeros((ph, pw), np.float32)
-    for i, t in enumerate(['Mart. İlaçlar sabah ikişer.', 'Ayşe aradı, cumaya gelecek.', 'Dere taşmış derler.', 'Nazlı']):
+    for i, t in enumerate(back_lines):
         back = np.maximum(back, mask_text(ph, pw, t, (150, 300 + i * 120), 'Caveat_400Regular.ttf', 46))
     paper = comp(paper, (0.35, 0.40, 0.55), np.fliplr(ndimage.gaussian_filter(back, 1.6)) * 0.07)
+    return paper
+
+
+def finish_page(paper, pw, ph):
+    gutter = np.clip(1 - np.arange(pw) / 120, 0, 1) ** 2
+    paper = paper * (1 - 0.35 * gutter)[None, :, None]
+    rgba = np.dstack([np.clip(paper, 0, 1), np.ones((ph, pw))])
+    return Image.fromarray((rgba * 255).astype(np.uint8), 'RGBA')
+
+
+def notebook_cipher(pw=820, ph=1080, seed=4):
+    """Şifre sayfası: "Notu oku. Kelime, harf." ve sayı çiftleri; altta eski, karalanmış bir satır."""
+    paper = paper_base(pw, ph, seed, ['Haziran 12', 'Hastane, kontrol', 'Rıza'])
+    F = 'Caveat_600SemiBold.ttf'
+    ink = np.zeros((ph, pw), np.float32)
+    ink = np.maximum(ink, mask_text(ph, pw, "Notu oku. Kelime, harf.", (132, 162), F, 62, angle=0.7))
+    rows = [["1-6", "1-7", "1-3", "8-2"], ["1-8", "5-3", "1-9", "5-1"]]
+    for ri, row in enumerate(rows):
+        for ci, t in enumerate(row):
+            ink = np.maximum(ink, mask_text(ph, pw, t, (150 + ci * 150, 316 + ri * 120), F, 72, angle=float(np.sin(ri * 3 + ci) * 2)))
+    ink = np.maximum(ink, mask_text(ph, pw, "Unutma.", (136, 600), F, 56, angle=-0.5))
+    # karalanmış satır
+    old = mask_text(ph, pw, "Ona söylemeliydim", (140, 760), F, 52, angle=0.3)
+    scr = mask_draw(ph, pw, lambda d, ss: [d.line([(130 + k * 5) * ss, (800 - (k % 2) * 34) * ss, (560 + k * 5) * ss, (790 - (k % 2) * 30) * ss], fill=255, width=4 * ss) for k in range(5)])
+    ink = np.maximum(ink, np.maximum(old, scr))
+    ink_var = 0.78 + 0.22 * fbm(ph, pw, 20, 3, seed + 9)
+    ink = ndimage.gaussian_filter(ink, 0.7) * ink_var
+    paper = comp(paper, (0.05, 0.09, 0.30), np.clip(ink * 1.25, 0, 1) * 0.96)
+    return finish_page(paper, pw, ph)
+
+
+def notebook_page(pw=820, ph=1080, seed=3):
+    """Defter sayfası (RGBA): kâğıt lifi, çizgiler, mürekkep el yazısı, su lekesiyle dağılmış numara."""
+    paper = paper_base(pw, ph, seed, ['Mart. İlaçlar sabah ikişer.', 'Ayşe aradı, cumaya gelecek.', 'Dere taşmış derler.', 'Nazlı'])
 
     # mürekkep
     ink = np.zeros((ph, pw), np.float32)
@@ -83,20 +116,16 @@ def notebook_page(pw=820, ph=1080, seed=3):
     wr = fbm(ph, pw, 14, 3, seed + 11) - 0.5
     gy, gx = np.gradient(ndimage.gaussian_filter(wr * stain, 2))
     paper *= (1 + (gx - gy) * 3)[..., None]
-    # cilt tarafı (sol) kavisli gölge: sayfa kalkık
-    gutter = np.clip(1 - np.arange(pw) / 120, 0, 1) ** 2
-    paper *= (1 - 0.35 * gutter)[None, :, None]
-    rgba = np.dstack([np.clip(paper, 0, 1), np.ones((ph, pw))])
-    return Image.fromarray((rgba * 255).astype(np.uint8), 'RGBA')
+    return finish_page(paper, pw, ph)
 
 
-def photo_defter():
-    img = wood(H, W, 21, base=(0.25, 0.15, 0.08), light=(0.47, 0.31, 0.18))
+def photo_defter(page_fn=None, seed=21, desk=((0.25, 0.15, 0.08), (0.47, 0.31, 0.18))):
+    img = wood(H, W, seed, base=desk[0], light=desk[1])
     # tahta birleşim çizgileri
     for y in (180, 560):
         img[y:y + 3] *= 0.45
     # ikinci sayfa (alttaki) ve defter kapağı
-    page = notebook_page()
+    page = (page_fn or notebook_page)()
     cover = Image.new('RGBA', page.size, (34, 48, 58, 255))
     under = Image.new('RGBA', page.size, (226, 218, 196, 255))
     quad = [(250, 40), (1050, 95), (985, 905), (150, 860)]
@@ -325,13 +354,26 @@ def utility_pole(img, x, y_top, y_bot, wires_to, seed=0):
     return img
 
 
-def photo_kule():
+def photo_kule(variant='aksam'):
+    """Saat kulesi; variant: 'gun' (bulutlu öğle), 'aksam' (alacakaranlık), 'gece' (fener/flaş ışığında)."""
     r = rng(91)
-    img = sky_dusk(H, W, 13, [(0, (0.10, 0.15, 0.30)), (0.45, (0.27, 0.32, 0.48)), (0.72, (0.62, 0.48, 0.50)),
-                              (0.86, (0.92, 0.60, 0.40)), (1, (0.96, 0.70, 0.45))])
-    img = glow(img, 980, 640, 700, (0.30, 0.14, 0.02), 1.0)
-    # uzak dağlar: puslu siluetler
-    for base, amp, col, sd in [(600, 130, (0.36, 0.33, 0.42), 3), (640, 90, (0.22, 0.21, 0.27), 4)]:
+    if variant == 'gun':
+        img = sky_dusk(H, W, 13, [(0, (0.52, 0.62, 0.74)), (0.5, (0.72, 0.76, 0.80)), (1, (0.84, 0.84, 0.82))])
+    elif variant == 'gece':
+        img = vgrad(H, W, [(0, (0.02, 0.03, 0.06)), (0.6, (0.05, 0.06, 0.11)), (1, (0.08, 0.08, 0.13))])
+        rr = rng(5)
+        st = np.zeros((H, W), np.float32)
+        n = 900
+        st[(rr.random(n) ** 1.3 * 620).astype(int), rr.integers(0, W, n)] = rr.random(n) ** 3 * 2
+        img += np.clip(ndimage.gaussian_filter(st, 0.6) * 4, 0, 1)[..., None] * 0.8
+    else:
+        img = sky_dusk(H, W, 13, [(0, (0.10, 0.15, 0.30)), (0.45, (0.27, 0.32, 0.48)), (0.72, (0.62, 0.48, 0.50)),
+                                  (0.86, (0.92, 0.60, 0.40)), (1, (0.96, 0.70, 0.45))])
+        img = glow(img, 980, 640, 700, (0.30, 0.14, 0.02), 1.0)
+    # uzak dağlar
+    mcols = {'gun': [(0.55, 0.57, 0.62), (0.44, 0.45, 0.46)], 'gece': [(0.05, 0.055, 0.08), (0.03, 0.035, 0.05)],
+             'aksam': [(0.36, 0.33, 0.42), (0.22, 0.21, 0.27)]}[variant]
+    for (base, amp, sd), col in zip([(600, 130, 3), (640, 90, 4)], mcols):
         rid = ridge1d(W, 380, 7, sd, 0.5)
         ys = base - rid * amp
         m = ndimage.gaussian_filter((np.arange(H)[:, None] > ys[None, :]).astype(np.float32), 0.8)
@@ -339,43 +381,76 @@ def photo_kule():
         img = img * (1 - m[..., None]) + tex * m[..., None]
     # zemin: toprak yol, tekerlek izleri
     gy0 = 700
-    ground = tint(fbm(H, W, 30, 6, 70, aspect=(0.4, 1.0)), (0.10, 0.09, 0.08), (0.24, 0.20, 0.16))
+    gl = {'gun': ((0.30, 0.26, 0.20), (0.52, 0.45, 0.35)), 'gece': ((0.03, 0.03, 0.03), (0.08, 0.07, 0.06)),
+          'aksam': ((0.10, 0.09, 0.08), (0.24, 0.20, 0.16))}[variant]
+    ground = tint(fbm(H, W, 30, 6, 70, aspect=(0.4, 1.0)), *gl)
     ruts = np.zeros((H, W), np.float32)
     for xb, xt in ((520, 590), (760, 640)):
         ruts = np.maximum(ruts, mask_poly(H, W, [(xt - 4, gy0), (xt + 4, gy0), (xb + 40, H), (xb - 40, H)], blur=6))
     ground *= (1 - 0.35 * ruts)[..., None]
     gm = (np.arange(H)[:, None] > gy0).astype(np.float32) * np.ones((1, W))
     img = img * (1 - gm[..., None]) + ground * gm[..., None]
-    # evler: alacakaranlıkta koyu
+    # evler
+    hdim = {'gun': 0.88, 'gece': 0.10, 'aksam': 0.42}[variant]
     for (x0, y0, ww, hh, sd) in [(-60, 560, 330, 260, 81), (930, 585, 330, 230, 82), (250, 640, 150, 100, 83)]:
-        house = mudbrick_house(ww, hh, sd, x_mark=sd != 83) * 0.42
+        house = mudbrick_house(ww, hh, sd, x_mark=sd != 83) * hdim
         house *= np.linspace(1.15, 0.7, ww)[None, :, None] if x0 > 600 else np.linspace(0.75, 1.1, ww)[None, :, None]
         xs, xe = max(0, x0), min(W, x0 + ww)
         img[y0:y0 + hh, xs:xe] = house[:H - y0, xs - x0:xe - x0][: H - y0]
-    # kule: güneş yalnız üst kısmı yakalar; sol yüz gölgede
+    # kule
     tw, th = 300, 760
     t_img, t_a = tower_layer(tw, th, 2)
-    lit = np.clip(1.25 - np.linspace(0, 1, th) * 1.15, 0.38, 1.25)[:, None]
-    t_img = t_img * lit[..., None] * np.array([1.0, 0.86, 0.72])
-    t_img[:, : int(tw * 0.28)] *= 0.55
+    if variant == 'aksam':
+        lit = np.clip(1.25 - np.linspace(0, 1, th) * 1.15, 0.38, 1.25)[:, None]
+        t_img = t_img * lit[..., None] * np.array([1.0, 0.86, 0.72])
+        t_img[:, : int(tw * 0.28)] *= 0.55
+    elif variant == 'gun':
+        t_img = t_img * 0.95
+        t_img[:, : int(tw * 0.28)] *= 0.72
+    else:
+        t_img = t_img * 0.12
     layer = Image.fromarray((np.dstack([np.clip(t_img, 0, 1), t_a]) * 255).astype(np.uint8), 'RGBA')
     canvas = to_pil(img).convert('RGBA')
-    canvas.alpha_composite(warp_rgba(layer, (W, H), [(478, 30), (722, 22), (770, 805), (424, 812)]))
+    tw_layer = warp_rgba(layer, (W, H), [(478, 30), (722, 22), (770, 805), (424, 812)])
+    tower_m = np.asarray(tw_layer, np.float32)[..., 3] / 255
+    canvas.alpha_composite(tw_layer)
     img = from_pil(canvas)
     img = utility_pole(img * 1.0, 1015, 250, 650, [(0, 330), (-20, 360), (-40, 390)])
-    # ön planda kuru ılgın çalısı (siluet)
     def shrub(d, ss):
         for i in range(90):
             a = r.uniform(-2.7, -0.4)
             L = r.uniform(60, 210)
             x0 = r.uniform(20, 190)
             d.line([(x0 * ss, 905 * ss), ((x0 + np.cos(a) * L) * ss, (905 + np.sin(a) * L) * ss)], fill=255, width=int(r.uniform(1.5, 3.5) * ss))
-    img = comp(img, (0.05, 0.045, 0.045), mask_draw(H, W, shrub))
+    shc = {'gun': (0.26, 0.20, 0.15), 'gece': (0.02, 0.02, 0.02), 'aksam': (0.05, 0.045, 0.045)}[variant]
+    img = comp(img, shc, mask_draw(H, W, shrub))
+    if variant == 'gece':
+        # el fenerinin ışığı kulenin gövdesine düşer
+        beam = radial(H, W, 600, 560, 330, 420, 1.3) * np.maximum(tower_m, gm * 0.6)
+        img = img + img * beam[..., None] * 9.0 * np.array([1.0, 0.92, 0.78]) + beam[..., None] * np.array([0.03, 0.028, 0.022])
     img = depth_blur(img, np.clip((np.arange(H)[:, None] - 820) / 80, 0, 1) * np.ones((1, W)), 2.0)
+    if variant == 'gun':
+        return phone_photo(img, 13, grain=0.02, vignette=0.25, warm=0.0, sharpen=0.5, soft=0.7, noise_dark=0.8, contrast=1.04)
+    if variant == 'gece':
+        return phone_photo(img, 13, grain=0.03, vignette=0.5, warm=0.02, sharpen=0.3, soft=1.0, noise_dark=1.6, contrast=1.0)
     return phone_photo(img, 13, grain=0.04, vignette=0.4, warm=0.0, sharpen=0.5, soft=0.8, noise_dark=1.8, contrast=1.05)
 
 
-PHOTOS = {'defter': photo_defter, 'duvar': photo_duvar, 'kule': photo_kule}
+def photo_kopru_su():
+    """Sinema karesinden (köprü su altında) telefonla çekilmiş 4:3 bir kesit."""
+    from cinema import c_kopru
+    big = c_kopru(True)
+    h, w, _ = big.shape
+    cw = int(h * 4 / 3)
+    x0 = int(w * 0.5 - cw / 2)
+    crop = big[:, x0:x0 + cw]
+    return np.asarray(to_pil(crop).resize((W, H), Image.LANCZOS), np.float32) / 255
+
+
+PHOTOS = {'defter': photo_defter, 'duvar': photo_duvar, 'kule': photo_kule,
+          'defter2': lambda: photo_defter(notebook_cipher, 23, ((0.30, 0.24, 0.18), (0.50, 0.42, 0.32))),
+          'kopru_su': photo_kopru_su,
+          'kule_gun': lambda: photo_kule('gun'), 'kule_gece': lambda: photo_kule('gece')}
 
 
 def main():

@@ -357,11 +357,17 @@ def cine_prolog():
     # ayak sesleri köprüde (15-21 sn)
     steps = footsteps_gravel([15.2 + i * 0.58 for i in range(10)], 0.05)
     out[secs(0): secs(0) + len(steps)] += pan(steps, 0.2)
-    # kayma + sıçrama 24.6 sn
+    # ayak kayıyor (ıslak taşta sürtünme), nefes kesilmesi, sonra sıçrama 24.4 sn
+    k = secs(0.45)
+    scrape = bp(white(k), 600, 4000) * np.sin(np.linspace(0, np.pi, k)) ** 0.7 * 0.35
+    out[secs(23.75): secs(23.75) + k] += pan(scrape, 0.1)
+    g = secs(0.35)
+    gasp = bp(white(g), 900, 3500) * np.sin(np.linspace(0, np.pi, g)) ** 2 * 0.18
+    out[secs(23.95): secs(23.95) + g] += stereo(gasp)
     out[secs(24.4): secs(24.4) + secs(1.6)] += stereo(splash(0.55))
-    # su altı (25-31 sn) — boğuk uğultu
-    uw = underwater(secs(6.5)) * env_adsr(secs(6.5), 0.1, 1.8)
-    out[secs(25.0): secs(25.0) + len(uw)] += stereo(uw * 1.3)
+    # su altı (26-32 sn) — boğuk uğultu
+    uw = underwater(secs(6.0)) * env_adsr(secs(6.0), 0.1, 1.8)
+    out[secs(26.0): secs(26.0) + len(uw)] += stereo(uw * 1.3)
     # karanlık: tek bir telefon titreşimi (33 sn)
     out[secs(33.4): secs(33.4) + secs(0.9)] += stereo(phone_buzz(0.18))
     out = reverb_st(out, 1.6, 0.18)
@@ -387,6 +393,52 @@ def cine_gun1_son():
     out += melody_plucks(seq, 10.5, 0.85, 0.45, 0.1, D)
     out = reverb_st(out, 1.8, 0.2)
     return out * env_adsr(n, 0.6, 1.2)[:, None]
+
+
+def cine_gun2_son():
+    """Gün 2 sonu (~20 sn): köprünün üstünden dökülen su, gece, uzak fener, tel."""
+    D = 20.0
+    n = secs(D)
+    out = np.zeros((n, 2))
+    roar = np.clip(1 - (np.arange(n) / SR - 7.5) / 2.0, 0, 1)
+    out += stereo(river(n, 2.2) * roar, river(n, 2.2) * roar)
+    out += stereo(bp(brown(n), 40, 200) * 0.25 * roar)
+    night = np.clip((np.arange(n) / SR - 7.5) / 1.5, 0, 1) * env_adsr(n, 0.1, 4)
+    out += stereo(crickets(n, 1.0) * 1.2 * night, crickets(n, 1.0) * 1.2 * night)
+    out += stereo(river(n, 0.5) * night)
+    out += stereo(drone(n, 52, 1.1) * env_adsr(n, 2, 3))
+    seq = [('la', 2), ('do', 1), ('si', 1), ('la', 2), (None, 1), ('sol_', 1), ('la', 3)]
+    out += melody_plucks(seq, 8.5, 0.85, 0.45, -0.1, D)
+    out = reverb_st(out, 1.8, 0.2)
+    return out * env_adsr(n, 0.6, 1.2)[:, None]
+
+
+def rec_kopru_sesi():
+    """0:12 — köprünün üstünden akan suyun gürültüsü, yakın; ortada Ece'nin kısık sesi yok, sadece bir öksürük/nefes."""
+    D = 12.0
+    n = secs(D)
+    x = river(n, 2.6) + bp(brown(n), 40, 220) * 0.35 + hp(white(n), 2500) * 0.03
+    for _ in range(30):  # taşlara çarpan su
+        place(x, bp(white(secs(0.08)), 800, 6000) * np.hanning(secs(0.08)) * 0.08, rng.uniform(0, D - 0.2))
+    x += breath(D, 4.0, 1.0, 2.0) * 0.8
+    k = secs(0.3)
+    place(x, bp(white(k), 200, 1800) * np.hanning(k) * 0.08, 0.1)
+    return x * env_adsr(n, 0.08, 0.4)
+
+
+def rec_kiyi():
+    """0:14 — gece dere kıyısı: güçlü akış, çanın son yankısı, karşı yakadan kısık mırıltı."""
+    D = 14.0
+    n = secs(D)
+    x = river(n, 1.6) + crickets(n, 0.6) * 0.6
+    tl = bell_strike(392, 8.0)[secs(1.5):]
+    place(x, reverb(lp(tl, 2000), 3.6, 0.65), 0, 0.22)
+    u = USSAK
+    melody = [(u['re'], 0.6), (u['do'], 0.45), (u['si'], 0.6), (u['la'], 1.0), (0, 0.3), (u['la'], 0.5), (u['si'], 0.45),
+              (u['do'], 0.8), (u['si'], 0.5), (u['la'], 1.2), (0, 0.4), (u['sol_'], 0.5), (u['la'], 1.0)]
+    v = reverb(bp(hum_voice(melody), 220, 2000), 2.6, 0.65, 0.1)
+    place(x, v, 3.0, 0.16)
+    return x * env_adsr(n, 0.1, 0.6)
 
 
 def reverb_st(x, t60, mix):
@@ -417,8 +469,8 @@ def peaks(x, bars=44):
     return [round(float(max(0.08, a ** 0.6)), 2) for a in v]
 
 
-RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti}
-CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son}
+RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi}
+CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son}
 
 
 def main():

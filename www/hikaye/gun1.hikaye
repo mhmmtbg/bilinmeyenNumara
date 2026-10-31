@@ -85,8 +85,11 @@ Köyü boşaltmışlar. Kimse yok. Kapıların üstünde kırmızı çarpılar.
 Ben ses kaydı yapıyorum, belgeseller için. Köyün son seslerini kaydetmeye geldim.
 Bir de... dedemin hiç anlatmadığı bir şeyi öğrenmeye.
 Neyse. Asıl sorun şu:
-Köprüden geçerken kaydım. Telefon dereye düştü.
-Çıkardım ama ekranın yarısı gitti. Sadece bu konuşmanın yazma yeri çalışıyor, başka hiçbir yere geçemiyorum.
+Köydeki eski taş köprünün ortası, telefonun çektiği tek yer.
+Numarayı yazıp bu konuşmayı açmıştım. Tam mesaj atacaktım ki ayağım kaydı.
+Telefon dereye düştü.
+Çıkardım ama ekranın yarısı gitti. Sadece bu konuşma açık kaldı.
+Yazma yeri çalışıyor, bir de fotoğraf ve ses kaydı tuşları. Başka hiçbir yere geçemiyorum.
 Arama da düşüyor. Mesajlar bazen gidiyor, bazen gitmiyor.
 !pil 41
 Pilim de %41.
@@ -97,7 +100,7 @@ Yani şu an dünyayla tek bağlantım sensin, bilinmeyen numara.
 
 === cik
 Çıkmayacağım.
-Kusura bakma ama buraya dört saat otobüs, iki saat yürüyüşle geldim.
+Kusura bakma ama buraya dört saat otobüs, ana yoldan da iki saat yürüyüşle geldim.
 Su gelmeden görmem gereken şeyler var.
 -> inat
 
@@ -114,14 +117,28 @@ Gerçekten.
 -> inat
 
 === inat
-Söz, gerçekten tehlike olursa yola yürürüm. Ana yol üç saat.
+Söz, gerçekten tehlike olursa köprüden geçer, ana yola yürürüm. İki saat sürer.
 Ama önce köy meydanına gideceğim. Dedemin evini bulmak istiyorum.
 Birazdan yazarım.
 ~ 4dk
 Meydandayım.
 Burada çok garip bir sessizlik var. Ses kayıtçısı olarak söylüyorum: sessizlik bile yankı yapıyor.
 Bir saat kulesi var. Taştan. Tepesinde bir çan.
+Hemen yanında küçük bir bina. Kapısının üstünde solmuş harflerle PTT yazıyor. Eski postane.
+# Fotoğraf, Ece'nin o anki saatine uygun ışıkta gelir
+? saat >= 20 -> kule_gece
+? saat < 6 -> kule_gece
+? saat >= 17 -> kule_aksam
+!foto kule_gun | Ilgındere saat kulesi
+-> kule_devam
+
+=== kule_aksam
 !foto kule | Ilgındere saat kulesi
+-> kule_devam
+
+=== kule_gece
+!foto kule_gece | Ilgındere saat kulesi, fener ışığında
+=== kule_devam
 Saate bak.
 * Dokuzu on geçe durmuş. -> saat_dikkat
 * Ne var saatte? -> saat_ne
@@ -223,7 +240,7 @@ Ama neden bu eve? Neden bu dal?
 -> gece_plan
 
 === bekci
-Olabilir. Gelirken yukarıda bir şantiye gördüm. Bir konteyner, bir de jeneratör sesi.
+Olabilir. Köyün yukarısında, yamaçta baraj şirketinin bir şantiyesi var. Bir konteyner, bir de jeneratör sesi.
 Ama bir bekçi boş bir eve neden çiçek bıraksın?
 -> gece_plan
 
@@ -321,12 +338,14 @@ Ama çan susunca...
 Derenin karşı yakasında bir ışık gördüm. Fener ışığı. Sallanarak uzaklaştı.
 Orada eski bir değirmen var galiba. Karanlıkta siluetini seçebiliyorum.
 Işık oraya gitti ve söndü.
-* Peşinden gitme. Köprü yıkık. -> git_bak_dur
+Değirmen geldiğim tarafta kalıyor. Oraya gitmek için köprüden geçmem lazım.
+Düştüğüm köprüden. Hem de karanlıkta.
+* Gece o köprüden geçme. -> git_bak_dur
 * Değirmen. Aklında tut. -> git_bak_not
 
 === git_bak_dur
 $ guven + 1
-Gitmiyorum. Bu gece değil. Okula dönüyorum.
+Geçmiyorum. Bir kere düştüm, yeter. Okula dönüyorum.
 -> gece_son
 
 === git_bak_not
@@ -392,4 +411,3 @@ Bugün tek başıma olsaydım çıldırırdım herhalde.
 >> Ece çevrimdışı
 ~ 8sn
 !sinema gun1_son
-!ara 2. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.

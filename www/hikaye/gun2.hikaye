@@ -1,0 +1,492 @@
+# ============================================================
+# GÜN 2 — Bekçi
+# Sabah izler, şantiyede Rıza, şarj, defterdeki şifre (DEĞİRMEN),
+# akşamüstü köprünün su altında kalması, ikinci 21:10.
+#
+# Coğrafya (bütün günler için sabit):
+#   Kuzey yaka: ana yola çıkan toprak yol, eski değirmen (biraz aşağıda).
+#   Eski taş köprü iki yakayı bağlar; Ece buradan geçerken telefonunu düşürdü.
+#   Güney yaka: köy (meydan, saat kulesi, postane, okul, Doğanların mavi kapılı evi),
+#   köyün yukarısında yamaçta baraj şirketinin şantiyesi (Rıza'nın konteyneri, jeneratör, kayık).
+# ============================================================
+
+=== gun2
+!durum çevrimdışı
+~ @08:40 en az 6sa
+!gun 2 Bekçi
+!durum çevrimiçi
+!pil 18
+Günaydın.
+Telefonu açtım. Gece başka bir şey olmadı. Deliksiz uyudum desem yalan olur ama.
+Okulun içi buz gibiydi. Uyku tulumuna rağmen dişlerim takırdadı.
+? ayak_sesi == 1 -> sabah_iz
+? fener_gordu == 1 -> sabah_duman
+? kayit_mirilti == 1 -> sabah_kayit
+-> sabah_ortak
+
+=== sabah_iz
+İzlere baktım. Söz verdiğim gibi.
+Pencerenin önünden geçen izler küçük. Düz taban, desensiz. Lastik ayakkabı gibi.
+Meydandan geliyor, köprüye doğru gidiyor.
+Yani dün gece çan çaldıktan sonra biri kuleden köprüye yürümüş.
+Ve köprüden karşıya geçmiş.
+$ iz_kopruye = 1
+-> sabah_ortak
+
+=== sabah_duman
+Dereye indim, karşıya baktım. Gün ışığında değirmen net görünüyor.
+Bacasından ince bir duman çıkıyor.
+Orada biri yaşıyor. Dün geceki fener rüya değildi.
+$ duman_gordu = 1
+-> sabah_ortak
+
+=== sabah_kayit
+Gece kaydı bir kere daha dinledim. Kulaklıkla, en yüksek seste.
+Mırıltı hâlâ orada. Bu sefer ezgiyi daha iyi duyuyorum.
+Annemin bildiği bir türküye benziyor. Ama tam çıkaramıyorum, sözleri yok.
+=== sabah_ortak
+Su yükselmiş. Geldiğimde aşağı tarlalar kuruydu. Şimdi çamurlu bir göl.
+!pil 17
+Asıl derdim pil. %17.
+Yukarıdaki şantiyeden jeneratör sesi geliyor. Orada kesin priz vardır.
+Gidip şarj etmeyi deneyeceğim. Ama kim varsa beni görecek.
+Ne yapayım sence?
+* Dürüst ol, kim olduğunu söyle. -> yaklasim_durust
+* Gazeteci olduğunu söyle. -> yaklasim_yalan
+* Hiç görünme, prizi gizlice kullan. -> yaklasim_gizli
+
+=== yaklasim_durust
+$ riza_yaklasim = 1
+$ guven + 1
+Haklısın. Saklanacak bir şeyim yok. Torunuyum, o kadar.
+-> santiyeye
+
+=== yaklasim_yalan
+$ riza_yaklasim = 2
+Belgesel için geldim zaten. Tam yalan sayılmaz.
+-> santiyeye
+
+=== yaklasim_gizli
+$ riza_yaklasim = 3
+Tamam. Sessiz olurum.
+=== santiyeye
+Yukarı çıkıyorum. Pil için telefonu kapatıyorum, oraya varınca yazarım.
+!durum çevrimdışı
+~ 15dk
+!durum çevrimiçi
+? riza_yaklasim == 3 -> gizli_priz
+-> konteyner
+
+# ---------- Şantiye ----------
+
+=== gizli_priz
+Konteynerin arkasındayım. Jeneratör burada, gürültüsünden kendi sesimi duymuyorum.
+Bir uzatma kablosu var, ucunda boş bir priz.
+Telefonu taktım. Şarj oluyor.
+~ 3dk
+...
+Biri geldi.
+Arkamda duruyor.
+~ 1dk
+Yakalandım.
+Elinde bir çaydanlık var. Kızgın ama bağırmadı.
+“Çaya gel” dedi. Telefonu kablosuyla birlikte konteynerin önüne getirdi.
+$ riza_guven - 1
+-> riza_tanisma
+
+=== konteyner
+Şantiyedeyim. Bir konteyner, bir jeneratör, birkaç iş makinesi. Bir de kıyıya çekilmiş eski bir kayık.
+Biri var.
+Konteynerin kapısında oturmuş, çay demliyor. Beni görünce kalktı.
+=== riza_tanisma
+Altmışlarında. Kalın bıyıklı, sol bacağını hafif sürüyor. Göğsünde şirketin yeleği.
+Adı Rıza. Bekçiymiş.
+İlk sözü “burası yasak” oldu. İkincisi “şekerli mi”.
+? riza_yaklasim == 1 -> riza_durust
+? riza_yaklasim == 2 -> riza_yalan
+-> riza_gizli_sonra
+
+=== riza_durust
+Kim olduğumu söyledim. Ece Doğan, Kemal Doğan'ın torunu.
+Çay bardağı elinden kaydı. Kırılmadı ama yere düştü.
+Bir süre hiç konuşmadı.
+Sonra “Kemal öldü mü?” dedi.
+Bilmiyormuş. Dedemi tanıyor yani.
+Telefonu kendi prizine taktı. “Doldur” dedi. “Ama bugün gidiyorsun.”
+!pil 74
+$ riza_guven + 2
+-> riza_uyari
+
+=== riza_yalan
+Belgesel için ses kaydı yaptığımı söyledim. Bir de gazeteyle çalıştığımı.
+İnanmadı. Yüzünden belli.
+Ama çay verdi. Şarj için de “mazot az” dedi, yarım saat izin verdi.
+!pil 46
+-> riza_uyari
+
+=== riza_gizli_sonra
+Sonunda kim olduğumu sordu. Söylemek zorunda kaldım. Doğan dedim.
+Yüzü değişti. Bir şey söyleyecek gibi oldu, söylemedi.
+!pil 38
+=== riza_uyari
+Şimdi konteynerin önündeyiz. Telefon şarjda, kablo yetiyor. O çayını içiyor, ben yazıyorum.
+İki şey söyledi.
+Bir: “Akşamüstü köprü suyun altında kalır. Ondan sonra bu yakadan yol yok.”
+İki: “Saat dokuzu geçe dışarı çıkma.”
+Nedenini sordum. Cevap vermedi.
+Ona bir şey sormamı ister misin?
+* Nazlı'yı sor. -> sor_nazli
+* Çanı sor. -> sor_can
+* Değirmende kim yaşıyor, onu sor. -> sor_degirmen
+
+=== sor_nazli
+$ sordu_nazli = 1
+Sordum. “Nazlı Doğan'ı tanıdınız mı?” dedim.
+~ 40sn
+Kalktı. Konteynerin içine girdi. Kapıyı kapattı.
+Beş dakika çıkmadı.
+Çıkınca sadece “dere aldı” dedi. “Herkes bilir.”
+Elleri titriyordu. Çay bardağını tutamadı, yere bıraktı.
+-> riza_son
+
+=== sor_can
+$ sordu_can = 1
+Sordum. “Kulenin çanını kim çalıyor?” dedim.
+“Rüzgâr” dedi.
+“Dün gece rüzgâr yoktu” dedim.
+“O zaman sen de duymadın” dedi. Gülmedi.
+Kuleye bakmıyor. Fark ettim. Bütün konuşma boyunca bir kere bile kuleye bakmadı.
+-> riza_son
+
+=== sor_degirmen
+$ sordu_degirmen = 1
+Sordum. “Değirmende biri yaşıyor mu?” dedim.
+“Orada kimse yok” dedi. Çok hızlı söyledi.
+? duman_gordu == 1 -> sor_degirmen_yalan
+? fener_gordu == 1 -> sor_degirmen_yalan
+-> riza_son
+
+=== sor_degirmen_yalan
+Yalan söylüyor. Bu sabah bacadan duman çıktığını gördüm. Dün gece de fener.
+Ama üstelemedim. Ondan çekinmiyorum, ama korkuyor gibi. Neden korkar ki?
+=== riza_son
+Kayığı da sordum. “O benim” dedi. “Su yükselince lazım olur.”
+Yani köprü gidince köyden çıkmanın bir yolu daha var.
+Şimdi kalkıyor, beni yolcu etmek istiyor. Telefonu prizden alıyorum.
+Sence ne yapayım? Gideyim mi?
+* Git. Hiçbir sır hayatından önemli değil. -> git_dedi
+* Kal ama çıkış yolunu aklında tut. -> kal_dedi
+* Sen ne istiyorsan onu yap. -> sen_bil_dedi
+
+=== git_dedi
+$ git_dedi = 1
+Biliyorum. Haklısın da.
+Ama gidemem. Daha değil.
+Dedem buraya bir şey bırakmış. Onu bulmadan gidersem bütün ömrüm boyunca düşünürüm.
+Kayık var. Rıza var. Bir yolu olur. Söz, aptallık yapmayacağım.
+-> defter_sayfasi
+
+=== kal_dedi
+$ guven + 1
+Aynen öyle düşünüyorum.
+Kayık bir. Bir de belki başka bir geçit vardır, öğrenirim.
+-> defter_sayfasi
+
+=== sen_bil_dedi
+Teşekkürler. Ama şunu bil, senin fikrin benim için önemli.
+Kalıyorum.
+=== defter_sayfasi
+Okula dönüyorum. Defteri baştan sona okuyacağım. Dün fırsat olmadı.
+!durum çevrimdışı
+~ 1sa 30dk
+!durum çevrimiçi
+? riza_yaklasim == 1 -> pil_okul_iyi
+!pil 34
+-> defter_buldum
+
+=== pil_okul_iyi
+!pil 68
+=== defter_buldum
+Bir şey buldum.
+Defterin son sayfasından iki önceki sayfa. İlk okuyuşta atlamışım, sayfalar yapışmış.
+!foto defter2 | Defterden bir sayfa
+Sayı çiftleri. Ve en üstte: “Notu oku. Kelime, harf.”
+En alttaki satırı karalamış ama okunuyor: “Ona söylemeliydim.”
+Kime? Neyi? Bilmiyorum. Önce şu sayılar.
+Dedem bulmaca çözerdi. Gazetelerin hepsini. Bu ona benziyor.
+Bunu çözebilir misin? Ben de bakıyorum.
+-> sifre_sor
+
+# ---------- Şifre: notun kelimeleri ve harfleri → DEĞİRMEN ----------
+
+=== sifre_sor
+?? Şifreyi çözdüysen yaz. Bilmiyorsan “ipucu” yaz.
+= degirmen -> sifre_dogru
+= ipucu|bilmiyorum|yardim -> sifre_ipucu
+= * -> sifre_yanlis
+
+=== sifre_yanlis
+$ sifre_deneme + 1
+? sifre_deneme >= 3 -> sifre_ece_cozdu
+Bence bu değil.
+? sifre_deneme >= 2 -> sifre_ipucu2
+Belki “not” dediği ilk sayfadaki yazıdır? Defterin son sayfası, sana attığım fotoğraf.
+-> sifre_sor
+
+=== sifre_ipucu
+? sifre_deneme >= 3 -> sifre_ece_cozdu
+? sifre_deneme >= 1 -> sifre_ipucu2
+$ sifre_deneme + 1
+Bence “not” dediği, son sayfadaki yazı. Sana ilk attığım fotoğraf.
+“Kelime, harf.” Belki ilk sayı kaçıncı kelime, ikinci sayı o kelimenin kaçıncı harfi?
+-> sifre_sor
+
+=== sifre_ipucu2
+$ sifre_deneme + 1
+Dur, deneyelim. 1-6: birinci kelime “Ilgındere'de”. Altıncı harfi...
+I, l, g, ı, n, d. D!
+1-7 de e. İlk iki harf D ve E.
+-> sifre_sor
+
+=== sifre_ece_cozdu
+Dur dur. Buldum galiba.
+1-6 D. 1-7 E. 1-3 G. 8-2 İ. 1-8 R. 5-3 M. 1-9 E. 5-1 N.
+DEĞİRMEN.
+Dedem “ğ” yerine “g” kullanmış, notta ğ yok çünkü.
+-> sifre_sonra
+
+=== sifre_dogru
+$ defter_cozuldu = 1
+$ guven + 2
+Evet!
+1-6 D. 1-7 E. 1-3 G. 8-2 İ. 1-8 R. 5-3 M. 1-9 E. 5-1 N.
+DEĞİRMEN.
+Sen olmasan bütün gün bakardım. Ciddiyim.
+=== sifre_sonra
+Dedem buraya değirmeni yazmış. Notta da “o bilir” diyor.
+? fener_gordu == 1 -> sifre_fener
+? duman_gordu == 1 -> sifre_fener
+? iz_kopruye == 1 -> sifre_iz
+Değirmen derenin öbür yakasında. Köprünün karşısında.
+-> sifre_karar
+
+=== sifre_fener
+Dün geceki fener de değirmene gitti. Bu sabah da bacası tütüyordu.
+-> sifre_karar
+
+=== sifre_iz
+Dün gece pencerenin önünden geçen izler köprüye gidiyordu. Köprünün karşısında da değirmen var.
+=== sifre_karar
+Değirmene gitmeliyim. Ama Rıza'ya göre köprü akşamüstü suyun altında kalıyor.
+Şimdi gidersem belki geçerim. Ama dönüş olmayabilir.
+Hem değirmende kim varsa, gerçekten görmek istiyor mu beni?
+Ne dersin?
+* Bekle. Önce köprünün durumuna bak. -> kopru_bak
+* Hemen git, köprü kapanmadan. -> kopru_hemen
+
+=== kopru_hemen
+$ acele = 1
+Tamam. Gidiyorum. Pili korumak için kapatıyorum.
+!durum çevrimdışı
+~ 25dk
+!durum çevrimiçi
+-> kopru_basi
+
+=== kopru_bak
+$ guven + 1
+Haklısın. Önce gidip bakayım, sonra karar veririm.
+!durum çevrimdışı
+? saat >= 16 -> kopru_bak_gec
+~ @17:20 en az 40dk
+!durum çevrimiçi
+-> kopru_basi
+
+=== kopru_bak_gec
+~ 20dk
+!durum çevrimiçi
+=== kopru_basi
+Köprünün başındayım.
+Su köprünün tam üstünden geçiyor. Taşların arasından fışkırıyor. Bilek boyu, belki daha fazla.
+Ses inanılmaz. Kaydediyorum.
+!ses kopru_sesi | Köprünün üstünden akan suyun gürültüsü. Taşlara çarpıp köpüren su. Bir ara Ece'nin “ses yüksek” diye mırıldandığı duyuluyor.
+Karşıya otuz metre falan.
+Geçebilirim bence. Yavaş yavaş, korkuluğa tutunarak.
+* Geçme. Bir kere düştün. -> kopru_gecme
+* Dene, ama korkuluğu bırakma. -> kopru_dene
+
+=== kopru_gecme
+$ guven + 1
+$ kopru_gecmedi = 1
+...
+Haklısın. Bir kere düştüm, ve o zaman su bu kadar yüksek değildi.
+Kıyıda oturuyorum. Suyun köprüyü yutmasını izliyorum.
+~ 6dk
+Yukarıda, yamaçta Rıza da duruyor. O da köprüye bakıyor.
+Kıpırdamadan. Ellerini arkasında birleştirmiş, bir cenazede duruyormuş gibi.
+!foto kopru_su | Eski köprü suyun altında
+Korkuluk da kayboldu. Artık köprü yok.
+-> kopru_sonra
+
+=== kopru_dene
+$ kopru_denedi = 1
+Tamam. Korkuluk elimde. Gidiyorum.
+!durum çevrimdışı
+~ 2dk
+!durum çevrimiçi
+Yarısındayım. Su dizime geldi.
+Çok güçlü. Ayaklarımı çekiyor.
+...
+~ 1dk
+geri dönüyorum
+~ 2dk
+Kıyıdayım.
+Rıza çıkardı beni.
+Yukarıdan koşarak gelmiş, bacağına rağmen. Bileğimden tuttu, çekti.
+Sonra bir şey söyledi. Aynen yazıyorum:
+“Bu köprü bir kere birini aldı. Yeter.”
+Kimi aldığını sordum. Cevap vermedi. Gitti.
+$ riza_kurtardi = 1
+$ riza_guven + 1
+Sırılsıklamım. Telefon cebimdeydi, neyse ki kılıfı su geçirmiyor.
+Dönüp baktığımda köprü yoktu. Su tamamen yutmuştu.
+!foto kopru_su | Eski köprü suyun altında
+=== kopru_sonra
+Artık karşıya geçiş yok. Değirmen de, ana yol da suyun öbür tarafında.
+Bu yakada ben, Rıza ve bir kayık var.
+? riza_kurtardi == 1 -> kopru_sonra_soru
+-> aksam_plan
+
+=== kopru_sonra_soru
+“Bir kere birini aldı.” Nazlı'yı mı demek istedi?
+Herkes Nazlı'yı dere aldı diyor. Ama Rıza “köprü” dedi. Dere değil, köprü.
+=== aksam_plan
+Okula dönüyorum. Islak şeylerimi kurutmam lazım.
+? acele == 1 -> aksam_plan_saat
+Saat dokuzu on geçe yazacağım. Yine.
+-> bekle_dokuz2
+
+=== aksam_plan_saat
+Saat dokuzu on geçe yazacağım. Yine.
+Bu sefer neyle karşılaşacağımı biliyorum en azından.
+=== bekle_dokuz2
+!durum çevrimdışı
+~ @21:10 en az 20dk
+!durum çevrimiçi
+? riza_yaklasim == 1 -> pil_aksam_iyi
+!pil 24
+-> dokuz2
+
+=== pil_aksam_iyi
+!pil 52
+=== dokuz2
+Dokuzu on geçiyor.
+Okuldayım. Bekliyorum.
+~ 30sn
+Başladı.
+Dokuz vuruş. Sonra on.
+Rıza “dokuzu geçe dışarı çıkma” demişti.
+Bu gece ne yapayım?
+* Rıza'yı dinle, içeride kal. -> dokuz2_icerde
+* Kuleye git, bu sefer yakından bak. -> dokuz2_kule
+* Dere kıyısına in, değirmeni izle. -> dokuz2_kiyi
+
+=== dokuz2_icerde
+$ riza_battaniye = 1
+$ guven + 1
+İçerideyim. Kapı kilitli.
+~ 4dk
+Kapı çalındı.
+...
+Rıza.
+Elinde bir battaniye, bir de termos. Çorba.
+Bir şey demeden verdi. Giderken kapıda durdu.
+“Kemal'e benziyorsun” dedi. “O da laf dinlemezdi.”
+Sonra “yarın git” dedi, gitti.
+Bu adam bir şey biliyor. Ve anlatmak istiyor ama anlatamıyor gibi.
+-> gun2_son
+
+=== dokuz2_kule
+$ postane_ipucu = 1
+Gidiyorum. Fener kapalı.
+~ 3dk
+Kulenin dibindeyim. Çan hâlâ sallanıyor, yankısı sürüyor.
+Kapı yine zincirli. Kilit paslı. Bu kapı yıllardır açılmamış.
+Ama...
+Kulenin yanındaki postanenin duvarında, yukarıda bir delik var. Taş yerinden oynatılmış.
+Delikten bir şey sarkıyor. Bir ip. Yeni, eskimemiş.
+Çan içeriden çalınmıyor. Yan taraftan çalınıyor. Postaneden.
+~ 1dk
+Postanenin kapısı kilitli değil. Ama içeri girmedim. Cesaret edemedim.
+İçerisi zifiri karanlık. Ve biri az önce oradaydı.
+-> gun2_son
+
+=== dokuz2_kiyi
+$ rizayi_gordu = 1
+? kayit_mirilti == 1 -> dokuz2_kiyi_mirilti
+Kıyıdayım. Su sabahkinden çok daha yüksek ve gürültülü.
+~ 2dk
+Bir fener.
+Köy tarafında, meydandan dereye iniyor. Yavaş yavaş.
+Sonra suya giriyor. Köprünün çok yukarısından. Suyun içinden yürüyor gibi.
+Orada bir sığlık olmalı. Bir geçit.
+Fener karşıya varıyor ve değirmene gidiyor. Kapı açılıyor, kapanıyor.
+-> dokuz2_kiyi_son
+
+=== dokuz2_kiyi_mirilti
+Kıyıdayım. Su sabahkinden çok daha yüksek ve gürültülü.
+Kaydediyorum.
+~ 2dk
+!ses kiyi | Dere kıyısı, gece. Gürül gürül akan su. Uzakta çanın son yankısı. Suyun öbür yakasından, çok kısık, aynı ezgiyi mırıldanan bir kadın sesi.
+Duydun mu? Yine o ezgi. Dün gece kayıtta duyduğum.
+Bir fener suyun içinden geçiyor, köprünün çok yukarısından. Orada bir sığlık olmalı.
+Fener değirmene gidiyor. Ezgi de onunla birlikte.
+=== dokuz2_kiyi_son
+Bir de...
+Yamaçta bir el feneri daha var. Rıza'nın konteynerinin oradan.
+O da değirmene bakıyor.
+İkisi de birbirini görüyor olmalı. Ama ikisi de hiçbir şey yapmıyor.
+-> gun2_son
+
+# ---------- Gün sonu ----------
+
+=== gun2_son
+~ 30sn
+Kafam karıştı.
+Dedem “o bilir” diye yazmış. Bir de “değirmen”.
+Sence “o” kim?
+* Rıza. Bir şey saklıyor. -> o_riza
+* Değirmendeki kişi. -> o_degirmen
+* Henüz bilmiyoruz. -> o_bilmiyoruz
+
+=== o_riza
+$ o_kim = 1
+Ben de öyle düşünüyorum bazen. Çay bardağını düşürüşü, köprüye bakışı...
+Ama dedem neden Rıza'nın numarası yerine bu numarayı yazsın?
+-> gun2_iyi_geceler
+
+=== o_degirmen
+$ o_kim = 2
+Dedem değirmeni yazmış. Fener oraya gidiyor. Çan çalan da oraya gidiyor.
+Yarın o geçidi bulacağım.
+-> gun2_iyi_geceler
+
+=== o_bilmiyoruz
+$ o_kim = 3
+$ guven + 1
+Haklısın. Acele etmeyelim. Ama yarın öğreneceğim.
+=== gun2_iyi_geceler
+Pilim için kapatıyorum.
+Yarın sabah değirmene gitmenin bir yolunu bulacağım.
+? guven >= 8 -> gun2_sicak
+İyi geceler.
+-> gun2_bitti
+
+=== gun2_sicak
+Bugün iyi ki vardın. Şifreyi, köprüyü... Tek başıma olmazdı.
+İyi geceler, bilinmeyen numara.
+=== gun2_bitti
+!durum çevrimdışı
+>> Ece çevrimdışı
+~ 8sn
+!sinema gun2_son
+!ara 3. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.
