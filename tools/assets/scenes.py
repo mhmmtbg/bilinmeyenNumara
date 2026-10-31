@@ -162,3 +162,150 @@ EXTRA_SCENES = {
         ],
     },
 }
+
+
+# ---------------------------------------------------------------- 4. gün
+SERIF = '/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf'
+MONO = '/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf'
+
+
+def _text_mask(h, w, text, xy, font_path, size, angle=0.0, anchor='la'):
+    from PIL import ImageDraw, ImageFont
+    ss = 2
+    im = Image.new('L', (w * ss, h * ss), 0)
+    f = ImageFont.truetype(font_path, size * ss)
+    ImageDraw.Draw(im).text((xy[0] * ss, xy[1] * ss), text, font=f, fill=255, anchor=anchor)
+    if angle:
+        im = im.rotate(angle, resample=Image.BICUBIC, center=(xy[0] * ss, xy[1] * ss))
+    return np.asarray(im.resize((w, h), Image.LANCZOS), np.float32) / 255
+
+
+def gravestone(img, cx, base, sw, sh, lines, seed=0, dim=1.0, scale=1.0):
+    """Yuvarlak tepeli taş mezar; oyma yazı (koyu iç, aydınlık alt kenar)."""
+    top = base - sh
+    m = mask_poly(H, W, [(cx - sw / 2, base), (cx - sw / 2, top + sw / 2), (cx + sw / 2, top + sw / 2), (cx + sw / 2, base)])
+    m = np.maximum(m, mask_ellipse(H, W, cx, top + sw / 2, sw / 2, sw / 2))
+    stone = tint(fbm(H, W, 10, 4, seed), (0.48, 0.47, 0.44), (0.68, 0.67, 0.63))
+    lichen = np.clip((fbm(H, W, 18, 4, seed + 1) - 0.62) * 4, 0, 1)
+    stone = stone * (1 - lichen[..., None] * 0.5) + np.array([0.58, 0.60, 0.42]) * lichen[..., None] * 0.5
+    stone *= np.clip(1.15 - (np.arange(W)[None, :] - (cx - sw / 2)) / sw * 0.35, 0.75, 1.15)[..., None]
+    img = img * (1 - m[..., None]) + stone * dim * m[..., None]
+    y = top + sw * 0.42
+    for txt, size in lines:
+        t = _text_mask(H, W, txt, (cx, y), SERIF, int(size * scale), anchor='mm') * m
+        hi = np.roll(t, 2, axis=0)
+        img = comp(img, np.array((0.80, 0.80, 0.76)) * dim, np.clip(hi - t, 0, 1) * 0.6)
+        img = comp(img, np.array((0.22, 0.21, 0.20)) * dim, t * 0.85)
+        y += size * scale * 1.45
+    return img
+
+
+def stake(img, x, y, h=120, dim=1.0):
+    m = mask_poly(H, W, [(x - 4, y), (x + 4, y), (x + 3, y - h), (x - 3, y - h)])
+    img = comp(img, np.array((0.55, 0.45, 0.30)) * dim, m)
+    flag = mask_poly(H, W, [(x + 3, y - h), (x + 46, y - h + 10), (x + 3, y - h + 24)])
+    band = (np.sin(np.arange(W)[None, :] * 0.4) > 0).astype(np.float32)
+    img = comp(img, np.array((0.80, 0.16, 0.12)) * dim, flag * band)
+    img = comp(img, np.array((0.90, 0.88, 0.84)) * dim, flag * (1 - band))
+    return img
+
+
+def ilgin(img, x, y, s=1.0, seed=0):
+    r = rng(seed)
+    stem = mask_poly(H, W, [(x, y), (x + 120 * s, y - 40 * s), (x + 122 * s, y - 36 * s), (x + 2, y + 4)])
+    img = comp(img, (0.30, 0.22, 0.16), stem)
+    for k in range(60):
+        t = r.uniform(0.3, 1.0)
+        px, py = x + 120 * s * t + r.normal(0, 8 * s), y - 40 * s * t + r.normal(0, 8 * s)
+        img = comp(img, (0.86, 0.48, 0.62) if r.random() < 0.7 else (0.40, 0.48, 0.30), mask_ellipse(H, W, px, py, 5 * s, 4 * s, blur=0.8))
+    return img
+
+
+def c_mezar(variant='aksam'):
+    aksam = variant == 'aksam'
+    img = sky_dusk(H, W, 61, [(0, (0.20, 0.24, 0.36)), (0.5, (0.46, 0.44, 0.50)), (0.7, (0.78, 0.58, 0.46)), (0.8, (0.82, 0.62, 0.48))]) if aksam \
+        else vgrad(H, W, [(0, (0.58, 0.62, 0.66)), (0.6, (0.74, 0.75, 0.76)), (1, (0.80, 0.80, 0.78))])
+    dim = 0.55 if aksam else 1.0
+    img = mountains(img, [(600, 170, np.array((0.40, 0.40, 0.46)) * (1 if aksam else 1.3), 520, 0.4)], seed=111)
+    ground = tint(fbm(H, W, 20, 6, 112), (0.24, 0.22, 0.17), (0.42, 0.38, 0.28)) * dim
+    gm = (np.arange(H)[:, None] > 700).astype(np.float32) * np.ones((1, W))
+    img = img * (1 - gm[..., None]) + ground * gm[..., None]
+    r = rng(5)
+    for i in range(22):  # açılmış çukurlar ve toprak yığınları
+        cy = r.uniform(740, 1250)
+        sc = (cy - 680) / 400
+        cx = r.uniform(0, W)
+        img = comp(img, np.array((0.14, 0.11, 0.08)) * dim, mask_ellipse(H, W, cx, cy, 90 * sc, 26 * sc, blur=2))
+        img = comp(img, np.array((0.36, 0.30, 0.22)) * dim, mask_ellipse(H, W, cx + 110 * sc, cy - 10 * sc, 70 * sc, 34 * sc, blur=3))
+        if r.random() < 0.6:
+            img = stake(img, cx - 70 * sc, cy, 100 * sc, dim)
+    for i in range(4):
+        img = round_tree(img, r.uniform(1700, 2400), 720 + r.uniform(0, 30), r.uniform(80, 120), np.array((0.18, 0.22, 0.13)) * dim, 900 + i)
+    img = gravestone(img, 1150, 1080, 260, 420, [('ORHAN AKIN', 30), ('1962 – 1987', 24), ('ÖĞRETMEN', 22)], 113, dim)
+    img = ilgin(img, 1060, 1085, 1.3, 114)
+    img = depth_blur(img, np.clip((700 - np.arange(H)[:, None]) / 60, 0, 1) * np.ones((1, W)), 1.5)
+    return phone_photo(img, 61, grain=0.035 if aksam else 0.022, vignette=0.4, sharpen=0.4, soft=0.9, noise_dark=1.4)
+
+
+def photo_mezar():
+    """Yakın çekim: mezar taşı, tarih ve dibinde ılgın dalı (4:3)."""
+    img = vgrad(H, W, [(0, (0.58, 0.62, 0.66)), (1, (0.76, 0.76, 0.74))])
+    ground = tint(fbm(H, W, 16, 6, 121), (0.24, 0.22, 0.17), (0.44, 0.40, 0.30))
+    gm = (np.arange(H)[:, None] > 560).astype(np.float32) * np.ones((1, W))
+    img = img * (1 - gm[..., None]) + ground * gm[..., None]
+    img = depth_blur(img, np.clip((560 - np.arange(H)[:, None]) / 40, 0, 1) * np.ones((1, W)), 6)
+    img = gravestone(img, 1200, 1250, 700, 1120, [('ORHAN AKIN', 74), ('1962 – 1987', 56), ('ÖĞRETMEN', 50), ('', 30), ('Ö. 14.06.1987', 46), ('RUHUNA FATİHA', 40)], 122, 1.0, 1.0)
+    img = ilgin(img, 860, 1260, 3.2, 123)
+    img = stake(img, 1720, 1300, 520, 1.0)
+    img = light(img, 0.8 + 0.35 * radial(H, W, 900, 300, 2000, 1600, 1.0), (1.02, 1.0, 0.97))
+    return phone_photo(img, 62, grain=0.022, vignette=0.35, sharpen=0.5, soft=0.7, contrast=1.06)
+
+
+def photo_liste():
+    """Kamyonetin torpidosunda daktilo yazısı bir liste (4:3, 2400×1350'de çizilip kırpılır)."""
+    img = tint(fbm(H, W, 14, 4, 131), (0.10, 0.10, 0.11), (0.20, 0.20, 0.21))
+    paper = np.ones((1000, 820, 3), np.float32) * np.array([0.92, 0.91, 0.88])
+    paper *= (0.94 + 0.08 * fbm(1000, 820, 40, 3, 132))[..., None]
+    pa = Image.fromarray((paper * 255).astype(np.uint8)).convert('RGBA')
+    from PIL import ImageDraw, ImageFont
+    d = ImageDraw.Draw(pa)
+    f = ImageFont.truetype(MONO, 19)
+    fb = ImageFont.truetype(MONO, 22)
+    d.text((60, 60), 'T.C. ILGIN BARAJI KAMULAŞTIRMA BİRİMİ', font=fb, fill=(30, 30, 34))
+    d.text((60, 96), 'ILGINDERE KÖYÜ MEZAR NAKİL LİSTESİ', font=fb, fill=(30, 30, 34))
+    rows = [('24', 'Yıldız, Hasan', '1931-2004', 'Ailesi - Kayseri', 'TAŞINDI'),
+            ('25', 'Yıldız, Fadime', '1936-2011', 'Ailesi - Kayseri', 'TAŞINDI'),
+            ('26', 'Kaya, Mustafa', '1940-1998', 'Ailesi - Ankara', 'TAŞINDI'),
+            ('27', 'Doğan, Ahmet', '1922-1979', 'Ailesi - Ankara', 'TAŞINDI'),
+            ('28', 'Doğan, Zehra', '1928-1984', 'Ailesi - Ankara', 'TAŞINDI'),
+            ('29', 'Sarı, İbrahim', '1919-1990', 'Ailesi - Sivas', 'TAŞINDI'),
+            ('30', 'Akın, Orhan', '1962-1987', 'Öğretmen', 'SAHİPSİZ')]
+    y = 170
+    d.line([(60, y - 10), (760, y - 10)], fill=(60, 60, 64), width=2)
+    for row in rows:
+        d.text((60, y), f'{row[0]}  {row[1]:<16}{row[2]}  {row[3]}', font=f, fill=(34, 34, 38))
+        d.text((640, y), row[4], font=f, fill=(34, 34, 38) if row[4] == 'TAŞINDI' else (150, 20, 20))
+        y += 44
+    d.text((60, y + 6), '    Ölüm: 14.06.1987 - boğulma (Ilgındere köprüsü)', font=f, fill=(34, 34, 38))
+    d.text((60, y + 50), '    Kimsesizler mezarlığına nakli: İl Müd.', font=f, fill=(34, 34, 38))
+    d.ellipse([560, y - 60, 790, y + 40], outline=(40, 70, 160), width=4)
+    canvas = to_pil(img).convert('RGBA')
+    canvas.alpha_composite(warp_rgba(pa, (W, H), [(780, 120), (1660, 170), (1620, 1260), (720, 1200)]))
+    img = from_pil(canvas)
+    img = light(img, 0.55 + 0.7 * radial(H, W, 1200, 600, 1300, 900, 1.2), (1.0, 0.98, 0.94))
+    big = phone_photo(img, 63, grain=0.03, vignette=0.45, sharpen=0.4, soft=0.8, noise_dark=1.3)
+    return big
+
+
+EXTRA_FRAMES['c_mezar'] = lambda: c_mezar('aksam')
+EXTRA_SCENES['gun4_son'] = {
+    'baslik': 'Mezarlık',
+    'ses': 'sinema/gun4_son.ogg',
+    'kapak': 'sinema/c_mezar.jpg',
+    'kareler': [
+        ('c_mezar', 9.5, [0.30, 1.04], [0.50, 1.18], [(0.6, 4.6, 'Köyün mezarları taşındı. Biri hariç.'),
+                                                     (4.8, 9.2, 'Orhan Akın. 1962–1987. Öğretmen.')]),
+        ('c_gece', 6.0, [0.40, 1.05], [0.36, 1.12], [(0.5, 5.6, 'O gece postanede bir fener uzun süre yandı.')]),
+        (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '5. gün · İtiraf')]),
+    ],
+}

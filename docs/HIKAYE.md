@@ -109,11 +109,13 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Defteri göstermek: Hatice "gözlerim görmez" deyip defteri yüzüstü kapatır (oysa iğneye iplik geçirmektedir). Gece Elif değirmende kalırsa Hatice'yi fenerin ışığında son sayfayı okurken, ağlarken görür.
 - Kalmak ya da dönmek: kalırsa 20:50'de Hatice "keçilere bakmaya" çıkar, fener geçitten köye gider ve 21:10'da çan çalar. **Çanı Hatice çalıyor.** Dönerse Rıza okulun önünde bekler: "Nasıl o? Yiyeceği var mı?" ("Orada kimse yok" diyen adam.)
 
-### Gün 4 — Kamulaştırma
-- Selim ve jandarma köyü son kez tarar. Elif saklanır: **"Şimdi yazma. Telefon titrerse duyarlar."**
-- **Gerçek zamanlı gizlenme:** Oyuncunun önünde iki seçenek durur: *sessizce bekle* ve *"İyi misin?"* yaz. Yazarsa Elif yakalanır (yakalandı dalı: köyden çıkarılır, gece gizlice geri döner; pil ve güven bedeli).
-- Selim'in bıraktığı dosyada 1987 jandarma tutanağı: **Öğretmen Orhan Akın, Nazlı'nın kaybolduğu gece köprüde boğuldu.**
-- **21:10:** Elif postanede saklanır (2. gece ipi gördüyse yerini zaten biliyordur). Fenerli bir kadın gelir, ipi çeker. Çanı çalan bir insan.
+### Gün 4 — Kamulaştırma  *(yazıldı, oynanabilir)*
+- Sabah değirmende kalındıysa Hatice "bugün adamlar gelecek, git kızım" der (değirmende telefon yok; nereden biliyor?).
+- Selim ve jandarma son taramaya gelir. Rıza'nın güveni yüksekse koşup Elif'i uyarır ("okulun bodrumu"). Yoksa Elif saklanacak yeri seçer.
+- **Saklanma:** "şimdi yazma, telefonu sessize alamıyorum (ekranın o kısmı ölü), titrerse duyarlar." Oyuncu `(Sessizce bekle)` eylemini seçerse Elif Selim'le Rıza'nın konuşmasına kulak misafiri olur: mezar naklinde **sahipsiz** bir mezar kalmış, **Orhan Akın, öğretmen, 87'de köprüde boğulmuş**. Rıza: "Ben taşırım. Tanırdım." Mesaj yazarsa telefon titrer, Elif yakalanır; kamyonette nakil listesini fotoğraflar (listede dedesinin annesiyle babası da vardır), baraj kavşağına bırakılır, servis yolundan yürüyerek geri döner (bilekle çok yorulur, akşam postaneye gidemez).
+- Mezarlık: taşta "Ö. 14.06.1987", dibinde taze ılgın dalı (1. gün pencerede gördüğünün aynısı).
+- **21:10:** Elif postanede saklanır; eski telefon santrali, ipin kancası. **Hatice Nine** gelir, ipi çeker (9+10), santrale bir fiş takar, ılgın dalı bırakır ve fısıldar: **"Gel artık Orhan."** Oyuncu izlemeyi ya da yüzleşmeyi seçer ("Kırk yıl oldu. Gelmedi.").
+- Gün sonu: oyuncunun teorisi sorulur (kaçış / Rıza bir şey yaptı / "sıkıldım" — güveni düşürür).
 
 ### Gün 5 — İtiraf
 - Elif tutanakla Rıza'nın karşısına çıkar. **Ahlaki seçim:** Rıza'nın sözlerini gizlice mi kaydetsin, izin mi istesin?

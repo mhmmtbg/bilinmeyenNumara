@@ -1,0 +1,354 @@
+# ============================================================
+# GÜN 4 — Kamulaştırma
+# Selim ve jandarmanın son taraması, saklanma (yazarsan telefon titrer, yakalanır),
+# mezarlık nakli: Orhan Akın, 14.06.1987. 21:10'da postanede çanı çalan.
+# ============================================================
+
+=== gun4
+!durum çevrimdışı
+~ @08:20 en az 6sa
+!gun 4 Kamulaştırma
+!durum çevrimiçi
+? degirmende_kaldi == 1 -> sabah_degirmen
+? riza_yaklasim == 1 -> gun4_pil_iyi
+!pil 20
+-> sabah_okul
+
+=== gun4_pil_iyi
+!pil 44
+=== sabah_okul
+günaydın
+bugün erkenden değirmene gidicektim ama
+yukardan motor sesleri geliyo. baraj yolundan. birden fazla araç
+-> taramaya
+
+=== sabah_degirmen
+!pil 23
+günaydın
+Hatice Nine sabah ezanından önce kalkmış. sanki dün gece hiçbişey olmamış
+? sabah_sor == 1 -> sabah_degirmen_sor
+kahvaltı verdi. peynir, ekmek, bal
+sonra “bugün adamlar gelcek, seni de alırlar. git kızım” dedi
+nerden biliyo? değirmende telefon yok, radyo yok
+-> sabah_degirmen_cik
+
+=== sabah_degirmen_sor
+sordum. “dün gece nereye gittiniz?” dedim
+“keçi kaçmıştı” dedi
+“keçiler ahırdaydı” dedim. ben kapatmıştım kapıyı
+hiçbişey demedi. sadece baktı
+sonra “bugün adamlar gelcek, seni de alırlar. git kızım” dedi
+nerden biliyo?
+=== sabah_degirmen_cik
+geçitten köye dönüyorum. burda kalırsam onu da bulurlar zaten
+? bilek == 1 -> sabah_degirmen_bilek
+!durum çevrimdışı
+~ 30dk
+!durum çevrimiçi
+-> sabah_degirmen_varis
+
+=== sabah_degirmen_bilek
+bileğim dünden beter. yavaş gidicem
+!durum çevrimdışı
+~ 50dk
+!durum çevrimiçi
+=== sabah_degirmen_varis
+köydeyim. ve
+yukardan motor sesleri geliyo. baraj yolundan. birden fazla araç
+=== taramaya
+!durum çevrimdışı
+~ 20dk
+!durum çevrimiçi
+şantiyeye iki araç geldi. bi beyaz kamyonet, bi de jandarma aracı
+megafonla anons yapıyolar. “köyde kimse kalmasın, bugün son tarama”
+? riza_guven >= 2 -> riza_uyardi
+-> saklan_sec
+
+=== riza_uyardi
+$ riza_uyardi = 1
+Rıza koşa koşa geldi. bacağını sürüye sürüye
+“saklan” dedi. “okulun bodrumu. kapağı sıranın altında”
+“Selim bey arıyo seni. gördüm demedim”
+-> bodrum
+
+=== saklan_sec
+nereye saklanayım?
+* Okulun bodrumuna. -> bodrum
+* Dedenin evine, tavan arasına. -> tavan
+* Saklanma, kendini göster. -> teslim
+
+=== teslim
+$ guven - 1
+olmaz
+şimdi çıkarsam her şey biter. Hatice Nine, çan, dedemin notu... hepsi suyun altında kalır
+saklanıyorum. okulun bodrumuna
+=== bodrum
+$ saklandi = 1
+bodrumdayım. karanlık, rutubet kokuyo. üstümde sıralar var
+-> saklanma
+
+=== tavan
+$ saklandi = 2
+dedemin evindeyim. tavan arasında. kirişlerin arasından meydanı görebiliyorum
+=== saklanma
+~ 6dk
+geliyolar
+ayak sesleri. iki kişi. bi de Selim beyin sesi
+şimdi yazma bana
+telefonu sessize alamıyorum, o kısmı ölü ekranın
+mesaj gelirse titrer. duyarlar
+* (Sessizce bekle) -> sessiz
+* İyi misin? -> titredi
+* Ne oluyor, anlat. -> titredi
+
+=== titredi
+$ yakalandi = 1
+...
+~ 1dk
+!durum çevrimdışı
+>> Mesaj iletildi
+~ 40dk
+!durum çevrimiçi
+buldular
+telefon titredi. Selim bey tam üstümdeydi
+kızgın değil. yorgun. “kızım burası üç gündür yasak, su yarın meydanda” dedi
+kamyonete bindiriyolar beni. ana yola, baraj kavşağına bırakcaklar
+-> kamyonet
+
+=== kamyonet
+$ guven - 1
+kamyonetteyim. Selim bey jandarmayla konuşuyo dışarda
+torpidoda bi dosya var. “mezar nakil listesi” yazıyo
+baktım
+!foto liste | Mezar nakil listesi
+listede Doğan Ahmet ve Doğan Zehra da var. dedemin annesiyle babası. “ailesi - Ankara”. annem taşıtmış demek
+bi isim var, karşısında “sahipsiz” yazıyo
+“Orhan Akın. Öğretmen. Ölüm 14.06.1987. Boğulma, Ilgındere köprüsü”
+14 haziran 1987
+Nazlı'nın düğününden önceki gece. annem hep o tarihi söylerdi
+aynı gece biri köprüde boğulmuş. ve kimse bize bundan bahsetmedi
+$ orhan_ogrendi = 1
+~ 2dk
+Selim bey bindi. “Rıza usta seni görmedim dedi” dedi. gülümsedi. “görmüş ama”
+yola çıkıyoruz
+!durum çevrimdışı
+~ 45dk
+!durum çevrimiçi
+baraj kavşağındayım. Selim bey “akşam yediye otobüs var” dedi, gitti
+ama otobüse binmicem
+geri dönücem. servis yolundan, yürüyerek
+* Dönme. Bu sefer gerçekten git. -> kavsak_git
+* Dön ama karanlıkta yürüme. -> kavsak_don
+
+=== kavsak_git
+$ guven - 1
+yapamam
+dedem kırk yıl kaçtı. ben de mi kaçayım
+dönüyorum
+=== kavsak_don
+yola çıktım. iki saat sürer
+? bilek == 1 -> kavsak_bilek
+!durum çevrimdışı
+~ 2sa
+!durum çevrimiçi
+!pil 15
+köyün tepesindeyim. şantiyeyi görüyorum. kimse yok, araçlar gitmiş
+-> aksam_postane_karar
+
+=== kavsak_bilek
+bileğimle üç saat sürer belki
+!durum çevrimdışı
+~ 3sa 10dk
+!durum çevrimiçi
+!pil 11
+geldim. bileğim davul gibi :(
+-> aksam_postane_karar
+
+=== sessiz
+~ 4dk
+gittiler galiba
+...
+~ 2dk
+hayır. gitmediler. çok yakınımda durdular. Selim bey ve Rıza konuşuyo
+duyduklarımı aynen yazıyorum
+Selim: “mezarlık naklinde bi tane kaldı Rıza usta. sahipsiz”
+Selim: “Orhan Akın. öğretmen. 87'de köprüde boğulmuş. akrabası yok”
+Selim: “yarın il müdürlüğü alacak, kimsesizler mezarlığına”
+Rıza uzun süre hiç konuşmadı
+sonra “ben taşırım” dedi. “kendim”
+Selim: “sen mi? ne alakan var?”
+Rıza: “tanırdım”
+~ 2dk
+gittiler. motor sesleri uzaklaşıyo
+$ dinledi = 1
+çıkıyorum
+mezarlığa gidicem
+!durum çevrimdışı
+~ 10dk
+!durum çevrimiçi
+=== mezar
+mezarlıktayım. mezarların çoğu açılmış, taşlar sökülmüş
+bi tane kalmış
+!foto mezar | Orhan Akın'ın mezar taşı
+“Orhan Akın. 1962–1987. Öğretmen”
+altında tarih, 14.06.1987
+14 haziran 1987
+Nazlı'nın düğününden önceki gece. annem hep o tarihi söylerdi
+aynı gece biri köprüde boğulmuş. ve kimse bize bundan bahsetmedi
+$ orhan_ogrendi = 1
+~ 30sn
+bi şey daha
+taşın dibinde bi ılgın dalı var. pembe çiçekli. taze
+dedemin evinin penceresindeki dal gibi
+* Hatice bırakmış olmalı. -> mezar_hatice
+* Rıza bırakmış olabilir. -> mezar_riza
+* Ilgın burada her yerde var. -> mezar_tesaduf
+
+=== mezar_hatice
+$ guven + 1
+bence de
+bu dal o evdeki dalın aynısı. o evi kim ziyaret ediyosa, bu mezarı da o ziyaret ediyo
+-> aksam_postane_karar
+
+=== mezar_riza
+olabilir. “ben taşırım” dedi. tanırdım dedi
+ama Rıza'nın çiçek bıraktığını hayal edemiyorum nedense
+-> aksam_postane_karar
+
+=== mezar_tesaduf
+$ guven - 1
+olabilir de
+ama ılgın kırda büyür. mezarlıkta yok, baktım. biri koparıp getirmiş
+=== aksam_postane_karar
+? yakalandi == 1 -> aksam_yakalandi
+bu gece dokuzu on geçe postanede olcam
+? degirmende_kaldi == 1 -> aksam_postane_biliyor
+? postane_ipucu == 1 -> aksam_postane_biliyor
+kulenin yanındaki postane. çan ordan çalınıyo olabilir, yakın bi yerden izlicem
+-> aksam_bekle
+
+=== aksam_postane_biliyor
+kim çaldığını görcem. kendi gözümle
+=== aksam_bekle
+akşama kadar telefonu kapalı tutcam. pil çok az
+!durum çevrimdışı
+? dk >= 1245 -> aksam_gec
+~ @20:55 en az 20dk
+=== aksam_gec
+!durum çevrimiçi
+postanedeyim. bi masanın arkasında, yere çömeldim
+içerisi eski bi telefon santrali gibi. duvarda delikli bi pano, kablolar
+çan ipi duvardaki delikten içeri giriyo, bi kancaya bağlı
+şimdi sessizim. yazarsan titrer
+* (Sessizce bekle) -> postane_bekle
+* Dikkat et. -> postane_titredi
+
+=== postane_titredi
+$ guven - 1
+...
+neyse ki ses gelmedi dışardan. ama korktum
+lütfen yazma
+=== postane_bekle
+~ @21:08 en az 1dk
+fener
+kapı açıldı
+Hatice Nine
+fenerini masaya koydu. ipin kancasını çözdü
+~ @21:10 en az 20sn
+çekiyo
+!ses postane | Çok yakından çan sesi. İpin gıcırtısı ve tahtanın inlemesi. Dokuz vuruş, kısa bir sessizlik, on vuruş. Sonunda bir kadının fısıltısı.
+dokuz. sonra on
+sonra ipi bıraktı. santralin önüne gitti, panoya dokundu. bi fiş taktı, sanki biri arıycakmış gibi
+cebinden bi ılgın dalı çıkardı, masaya koydu
+fısıldadı
+“gel artık Orhan”
+$ gel_artik = 1
+* (Görünme, izle) -> postane_izle
+* (Yanına çık) -> postane_yuzles
+
+=== postane_izle
+$ guven + 1
+çıkmadım
+bi süre öyle durdu. sonra fenerini aldı, gitti
+kapı kapandı. ben hala titriyorum
+Orhan
+Orhan Akın. mezardaki öğretmen
+Hatice Nine her gece onun için çan çalıyo
+-> gun4_son
+
+=== postane_yuzles
+$ hatice_yuzlesti = 1
+çıktım
+fenerini düşürüyodu, tuttum
+yüzüme baktı. ağlıyodu
+“Kemal'in torunu” dedi. “git buradan kızım. git, burda kimse yok”
+“kırk yıl oldu” dedi. “gelmedi”
+sonra fenerini aldı, gitti. peşinden gitmedim
+-> gun4_son
+
+=== aksam_yakalandi
+? bilek == 1 -> aksam_yakalandi_bilek
+okula gidip dinlenicem biraz. akşam dokuzu on geçe postanede olcam
+kim çaldığını kendi gözümle görcem
+-> aksam_bekle
+
+=== aksam_yakalandi_bilek
+bileğim artık hiç basmıyo. okula zor geldim
+bu gece postaneye gidemem :(
+!durum çevrimdışı
+~ @21:10 en az 20dk
+!durum çevrimiçi
+çan çaldı. pencereden baktım
+meydanda fener ışığı geçide iniyo. karşıya, değirmene dönüyo
+-> gun4_son
+
+# ---------- Gün sonu ----------
+
+=== gun4_son
+~ 1dk
+bugün öğrendiklerim
+Orhan Akın. öğretmen. 14 haziran 1987'de, Nazlı'nın kaybolduğu gece köprüde boğulmuş
+? gel_artik == 1 -> gun4_son_hatice
+Rıza “bu köprü bir kere birini aldı” demişti
+-> gun4_son_soru
+
+=== gun4_son_hatice
+Hatice Nine her gece onun için çan çalıyo. “gel artık” diyo
+=== gun4_son_soru
+sence o gece ne oldu?
+* Nazlı ile Orhan birlikte kaçacaktı. -> teori_kacis
+* Rıza o gece köprüde bir şey yaptı. -> teori_riza
+* Bu iş beni sıkmaya başladı. -> teori_sikildi
+
+=== teori_kacis
+$ teori = 1
+$ guven + 1
+aynen ben de bunu düşünüyorum
+düğünden önceki gece. çan bi işaretti belki. Orhan'a “gel” diye
+ama Orhan gelememiş. köprüde boğulmuş
+-> gun4_iyi_geceler
+
+=== teori_riza
+$ teori = 2
+o da var aklımda
+“tanırdım” dedi. “ben taşırım” dedi. o köprüye cenazeye bakar gibi baktı
+yarın soracam ona. yüzüne
+-> gun4_iyi_geceler
+
+=== teori_sikildi
+$ guven - 2
+...
+tamam
+sana bu kadar şey anlattım. ama tamam
+=== gun4_iyi_geceler
+? guven <= 1 -> gun4_bitti
+pilim bitmek üzere. kapatıyorum
+yarın Rıza'yla konuşcam
+iyi geceler
+=== gun4_bitti
+!durum çevrimdışı
+>> Elif çevrimdışı
+~ 8sn
+!sinema gun4_son
+? guven <= 1 -> engellendin
+!ara 5. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.

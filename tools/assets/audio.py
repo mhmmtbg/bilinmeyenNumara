@@ -491,6 +491,64 @@ def cine_gun3_son():
     return out * env_adsr(n, 0.6, 1.2)[:, None]
 
 
+def creak(dur=0.5, gain=1.0):
+    """Tahta/ip gıcırtısı: hızla titreşen dar bant sürtünme."""
+    n = secs(dur)
+    t = np.arange(n) / SR
+    f = 300 + 180 * np.sin(2 * np.pi * 1.3 * t)
+    pulses = (np.sin(2 * np.pi * np.cumsum(f) / SR * 0.12) > 0.6).astype(float)
+    x = bp(white(n), 500, 2500) * pulses * np.hanning(n)
+    return x * gain
+
+
+def whisper(dur=1.4, gain=1.0):
+    """Anlaşılmaz bir fısıltı: hece hece şekillenmiş gürültü."""
+    n = secs(dur)
+    x = np.zeros(n)
+    t = 0.05
+    while t < dur - 0.15:
+        k = secs(rng.uniform(0.08, 0.2))
+        syl = bp(white(k), rng.uniform(1200, 2200), rng.uniform(3500, 6000)) * np.hanning(k)
+        place(x, syl * rng.uniform(0.5, 1.0), t)
+        t += k / SR + rng.uniform(0.02, 0.08)
+    return x * gain
+
+
+def rec_postane():
+    """0:24 — postanenin içinden, çok yakından: ip gıcırtısı, 9+10 vuruş, sonunda fısıltı."""
+    D = 24.0
+    n = secs(D)
+    x = room_tone(n) * 2.5
+    t = 0.8
+    for k in range(19):
+        if k == 9:
+            t += 1.5
+        place(x, creak(0.35, 0.10), t - 0.25)
+        place(x, lp(bell_strike(392 * rng.uniform(0.998, 1.002), 5.0), 4500), t, 0.55)
+        t += 0.98
+    x = reverb(x, 1.6, 0.35)
+    place(x, whisper(1.3, 0.05), 21.6)
+    x += breath(D, 3.2, 0.7, 1.0)
+    return x * env_adsr(n, 0.05, 0.4)
+
+
+def cine_gun4_son():
+    """Gün 4 sonu (~20 sn): rüzgârlı mezarlık, sonra postanede tek çan yankısı."""
+    D = 20.0
+    n = secs(D)
+    out = np.zeros((n, 2))
+    out += stereo(wind(n, 1.4), wind(n, 1.4))
+    out += stereo(drone(n, 46, 1.2) * env_adsr(n, 2, 3))
+    out += stereo(crickets(n, 0.6) * np.clip((np.arange(n) / SR - 9) / 2, 0, 1))
+    far = np.zeros(n)
+    place(far, reverb(lp(bell_strike(392, 7.0), 2200), 3.5, 0.6), 10.2, 0.25)
+    out += pan(far, -0.2)
+    seq = [('mi', 2), ('re', 1), ('do', 1), ('si', 2), ('do', 1), ('si', 1), ('la', 4)]
+    out += melody_plucks(seq, 1.0, 0.95, 0.42, 0.0, D)
+    out = reverb_st(out, 1.8, 0.2)
+    return out * env_adsr(n, 0.6, 1.2)[:, None]
+
+
 def reverb_st(x, t60, mix):
     return np.stack([reverb(x[:, 0], t60, mix), reverb(x[:, 1], t60 * 1.07, mix)], 1)
 
@@ -519,8 +577,8 @@ def peaks(x, bars=44):
     return [round(float(max(0.08, a ** 0.6)), 2) for a in v]
 
 
-RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice}
-CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son}
+RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice, 'postane': rec_postane}
+CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son, 'gun4_son': cine_gun4_son}
 
 
 def main():
