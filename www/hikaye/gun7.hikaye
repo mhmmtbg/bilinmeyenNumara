@@ -168,7 +168,7 @@ bu gece savaklar tamamen kapanıyomuş. su bi gecede metrelerce yükselcek, kule
 Nazlı “son çanı çalmadan gitmem” diyo
 Rıza “gece kayıkla gölün üstünden barajın iskelesine gideriz, sabah Selim bey alır” diyo
 ama gece, göl, kayık... risk
-pilim %7. bu son kararım olabilir, düzgün yazıyorum
+pilim %7. bu son kararım olabilir
 ne yapalım?
 * Selim'in aracıyla çıkın. Hayat önemli. -> karar_arac
 * Son çanı bekleyin, kayıkla çıkın. -> karar_can
@@ -201,6 +201,7 @@ bu akşam kimse çalmıcak o çanı
 ~ 8sn
 !sinema son_kuru
 !ad Bilinmeyen Numara
+!pil 100
 ~ @12:00 en az 12sa
 >> Birkaç gün sonra
 !durum çevrimiçi
@@ -250,6 +251,7 @@ Rıza başını eğdi. küreklere asıldı
 ~ 8sn
 !sinema son_kuru
 !ad Bilinmeyen Numara
+!pil 100
 ~ @12:00 en az 12sa
 >> Birkaç gün sonra
 !durum çevrimiçi
@@ -295,6 +297,7 @@ iyi geceler bilinmeyen numara
 ~ 8sn
 !sinema son_can
 !ad Bilinmeyen Numara
+!pil 100
 ~ @12:00 en az 12sa
 >> Bir hafta sonra
 !durum çevrimiçi

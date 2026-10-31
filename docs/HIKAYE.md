@@ -46,9 +46,9 @@ Köyün kalbinde **saat kulesi** var. Saati yıllardır **dokuzu on geçe** durm
 
 **Elif Doğan (27)** — Ses kayıtçısı (belgesellere saha kaydı yapar). Esprili, inatçı, kolay korkmaz gibi davranır ama korkar. Kaydedici her zaman yanında; dünyayı sesle anlatır ("burada sessizlik bile yankılı"). Dedesi üç ay önce öldü. Köye iki şey için geldi: köyün "son seslerini" kaydetmek ve dedesinin hiç anlatmadığı şeyi öğrenmek.
 
-**Kemal Doğan (dede, ölü)** — 1987'de köyü bir gecede terk etti, bir daha dönmedi. Geriye bir defter bıraktı. Defterin son sayfasında: *"Ilgındere'de başın sıkışırsa bu numaraya yaz. O bilir. Saat dokuzu geçe."* ve bir telefon numarası. O numara oyuncunun numarasıdır.
+**Kemal Doğan (dede, ölü, 1950–2026)** — 1987'de köyü bir gecede terk etti, bir daha dönmedi. Geriye bir defter bıraktı. Defterin son sayfasında: *"Ilgındere'de başın sıkışırsa bu numaraya yaz. O bilir. Saat dokuzu geçe."* ve bir telefon numarası. O numara oyuncunun numarasıdır.
 
-**Nazlı Doğan** — Kemal'in kız kardeşi. 1987'de, düğününden bir gece önce, **kulenin çanı kendi kendine çaldığı gece** kayboldu. Köyde anlatılan: "Dere aldı onu." Bir çocuk ayakkabısı bile bulunmadı.
+**Nazlı Doğan (1964)** — Kemal'in on dört yaş küçük kız kardeşi. 1987'de, düğününden bir gece önce, **kulenin çanı kendi kendine çaldığı gece** kayboldu. Köyde anlatılan: "Dere aldı onu." Bir çocuk ayakkabısı bile bulunmadı.
 
 **Bekçi Rıza (60'lar)** — Baraj şantiyesinin bekçisi, köyde kalan tek "resmî" kişi. Huysuz, az konuşur, Elif'i kovmaya çalışır ama ona çay ve jeneratörden şarj verir. Doğan soyadını duyunca yüzü değişir. 1987'de Nazlı'yla nişanlıydı.
 
@@ -85,7 +85,7 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Elif yazar: "Bu numara Kemal Doğan'ın defterinde yazıyordu." Oyuncu tanımaz. Elif hayal kırıklığına uğrar ama başka şansı yoktur (bozuk ekran).
 - Köyü, barajı, Nazlı efsanesini, defteri öğreniriz. **Fotoğraf:** defter sayfası.
 - Meydan, saat kulesi: saat 9:10'da durmuş. **Fotoğraf:** kule.
-- Aile evi: duvarda kurşun kalemle boy çizgileri — "Kemal 1971", "Nazlı 1973". Pencerede **taze ılgın dalı**. Biri buraya geliyor.
+- Aile evi: duvarda kurşun kalemle boy çizgileri — "Kemal 1955", "Nazlı 1969". Pencerede **taze ılgın dalı**. Biri buraya geliyor.
 - Elif okulda gecelemeye karar verir. 21:10'da yazacağını söyler.
 - **21:10 sahnesi:** Çan kendiliğinden çalar. Üç seçenek: *git bak* / *kapıyı kilitle* / *kayda devam et*. Her biri farklı bir ipucu bırakır (değirmene giden fener ışığı / kapının önünden geçen ayak sesleri / kayıtta bir kadının mırıltısı).
 
@@ -104,7 +104,7 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Geçidin yeri: 2. gece fener izlendiyse bilinir; yoksa Rıza'ya sorulur (güveni varsa söyler: "söğütlerin orda… ona iyi davran") ya da dere boyunca aranır. Kayık istemek geri çevrilir (güven düşer).
 - Geçiş: uzun ve sığ yol ya da kısa yol (**bilek** burkulur; sonraki günlerde Elif yavaşlar, bazı yolları yürüyemez).
 - Değirmen: taş, iki katlı, durmuş yosunlu çark, keçiler, kapıda lastik ayakkabılar (1. gecenin izleri). Hatice Nine: "Kemal'in torunusun, gözlerin aynı." Kemal'in öldüğünü duyunca sırtını döner. "Bana Hatice derler." Kocasından söz eder ama evde hiçbir iz yoktur.
-- Sol elinde eski bir yanık izi (2. gün defterde: "Nazlı tandırda sol elini yaktı… 1975").
+- Sol elinde eski bir yanık izi (2. gün defterde: "Nazlı tandırda sol elini yaktı… 1971").
 - 1. gece kayıt seçildiyse Hatice'nin mırıldandığı ezgi kayıttakiyle aynıdır; Elif gizlice kaydeder.
 - Defteri göstermek: Hatice "gözlerim görmez" deyip defteri yüzüstü kapatır (oysa iğneye iplik geçirmektedir). Gece Elif değirmende kalırsa Hatice'yi fenerin ışığında son sayfayı okurken, ağlarken görür.
 - Kalmak ya da dönmek: kalırsa 20:50'de Hatice "keçilere bakmaya" çıkar, fener geçitten köye gider ve 21:10'da çan çalar. **Çanı Hatice çalıyor.** Dönerse Rıza okulun önünde bekler: "Nasıl o? Yiyeceği var mı?" ("Orada kimse yok" diyen adam.)
@@ -129,8 +129,8 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 
 ### Gün 6 — Nazlı  *(yazıldı, oynanabilir)*
 - Elif değirmene gider (geceyi orada geçirdiyse zaten oradadır; Rıza dün gece gittiyse ya da bilek burkuksa Rıza kayıkla götürür, kendisi içeri girmez).
-- Soru: doğrudan ("Nazlı sen misin?") / boy çizgilerinin fotoğrafı ("1981'de Kemal zorla ölçtü") / yanık ("ağladım, Kemal görmesin diye ahırda ağladım").
-- **"Ben Nazlı'yım."** Kendi anlatımı: Orhan'ı seviyordu; Kemal 21:10'da çanı çalacak, Orhan köprüden geçip değirmene gelecekti; sabaha kadar bekledi; Kemal "Gelmedi abla, gidelim" dedi; kırk yıl Ankara'da Hatice adıyla yaşadı; Kemal'le tek bağı bir telefon numarasıydı; baraj haberiyle döndü, hattı kapattı; her akşam çanı çalıyor: "Çan çalınca sanki yoldadır."
+- Soru: doğrudan ("Nazlı sen misin?") / boy çizgilerinin fotoğrafı ("1978'de Kemal zorla ölçtü") / yanık ("ağladım, Kemal görmesin diye ahırda ağladım").
+- **"Ben Nazlı'yım."** Kendi anlatımı: Orhan'ı seviyordu; Kemal 21:10'da çanı çalacak, Orhan köprüden geçip değirmene gelecekti; sabaha kadar bekledi; Kemal "Gelmedi Nazlı, gidelim" dedi; otuz yıl Ankara'da Hatice adıyla yaşadı; Kemal'le tek bağı bir telefon numarasıydı; baraj haberiyle döndü, hattı kapattı; her akşam çanı çalıyor: "Çan çalınca sanki yoldadır."
 - Defterdeki numara: **"Bu benim numaram."** Nazlı telefonu alır ve **oyuncuya kendisi yazar** (başlıkta adı görünür; yavaş, düzgün cümleler).
 - **Büyük seçim:** "Orhan beni bıraktı mı?" → gerçeği oyuncu söyler (sonra nasıl öldüğünü: Rıza'yla kavga / "Rıza size kendisi anlatacak" / "köprüden düştü") ya da Elif anlatsın ya da "bilmiyorum".
 - Öğleden sonra fırtına yaklaşır; Nazlı "son çanı çalmadan gitmem" der. Gerçeği öğrendiyse Orhan'ın son mektubunu göğsüne bastırır.

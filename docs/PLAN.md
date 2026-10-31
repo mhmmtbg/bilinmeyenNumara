@@ -22,12 +22,12 @@
 
 | # | İş |
 | --- | --- |
-| 2.1 | Gün 1 için oynanış geri bildirimi → ince ayar (tempo, ton, seçenek sayısı) |
-| 2.2 | Gün 2–3 senaryosu (Bekçi, Değirmen) + defter bulmacası |
-| 2.3 | Gün 4–5 (Kamulaştırma, İtiraf) + gerçek zamanlı gizlenme sahnesi |
-| 2.4 | Gün 6–7 (Nazlı, Son Çan) + dört son |
-| 2.5 | Senaryo denetçisi: her dal bir sona ulaşıyor mu, ölü düğüm var mı, en kısa / en uzun gerçek süre |
-| 2.6 | Fotoğraf çizimleri (defter, kule, duvar, değirmen, tutanak…) |
+| 2.1 | Gün 1 için oynanış geri bildirimi → ince ayar (tempo, ton, seçenek sayısı) ✅ |
+| 2.2 | Gün 2–3 senaryosu (Bekçi, Değirmen) + defter bulmacası ✅ |
+| 2.3 | Gün 4–5 (Kamulaştırma, İtiraf) + gerçek zamanlı gizlenme sahnesi ✅ |
+| 2.4 | Gün 6–7 (Nazlı, Son Çan) + dört son ✅ |
+| 2.5 | Senaryo denetçisi: her dal bir sona ulaşıyor mu, ölü düğüm var mı, en kısa / en uzun gerçek süre ✅ |
+| 2.6 | Fotoğraf çizimleri (defter, kule, duvar, değirmen, tutanak…) ✅ |
 | 2.7 | Sonlar arşivi ve "hikâyeyi baştan başlat" |
 
 ## Aşama 3 — His ve cila

@@ -183,8 +183,9 @@ def photo_duvar():
     img[:, cw1 - 8:cw1] *= np.linspace(1.0, 0.75, 8)[None, :, None]
     img[:, cw1:cw1 + 34] *= (np.linspace(0.38, 1.0, 34) ** 0.6)[None, :, None]
     # boy çizgileri ve isimler (kurşun kalem)
-    marks = [(840, 'Kemal 1971'), (768, 'Nazlı 1973'), (690, 'Kemal 1974'), (622, 'Nazlı 1976'),
-             (536, 'Kemal 1978'), (478, 'Nazlı 1981'), (402, 'Kemal 1983')]
+    # Kemal 1950 doğumlu (öldüğünde 76), Nazlı 1964 doğumlu (1987'de 23 yaşında)
+    marks = [(840, 'Kemal 1955'), (760, 'Nazlı 1969'), (700, 'Kemal 1958'), (640, 'Nazlı 1972'),
+             (560, 'Kemal 1961'), (505, 'Nazlı 1975'), (430, 'Nazlı 1978')]
     pen = np.zeros((H, W), np.float32)
     for i, (y, name) in enumerate(marks):
         y2 = y + int(r.integers(-3, 4))
