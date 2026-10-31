@@ -485,5 +485,75 @@
     ]
    }
   ]
+ },
+ "gun6_son": {
+  "baslik": "Fırtına",
+  "ses": "sinema/gun6_son.ogg",
+  "kapak": "sinema/c_firtina.jpg",
+  "sure": 20.0,
+  "kareler": [
+   {
+    "img": "sinema/c_firtina.jpg",
+    "sure": 10.0,
+    "bas": [
+     0.55,
+     1.04
+    ],
+    "son": [
+     0.62,
+     1.18
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 4.6,
+      "metin": "Gece fırtına koptu."
+     },
+     {
+      "bas": 5.0,
+      "son": 9.6,
+      "metin": "Su saatte bir karış yükseldi."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_meydan.jpg",
+    "sure": 5.5,
+    "bas": [
+     0.48,
+     1.12
+    ],
+    "son": [
+     0.48,
+     1.2
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 5.2,
+      "metin": "Saat kulesinin kapısı artık suyun altındaydı."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 4.5,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 4.3,
+      "metin": "7. gün · Son Çan"
+     }
+    ]
+   }
+  ]
  }
 }

@@ -597,6 +597,45 @@ def cine_gun5_son():
     return out * env_adsr(n, 0.6, 1.2)[:, None]
 
 
+def rain_noise(n, strength=1.0):
+    x = hp(pink(n), 1500) * 0.10 + bp(white(n), 3000, 9000) * 0.04
+    drops = np.zeros(n)
+    for _ in range(int(n / SR * 40)):
+        k = secs(0.004)
+        place(drops, white(k) * np.hanning(k) * rng.uniform(0.1, 0.4), rng.uniform(0, n / SR - 0.01))
+    return (x + hp(drops, 2000) * 0.3) * strength
+
+
+def rec_nazli_turku():
+    """0:22 — değirmen: yağmur, soba, yavaşça sonuna kadar mırıldanan ezgi."""
+    D = 22.0
+    n = secs(D)
+    x = rain_noise(n, 0.7) + crackle(n, 4, 0.8) + room_tone(n) * 2
+    u = USSAK
+    melody = [(u['la'], 0.9), (u['si'], 0.6), (u['do'], 1.1), (u['re'], 0.7), (u['do'], 0.6), (u['si'], 0.7), (u['la'], 1.5),
+              (0, 0.5), (u['sol_'], 0.6), (u['la'], 0.8), (u['si'], 0.7), (u['la'], 1.3), (0, 0.6),
+              (u['do'], 0.8), (u['re'], 0.7), (u['mi'], 1.2), (u['re'], 0.7), (u['do'], 0.7), (u['si'], 1.0), (u['la'], 2.2)]
+    v = reverb(bp(hum_voice(melody, 0.9), 150, 3000), 0.7, 0.25, 0.01)
+    place(x, v, 1.2, 0.45)
+    return x * env_adsr(n, 0.1, 0.8)
+
+
+def cine_gun6_son():
+    """Gün 6 sonu (~20 sn): fırtına, yağmur, gürleyen dere, uzak gök gürültüsü."""
+    D = 20.0
+    n = secs(D)
+    out = np.zeros((n, 2))
+    out += stereo(rain_noise(n, 1.4), rain_noise(n, 1.4))
+    out += stereo(river(n, 1.8), river(n, 1.8))
+    for t in (3.5, 12.0):
+        k = secs(4.0)
+        th = lp(brown(k), 120) * np.exp(-np.arange(k) / SR / 1.2) * 0.9
+        out[secs(t): secs(t) + k] += stereo(th)
+    out += stereo(drone(n, 41, 1.4) * env_adsr(n, 2, 3))
+    out = reverb_st(out, 2.0, 0.2)
+    return out * env_adsr(n, 0.6, 1.2)[:, None]
+
+
 def reverb_st(x, t60, mix):
     return np.stack([reverb(x[:, 0], t60, mix), reverb(x[:, 1], t60 * 1.07, mix)], 1)
 
@@ -625,8 +664,8 @@ def peaks(x, bars=44):
     return [round(float(max(0.08, a ** 0.6)), 2) for a in v]
 
 
-RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice, 'postane': rec_postane, 'meydan_su': rec_meydan_su, 'itiraf': rec_itiraf}
-CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son, 'gun4_son': cine_gun4_son, 'gun5_son': cine_gun5_son}
+RECORDINGS = {'can1': rec_can1, 'mirilti': rec_mirilti, 'kopru_sesi': rec_kopru_sesi, 'kiyi': rec_kiyi, 'hatice': rec_hatice, 'postane': rec_postane, 'meydan_su': rec_meydan_su, 'itiraf': rec_itiraf, 'nazli_turku': rec_nazli_turku}
+CINEMA = {'prolog': cine_prolog, 'gun1_son': cine_gun1_son, 'gun2_son': cine_gun2_son, 'gun3_son': cine_gun3_son, 'gun4_son': cine_gun4_son, 'gun5_son': cine_gun5_son, 'gun6_son': cine_gun6_son}
 
 
 def main():

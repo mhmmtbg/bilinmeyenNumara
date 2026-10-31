@@ -349,3 +349,55 @@ EXTRA_SCENES['gun5_son'] = {
         (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '6. gün · Nazlı')]),
     ],
 }
+
+
+# ---------------------------------------------------------------- 6. gün
+def rain(img, amount=0.35, seed=0, angle=0.25):
+    r = rng(seed)
+    m = np.zeros((H, W), np.float32)
+    n = 2600
+    xs = r.uniform(0, W, n)
+    ys = r.uniform(0, H, n)
+    ln = r.uniform(30, 90, n)
+    from PIL import ImageDraw
+    im = Image.new('L', (W, H), 0)
+    d = ImageDraw.Draw(im)
+    for x, y, l in zip(xs, ys, ln):
+        d.line([(x, y), (x + l * angle, y + l)], fill=int(r.uniform(60, 160)), width=1)
+    m = np.asarray(im, np.float32) / 255
+    m = ndimage.gaussian_filter(m, 0.6)
+    return img * (1 - m[..., None] * amount) + np.array([0.75, 0.78, 0.82]) * m[..., None] * amount
+
+
+def c_firtina():
+    """Fırtına gecesi: kabarmış dere, yağmur, değirmenin yanan penceresi."""
+    img = vgrad(H, W, [(0, (0.05, 0.06, 0.09)), (0.5, (0.10, 0.12, 0.16)), (0.66, (0.16, 0.17, 0.21))])
+    cl = fbm(H, W, 260, 6, 141, aspect=(0.4, 1.0))
+    img *= (0.7 + 0.6 * cl)[..., None]
+    img = mountains(img, [(620, 160, (0.08, 0.09, 0.12), 520, 0.0)], seed=142)
+    img = mill(img, 1300, 860, 380, 250, 13, 0.22, lit_window=True, lantern=False)
+    wy = 860
+    flow = plane(fbm(1024, 1024, 26, 5, 143, aspect=(0.1, 1.0)), wy, 800, 90, 1.0)
+    w = tint(flow, (0.05, 0.05, 0.06), (0.20, 0.20, 0.22))
+    foam = np.clip((plane(fbm(1024, 1024, 10, 4, 144, aspect=(0.12, 1.0)), wy, 800, 90, 1.0) - 0.6) * 3, 0, 1)
+    w = w * (1 - foam[..., None] * 0.6) + np.array([0.45, 0.46, 0.48]) * foam[..., None] * 0.6
+    img[wy:] = w
+    refl = np.exp(-((np.arange(W)[None, :] - 1440) / 26) ** 2) * np.clip(1 - (np.arange(H)[:, None] - wy) / 260, 0, 1) * (np.arange(H)[:, None] > wy)
+    ff = np.zeros((H, W), np.float32)
+    ff[wy:] = flow
+    img += refl[..., None] * np.array([0.40, 0.22, 0.06]) * (0.4 + 0.8 * ff)[..., None]
+    img = rain(img, 0.35, 145)
+    return phone_photo(img, 146, grain=0.04, vignette=0.5, sharpen=0.25, soft=1.1, noise_dark=1.6)
+
+
+EXTRA_FRAMES['c_firtina'] = c_firtina
+EXTRA_SCENES['gun6_son'] = {
+    'baslik': 'Fırtına',
+    'ses': 'sinema/gun6_son.ogg',
+    'kapak': 'sinema/c_firtina.jpg',
+    'kareler': [
+        ('c_firtina', 10.0, [0.55, 1.04], [0.62, 1.18], [(0.6, 4.6, 'Gece fırtına koptu.'), (5.0, 9.6, 'Su saatte bir karış yükseldi.')]),
+        ('c_meydan', 5.5, [0.48, 1.12], [0.48, 1.20], [(0.4, 5.2, 'Saat kulesinin kapısı artık suyun altındaydı.')]),
+        (None, 4.5, [0.5, 1], [0.5, 1], [(0.4, 4.3, '7. gün · Son Çan')]),
+    ],
+}

@@ -1,0 +1,320 @@
+# ============================================================
+# GÜN 6 — Nazlı
+# Hatice Nine'nin Nazlı olduğu ortaya çıkar, numaranın sırrı,
+# Nazlı oyuncuya kendisi yazar, büyük seçim: gerçeği kim, nasıl söyleyecek?
+# Gece fırtına.
+# Nazlı nasıl yazar: yavaş, düzgün ve tam cümleler, "evladım"; Elif gibi kısaltmaz.
+# ============================================================
+
+=== gun6
+!durum çevrimdışı
+~ @08:30 en az 6sa
+!gun 6 Nazlı
+!durum çevrimiçi
+? gece_degirmen == 1 -> sabah6_degirmen
+? riza_gitti == 1 -> sabah6_kayik
+? bilek == 1 -> sabah6_kayik
+!pil 30
+günaydın
+geçitten gidiyorum değirmene. su dünden de yüksek
+!durum çevrimdışı
+~ 30dk
+!durum çevrimiçi
+geçtim. zor oldu. su göğsüme kadar geldi bi yerde
+-> degirmen6
+
+=== sabah6_kayik
+!pil 62
+günaydın
+Rıza kayıkla götürüyo beni değirmene. sabah okulun önüne geldi, “bin” dedi
+!durum çevrimdışı
+~ 20dk
+!durum çevrimiçi
+değirmenin önündeyiz. Rıza kayıkta kaldı. “girmem” dedi
+-> degirmen6
+
+=== sabah6_degirmen
+!pil 24
+günaydın
+Hatice Nine'nin ateşi düştü biraz. bütün gece başında bekledim
+sabah çorba yaptım. ilk defa ben ona bişey yaptım :)
+=== degirmen6
+Hatice Nine yatakta oturuyo. halsiz ama gözleri açık
+bugün soracam. artık soracam
+nasıl sorayım?
+* Doğrudan sor: Nazlı sen misin? -> sor_dogrudan
+* Boy çizgilerinin fotoğrafını göster. -> sor_cizgi
+* Elindeki yanığı sor. -> sor_yanik
+
+=== sor_dogrudan
+sordum. hiç dolandırmadan
+“sen Nazlı'sın, değil mi?”
+-> nazli_acikliyor
+
+=== sor_cizgi
+$ guven + 1
+telefondaki fotoğrafı gösterdim. mutfak kapısının kasası. “Nazlı 1973”, “Nazlı 1981”
+parmağıyla ekrana dokundu. çizgilerin üstüne
+“1981'de ölçtürmedim” dedi. “Kemal zorla ölçtü. on dört yaşındaydım, utanırdım”
+-> nazli_acikliyor
+
+=== sor_yanik
+sordum. elindeki yanığı
+“tandır” dedi. “yedi yaşındaydım”
+dedemin defterini açtım, o sayfayı gösterdim. “Nazlı tandırda sol elini yaktı. Ağlamadı bile. 1975”
+okudu. gülümsedi
+“ağladım” dedi. “Kemal görmesin diye ahırda ağladım”
+=== nazli_acikliyor
+$ nazli_acikladi = 1
+~ 1dk
+uzun uzun baktı bana
+sonra “ben Nazlı'yım” dedi
+...
+kırk yıldır kimseye söylememiş
+Nazlı
+dedemin kız kardeşi
+annemin hep fısıltıyla anlattığı kadın
+dere almamış. kaçmış
+~ 30sn
+anlatıyo. yazıyorum
+“Babam beni Rıza'ya verecekti. Ben Orhan'ı seviyordum. Okulun öğretmeni.”
+“Kemal yardım etti. Dokuzu on geçe çanı çalacaktı. Orhan köprüden geçip değirmene gelecek, beni alacaktı.”
+“Yolun başında bir araba bekliyordu. Şehre gidecektik.”
+“Çan çaldı. Bekledim. Sabaha kadar bekledim. Gelmedi.”
+“Sabah Kemal traktörle geldi. ‘Gelmedi abla, gidelim’ dedi. Bıraktı sandım.”
+“Kırk yıl Ankara'da yaşadım. Hatice adıyla. Kemal yılda iki kere gelirdi. Bir de telefon vardı.”
+“Baraj haberini duyunca döndüm. Burada telefon çekmez. Hattı kapattım.”
+“Her akşam çanı çalıyorum. Gelmeyeceğini biliyorum. Ama çan çalınca sanki yoldadır.”
+~ 1dk
+sonra defteri istedi
+son sayfayı açtı. numaraya baktı. bu sefer gözlerini kaçırmadı
+“bu benim numaram” dedi. “eski numaram. Kemal'le tek bağımızdı”
+...
+anladın mı
+dedem öleceğini bilince bu numarayı yazmış. “o bilir” diye. Nazlı'yı kastetmiş
+ama Nazlı hattı kapatmış. numara başka birine verilmiş
+sana
+~ 30sn
+telefonu istedi. “ver bakayım şunu” dedi
+sana yazmak istiyo
+=== nazli_yaziyor
+!ad Nazlı
+Nazlı: Merhaba evladım.
+Nazlı: Ben Nazlı. Kemal'in kız kardeşi.
+Nazlı: Bu numara benimdi. Yıllarca Kemal'le bu numaradan konuştuk.
+Nazlı: Sen kimsin?
+* Birkaç yıldır bu numara benim. -> nazli_numara
+* Elif'e yardım eden biriyim. -> nazli_yardim
+* Kemal Bey size ulaşmak istemiş bence. -> nazli_kemal
+
+=== nazli_numara
+Nazlı: Demek bırakınca sana vermişler.
+Nazlı: Kemal bilmeden sana yazdırmış. Ben de kırk yıl bilmeden bekledim. Tuhaf.
+-> nazli_soru
+
+=== nazli_yardim
+$ guven + 1
+Nazlı: Elif sana çok güveniyor. Gözünden belli.
+Nazlı: Kemal'in torunu yalnız kalmamış. Sağ ol evladım.
+-> nazli_soru
+
+=== nazli_kemal
+Nazlı: Kemal bana hep “o numarayı kapatma” derdi.
+Nazlı: Kapattım. Belki son bir şey söylemek istedi bana. Sana yazdırdı.
+=== nazli_soru
+~ 30sn
+Nazlı: Bir şey soracağım.
+Nazlı: Elif bir şey biliyor. Yüzünden okunuyor. Söylemiyor.
+Nazlı: Sen söyle.
+Nazlı: Orhan beni bıraktı mı?
+* [orhan_ogrendi==1] Bırakmadı. O gece köprüde öldü. -> nazli_gercek
+* Bunu Elif size anlatsın. -> nazli_elif
+* Bilmiyorum. -> nazli_bilmiyorum
+
+=== nazli_gercek
+$ nazli_bildi = 1
+$ kim_soyledi = 1
+$ guven + 1
+~ 2dk
+Nazlı: Öldü mü.
+~ 1dk
+Nazlı: Gelmiş yani.
+Nazlı: Yola çıkmış.
+Nazlı: Kırk yıl ona kızdım. Kırk yıl.
+~ 1dk
+Nazlı: Nasıl oldu?
+* [itiraf==1] Rıza'yla kavga ettiler, korkuluk kırıldı. -> nazli_riza
+* [riza_soz==1] Bunu Rıza size kendisi anlatacak. -> nazli_riza_anlatacak
+* Köprüden düştü. Dere taşkındı. -> nazli_kaza
+
+=== nazli_riza
+$ nazli_riza_bildi = 1
+~ 2dk
+Nazlı: Rıza.
+? riza_gitti == 1 -> nazli_riza_geldi
+Nazlı: Kırk yıl. Her gece çanı duydu. Bir kere bile gelmedi kapıma.
+Nazlı: Bir kere gelseydi.
+-> nazli_telefon_geri
+
+=== nazli_riza_geldi
+Nazlı: Dün gece kapıma geldi. Kırk yıl sonra ilk defa.
+Nazlı: Su verdi, yorgan örttü, bir şey demeden gitti.
+Nazlı: Şimdi anlıyorum neden hiç gelmediğini. Ve neden dün geldiğini.
+-> nazli_telefon_geri
+
+=== nazli_riza_anlatacak
+$ nazli_riza_bekliyor = 1
+Nazlı: Rıza mı.
+Nazlı: Rıza bir şey anlatacaksa kırk yıl beklemiş demek.
+Nazlı: Ben de bir gün daha beklerim.
+-> nazli_telefon_geri
+
+=== nazli_kaza
+$ kaza_dedi = 1
+Nazlı: Dere taşkındı o hafta. Hatırlıyorum.
+Nazlı: Gelmeye çalışırken düşmüş.
+-> nazli_telefon_geri
+
+=== nazli_elif
+$ nazli_bildi = 1
+$ kim_soyledi = 2
+Nazlı: Peki evladım.
+-> nazli_telefon_geri_elif
+
+=== nazli_bilmiyorum
+$ guven - 1
+Nazlı: Peki.
+Nazlı: Bilmemek bazen daha kolay.
+-> nazli_telefon_geri
+
+=== nazli_telefon_geri_elif
+!ad Elif
+telefonu bana verdi
+? orhan_ogrendi == 1 -> elif_anlatti
+ona ne anlatabilirim ki
+ben de bilmiyorum
+mezarı görmedim, listeyi görmedim. sadece Rıza'nın “bu köprü bir kere birini aldı” dediğini biliyorum
+onu söyledim. sustu
+$ nazli_bildi = 0
+-> ogleden_sonra6
+
+=== elif_anlatti
+anlattım. mezarı. taşı. 14 haziran 1987
+ılgın dalını. onun bıraktığı dalı
+...
+“Biliyordum” dedi. “Bir yerde biliyordum. Ama inanmak istemedim. Bıraktı demek daha kolaydı.”
+sonra ağladı. çok uzun ağladı
+-> ogleden_sonra6
+
+=== nazli_telefon_geri
+!ad Elif
+telefonu geri verdi
+? nazli_bildi == 1 -> nazli_sonra_bildi
+yüzü hiç değişmedi. pencereden dereye baktı
+-> ogleden_sonra6
+
+=== nazli_sonra_bildi
+yazdıklarınızı okudum
+...
+pencerenin önüne oturdu. ağlamıyo. sadece bakıyo
+“Bıraktı sandım” diyo arada bi. kendi kendine
+=== ogleden_sonra6
+!durum çevrimdışı
+? saat >= 15 -> ogleden_sonra6_gec
+~ @15:30 en az 1sa
+=== ogleden_sonra6_gec
+!durum çevrimiçi
+hava değişti. kara bulutlar
+dere sesini değiştirdi. daha kalın, daha hızlı
+Nazlı'ya yarın akşam altıda son aracın gideceğini söyledim
+“ben son çanı çalmadan gitmem” dedi
+* Ona saygı göster, kalsın. -> nazli_kalsin
+* İkna etmeye çalış. -> nazli_ikna
+
+=== nazli_kalsin
+$ guven + 1
+$ son_can_soz = 1
+tamam dedim. son çanı birlikte çalarız
+gülümsedi. “Kemal'in torunu” dedi
+-> aksam6
+
+=== nazli_ikna
+denedim. “su yarın akşam değirmeni basar” dedim
+“bassın” dedi. “ama çanı çaldıktan sonra. kırk yıldır her akşam çaldım, sonuncusunu yarım bırakmam”
+söz verdirdi bana. son çandan sonra gidecekmiş, kayıkla, Rıza'yla, kiminle olursa
+$ son_can_soz = 1
+=== aksam6
+!durum çevrimdışı
+? saat >= 18 -> aksam6_gec
+~ @18:40 en az 30dk
+=== aksam6_gec
+!durum çevrimiçi
+!pil 18
+akşam oluyo. yağmur başladı
+? nazli_bildi == 1 -> aksam6_mektup
+-> aksam6_dokuz
+
+=== aksam6_mektup
+Nazlı sandıktan bi zarf çıkardı. sararmış
+“Orhan'ın son mektubu” dedi. “o hafta yazmıştı”
+okumadı. bana da okutmadı. göğsüne bastırdı
+=== aksam6_dokuz
+dokuzu on geçe yazarım
+!durum çevrimdışı
+~ @21:10 en az 20dk
+!durum çevrimiçi
+dokuzu on geçiyo
+? riza_soz == 1 -> riza_caldi
+çan yok
+Nazlı yatakta. çalamadı bu gece de
+bana “türküyü sen söyle” dedi. bilmiyorum ki
+o mırıldandı, ben kaydettim
+!ses nazli_turku | Değirmenin içi, yağmur ve soba. Yaşlı bir kadın yavaşça aynı ezgiyi mırıldanıyor. Bu sefer sonuna kadar.
+-> gece6
+
+=== riza_caldi
+$ riza_cald = 1
+...
+çan çalıyo
+dokuz. sonra on
+Nazlı yataktan doğruldu. “kim çalıyo?” dedi
+Rıza. Rıza çalıyo
+kırk yıl sonra ilk defa
+? nazli_bildi == 1 -> riza_caldi_bildi
+Nazlı anlamadı. ama sustu. sonuna kadar dinledi
+-> riza_caldi_turku
+
+=== riza_caldi_bildi
+Nazlı anladı. gözünü pencereden ayırmadı
+“yarın” dedi. “yarın konuşuruz”
+=== riza_caldi_turku
+sonra mırıldanmaya başladı. kaydettim
+!ses nazli_turku | Uzaktan son çan vuruşlarının yankısı. Değirmenin içinde yağmur ve soba. Yaşlı bir kadın aynı ezgiyi sonuna kadar mırıldanıyor.
+=== gece6
+~ 1dk
+fırtına büyüyo. çatı tıkırdıyo
+su değirmenin bahçesine girdi. keçileri üst kata çıkardık :)
+? bilek == 1 -> gece6_bilek
+-> gece6_son
+
+=== gece6_bilek
+bileğim mahvoldu ama keçi taşıdım. kimseye söyleme
+=== gece6_son
+yarın son gün
+yarın akşam altıda son araç. dokuzu on geçe son çan
+ikisi bi arada olmaz. birini seçmek gerekcek
+pilim bitiyo. kapatıyorum
+? guven >= 8 -> gece6_sicak
+iyi geceler
+-> gun6_bitti
+
+=== gece6_sicak
+iyi ki sana yazmışım ilk gün. iyi ki o numara sendeymiş :)
+iyi geceler bilinmeyen numara
+=== gun6_bitti
+!durum çevrimdışı
+>> Elif çevrimdışı
+~ 8sn
+!sinema gun6_son
+? guven <= 1 -> engellendin
+!ara 7. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.

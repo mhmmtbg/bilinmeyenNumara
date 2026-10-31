@@ -127,13 +127,15 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Öğleden sonra su meydanda; Elif köyün son seslerini kaydeder.
 - **21:10: çan çalmaz.** Değirmende ışık yok. Elif geçitten gider (bilek varsa gidemez; Hatice ateşler içinde: "Bu gece çalmadım. Gelmeyecek artık.") ya da Rıza kayıkla gider ("Kırk yıldır ilk defa girdim o kapıdan.") ya da sabahı bekler.
 
-### Gün 6 — Nazlı
-- Elif değirmene gider. Hatice hasta değil; sadece yorgun. Elif boy çizgilerinin fotoğrafını gösterir.
-- **"Ben Nazlı'yım."** Kaçış gecesinin kendi anlatımı.
-- Elif defteri gösterir. Nazlı numaraya bakar: **"Bu benim numaramdı."**
-- Nazlı, Elif'in telefonunu alır ve **oyuncuya kendisi yazar.** (Konuşan değişir; başlıkta "Elif" yerine kısa süreliğine Nazlı'nın sözleri.) Oyuncuya kim olduğunu, neden bu kadar yıl beklediğini sorar.
-- **Büyük seçim:** Oyuncu Nazlı'ya Orhan'ın nasıl öldüğünü söylesin mi, Elif'e mi bıraksın, hiç söylemesin mi?
-- Gece fırtına. Su hızla yükseliyor.
+### Gün 6 — Nazlı  *(yazıldı, oynanabilir)*
+- Elif değirmene gider (geceyi orada geçirdiyse zaten oradadır; Rıza dün gece gittiyse ya da bilek burkuksa Rıza kayıkla götürür, kendisi içeri girmez).
+- Soru: doğrudan ("Nazlı sen misin?") / boy çizgilerinin fotoğrafı ("1981'de Kemal zorla ölçtü") / yanık ("ağladım, Kemal görmesin diye ahırda ağladım").
+- **"Ben Nazlı'yım."** Kendi anlatımı: Orhan'ı seviyordu; Kemal 21:10'da çanı çalacak, Orhan köprüden geçip değirmene gelecekti; sabaha kadar bekledi; Kemal "Gelmedi abla, gidelim" dedi; kırk yıl Ankara'da Hatice adıyla yaşadı; Kemal'le tek bağı bir telefon numarasıydı; baraj haberiyle döndü, hattı kapattı; her akşam çanı çalıyor: "Çan çalınca sanki yoldadır."
+- Defterdeki numara: **"Bu benim numaram."** Nazlı telefonu alır ve **oyuncuya kendisi yazar** (başlıkta adı görünür; yavaş, düzgün cümleler).
+- **Büyük seçim:** "Orhan beni bıraktı mı?" → gerçeği oyuncu söyler (sonra nasıl öldüğünü: Rıza'yla kavga / "Rıza size kendisi anlatacak" / "köprüden düştü") ya da Elif anlatsın ya da "bilmiyorum".
+- Öğleden sonra fırtına yaklaşır; Nazlı "son çanı çalmadan gitmem" der. Gerçeği öğrendiyse Orhan'ın son mektubunu göğsüne bastırır.
+- **21:10:** Rıza söz verdiyse çanı **Rıza** çalar, kırk yıl sonra ilk kez. Yoksa çan çalmaz; Nazlı ezgiyi sonuna kadar mırıldanır, Elif kaydeder.
+- Gece fırtına; su değirmenin bahçesinde. "Yarın 18:00'de son araç, 21:10'da son çan. İkisi bir arada olmaz."
 
 ### Gün 7 — Son Çan
 - Selim'in ekibi 18:00'de son kez geçecek; sonra kimse gelmez.
