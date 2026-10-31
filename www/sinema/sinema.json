@@ -1,0 +1,179 @@
+{
+ "prolog": {
+  "baslik": "Ilgındere",
+  "ses": "sinema/prolog.ogg",
+  "kapak": "sinema/c_baraj.jpg",
+  "sure": 38.0,
+  "kareler": [
+   {
+    "img": "sinema/c_baraj.jpg",
+    "sure": 7.0,
+    "bas": [
+     0.62,
+     1.04
+    ],
+    "son": [
+     0.72,
+     1.12
+    ],
+    "yazi": [
+     {
+      "bas": 0.8,
+      "son": 6.4,
+      "metin": "Ilgın Barajı’nın kapakları dün kapandı."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_koy.jpg",
+    "sure": 7.0,
+    "bas": [
+     0.4,
+     1.12
+    ],
+    "son": [
+     0.52,
+     1.04
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 6.4,
+      "metin": "Yedi gün içinde Ilgındere suyun altında kalacak."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_kopru.jpg",
+    "sure": 10.4,
+    "bas": [
+     0.36,
+     1.0
+    ],
+    "son": [
+     0.53,
+     1.22
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 5.4,
+      "metin": "Ece Doğan, 27. Dedesinin köyüne ilk kez geliyor."
+     },
+     {
+      "bas": 5.8,
+      "son": 10.0,
+      "metin": "Köprü eski. Su her saat biraz daha yükseliyor."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_telefon.jpg",
+    "sure": 7.1,
+    "bas": [
+     0.47,
+     1.18
+    ],
+    "son": [
+     0.45,
+     1.05
+    ],
+    "yazi": []
+   },
+   {
+    "img": null,
+    "sure": 6.5,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 3.0,
+      "metin": "Ekranın yarısı karardı."
+     },
+     {
+      "bas": 3.2,
+      "son": 6.3,
+      "metin": "Açık kalan tek konuşma: bir defterdeki numara."
+     }
+    ]
+   }
+  ]
+ },
+ "gun1_son": {
+  "baslik": "Gece",
+  "ses": "sinema/gun1_son.ogg",
+  "kapak": "sinema/c_gece.jpg",
+  "sure": 22.0,
+  "kareler": [
+   {
+    "img": "sinema/c_gece.jpg",
+    "sure": 9.5,
+    "bas": [
+     0.42,
+     1.0
+    ],
+    "son": [
+     0.7,
+     1.1
+    ],
+    "yazi": [
+     {
+      "bas": 0.8,
+      "son": 4.6,
+      "metin": "Gece. Ilgındere’de tek bir ışık yanıyor."
+     },
+     {
+      "bas": 5.0,
+      "son": 9.0,
+      "metin": "Derenin öbür yakasında."
+     }
+    ]
+   },
+   {
+    "img": "sinema/c_su.jpg",
+    "sure": 8.0,
+    "bas": [
+     0.3,
+     1.1
+    ],
+    "son": [
+     0.62,
+     1.02
+    ],
+    "yazi": [
+     {
+      "bas": 0.6,
+      "son": 7.4,
+      "metin": "Sabah. Su aşağı tarlalara ulaştı."
+     }
+    ]
+   },
+   {
+    "img": null,
+    "sure": 4.5,
+    "bas": [
+     0.5,
+     1
+    ],
+    "son": [
+     0.5,
+     1
+    ],
+    "yazi": [
+     {
+      "bas": 0.4,
+      "son": 4.3,
+      "metin": "2. gün · Bekçi"
+     }
+    ]
+   }
+  ]
+ }
+}

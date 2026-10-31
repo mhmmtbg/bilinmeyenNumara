@@ -126,7 +126,18 @@ export function parse(text, file = 'hikaye') {
       const [a, b] = arg.split('|').map(s => s.trim());
       switch (cmd) {
         case 'foto': push(ln, { t: 'photo', key: a, caption: b || '' }); break;
-        case 'ses': push(ln, { t: 'voice', len: a, text: b || '' }); break;
+        case 'ses': {
+          // !ses anahtar | döküm   (www/ses/<anahtar>.ogg)
+          if (!/^[\w]+$/.test(a || '')) { err(ln, '!ses anahtar | döküm'); break; }
+          push(ln, { t: 'voice', key: a, text: b || '' });
+          break;
+        }
+        case 'sinema': {
+          // !sinema anahtar   (www/sinema/sinema.json içindeki sahne)
+          if (!/^[\w]+$/.test(a || '')) { err(ln, '!sinema anahtar'); break; }
+          push(ln, { t: 'cinema', key: a });
+          break;
+        }
         case 'pil': push(ln, { t: 'meta', k: 'pil', val: Number(a) }); break;
         case 'ad': push(ln, { t: 'meta', k: 'ad', val: a }); break;
         case 'durum': push(ln, { t: 'meta', k: 'durum', val: a }); break;

@@ -14,6 +14,9 @@
 | 1.6 | Android (Capacitor 8) + yerel bildirimler (uygulama kapalıyken mesaj gelir) | ✅ |
 | 1.7 | GitHub Actions: senaryo doğrulama + test APK'sı → `son-derleme` sürümü | ✅ |
 | 1.8 | Geliştirici test hızı (×10, ×60, ×600, bekleme atla) | ✅ |
+| 1.9 | Sinematikler: prolog ve gün sonu (panoramik kareler, yavaş kaydırma, altyazı, ses bandı) | ✅ |
+| 1.10 | Gerçekçi fotoğraflar (prosedürel, telefon kamerası hissi) | ✅ |
+| 1.11 | Çalınabilir ses kayıtları (sentezlenmiş çan, mırıltı, ortam) | ✅ |
 
 ## Aşama 2 — Hikâyenin tamamı (onaydan sonra)
 
@@ -31,7 +34,7 @@
 
 | # | İş |
 | --- | --- |
-| 3.1 | Ses: bildirim tonu, gerçek ses kayıtları (çan, dere, rüzgâr) — ses baloncukları çalınabilir olur |
+| 3.1 | Ses: bildirim tonu; konuşmalı ses kayıtları (Rıza'nın itirafı) için seslendirme |
 | 3.2 | Titreşim (Haptics), yazıyor animasyonu ince ayarı |
 | 3.3 | Başlıktaki "son görülme", gün ayraçları, su seviyesi göstergesi |
 | 3.4 | Ekran testleri (küçük/büyük ekran, yazı boyutu, açık/koyu tema) |
@@ -95,7 +98,8 @@ Motor "şimdi"yi parametre olarak alır ve o ana kadar olması gereken her şeyi
 | `? guven >= 5 -> hedef` | Koşullu atlama |
 | `-> hedef` | Atlama |
 | `!foto anahtar \| alt yazı` | Fotoğraf baloncuğu |
-| `!ses 0:14 \| döküm` | Ses kaydı baloncuğu |
+| `!ses anahtar \| döküm` | Ses kaydı (`www/ses/<anahtar>.ogg`) |
+| `!sinema anahtar` | Tam ekran sinematik (`www/sinema/sinema.json`) |
 | `!pil 41` · `!ad Ece` · `!durum çevrimdışı` · `!gun 2 Bekçi` | Başlık ve durum |
 | `!son anahtar \| Sonun adı` · `!ara` | Son / yazılmamış bölüm sınırı |
 

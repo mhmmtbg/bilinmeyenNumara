@@ -3,9 +3,10 @@ import { loadStory } from './story.js';
 import { normalize } from './parser.js';
 import { newState, advance, choose, answer, upcoming, skipWait, rewind } from './engine.js';
 import { loadGame, saveGame, clearGame, loadPrefs, savePrefs } from './save.js';
-import { createLogView, renderDock, renderHeader } from './ui.js';
+import { createLogView, renderDock, renderHeader, ASSETS, photoSrc } from './ui.js';
+import { setCinemaData, playCinema, cinemaPlaying } from './cinema.js';
+import { stopVoice } from './player.js';
 import { requestPermission, permissionState, pickNotifications, schedule, cancelAll } from './notify.js';
-import { photoSvg } from './photos.js';
 import { FEATURES } from './features.js';
 import { VERSION, BUILD } from './version.js';
 
@@ -42,7 +43,36 @@ function bindSeg(id, key, cast = v => v) {
 }
 
 // ---------- Döngü ----------
-const view = createLogView(showPhoto);
+const view = createLogView(showPhoto, (key) => openCinema(key, true));
+
+// ---------- Sinematik ----------
+const SEEN_KEY = 'bn_sinema_izlendi';
+let gestureUntil = 0;   // tarayıcı sesi yalnızca dokunuştan hemen sonra kendiliğinden çalar
+const seenCinema = () => { try { return new Set(JSON.parse(localStorage.getItem(SEEN_KEY)) || []); } catch { return new Set(); } };
+function markSeen(id) {
+  const s = seenCinema(); s.add(id);
+  try { localStorage.setItem(SEEN_KEY, JSON.stringify([...s])); } catch {}
+}
+function openCinema(key, autoplay) {
+  stopVoice();
+  playCinema(key, {
+    autoplay,
+    onDone: () => {
+      // Sinema bitti ya da geçildi: Ece'nin hemen ardından gelen mesajını bekletme
+      if (st && lastStatus?.kind === 'away' && lastStatus.wakeAt - now() < 90_000) skipWait(story, st, now(), opt());
+      tick();
+    },
+  });
+}
+function checkCinema() {
+  if (!st || cinemaPlaying() || $('chat').hidden) return;
+  const seen = seenCinema();
+  const fresh = st.log.filter(e => e.kind === 'cinema' && !seen.has(`${st.startedAt}:${e.id}`));
+  if (!fresh.length) return;
+  for (const e of fresh) markSeen(`${st.startedAt}:${e.id}`);
+  const e = fresh[fresh.length - 1];
+  openCinema(e.key, now() < gestureUntil);
+}
 
 function tick() {
   clearTimeout(timer);
@@ -65,6 +95,8 @@ function tick() {
     answer: v => { answer(story, st, v, now(), normalize, opt()); tick(); },
     now, dev, realWake: x => x,
   });
+
+  checkCinema();
 
   let next = null;
   if (status.kind === 'typing') next = status.at - t;
@@ -95,7 +127,7 @@ App?.addListener?.('backButton', () => {
 
 // ---------- Fotoğraf ----------
 function showPhoto(e) {
-  $('viewerImg').innerHTML = photoSvg(e.key);
+  $('viewerImg').innerHTML = `<img src="${photoSrc(e.key)}" alt="">`;
   $('viewerCap').textContent = e.caption || '';
   $('viewer').hidden = false;
 }
@@ -114,6 +146,7 @@ $('settings').addEventListener('click', e => {
 $('resetBtn').addEventListener('click', () => {
   if (!confirm('Hikâye en baştan başlayacak. Bütün mesajlar silinecek. Emin misin?')) return;
   clearGame(); cancelAll();
+  try { localStorage.removeItem(SEEN_KEY); } catch {}
   st = null; view.reset();
   $('settings').hidden = true;
   showIntro();
@@ -144,7 +177,8 @@ function showChat() {
 
 $('startBtn').addEventListener('click', async () => {
   $('startBtn').disabled = true;
-  await requestPermission();
+  gestureUntil = now() + 1500;
+  requestPermission();
   st = newState(now());
   saveGame(st);
   $('startBtn').disabled = false;
@@ -155,7 +189,15 @@ $('startBtn').addEventListener('click', async () => {
 (async function boot() {
   applyPrefs();
   try {
-    story = await loadStory();
+    const [s, ses, sinema] = await Promise.all([
+      loadStory(),
+      fetch('ses/ses.json').then(r => r.json()).catch(() => ({})),
+      fetch('sinema/sinema.json').then(r => r.json()).catch(() => ({})),
+    ]);
+    story = s;
+    ASSETS.ses = ses;
+    ASSETS.sinema = sinema;
+    setCinemaData(sinema);
   } catch (e) {
     document.body.innerHTML = `<p style="padding:24px">Hikâye yüklenemedi: ${e.message}</p>`;
     return;

@@ -1,5 +1,9 @@
 // Sohbet ekranı çizimi: mesaj baloncukları, ayraçlar, alt alan.
-import { photoSvg } from './photos.js';
+import { toggleVoice, fmtDuration } from './player.js';
+
+// Ses ve sinema dosyalarının bilgisi (main.js açılışta doldurur)
+export const ASSETS = { ses: {}, sinema: {} };
+export const photoSrc = key => `img/foto/${key}.jpg`;
 
 const $ = id => document.getElementById(id);
 const pad = n => String(n).padStart(2, '0');
@@ -24,19 +28,11 @@ function el(tag, cls, html) {
 }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
-function waveBars(seed, n = 34) {
-  let h = 2166136261;
-  for (const ch of seed) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
-  let out = '';
-  for (let i = 0; i < n; i++) {
-    h = Math.imul(h ^ (h >>> 13), 1274126177);
-    const v = 20 + ((h >>> 0) % 80);
-    out += `<i style="height:${v}%"></i>`;
-  }
-  return out;
+function waveBars(peaks) {
+  return peaks.map(v => `<i style="height:${Math.round(v * 100)}%"></i>`).join('');
 }
 
-export function createLogView(onPhoto) {
+export function createLogView(onPhoto, onCinema) {
   const log = $('log');
   let lastSeq = 0;
   let lastDate = null;
@@ -51,13 +47,30 @@ export function createLogView(onPhoto) {
       }
       case 'me': return el('div', 'msg out', `${esc(e.text)}${time}`);
       case 'photo': {
-        const b = el('button', 'msg in photo', `<span class="photo-img">${photoSvg(e.key)}</span>${e.caption ? `<span class="cap">${esc(e.caption)}</span>` : ''}${time}`);
+        const b = el('button', 'msg in photo', `<span class="photo-img"><img src="${photoSrc(e.key)}" alt="" loading="lazy" decoding="async"></span>${e.caption ? `<span class="cap">${esc(e.caption)}</span>` : ''}${time}`);
         b.setAttribute('aria-label', `Fotoğraf: ${e.caption || ''}. Büyütmek için dokun.`);
         b.addEventListener('click', () => onPhoto(e));
         return b;
       }
-      case 'voice':
-        return el('div', 'msg in voice', `<div class="voice-row"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg><span class="wave" aria-hidden="true">${waveBars(e.text)}</span><span class="voice-len">${esc(e.len)}</span></div><div class="voice-text">${esc(e.text)}</div>${time}`);
+      case 'voice': {
+        const info = ASSETS.ses[e.key] || { sure: 0, dalga: Array(44).fill(0.3) };
+        const v = el('div', 'msg in voice', `<div class="voice-row"><button class="play" aria-label="Ses kaydını oynat"><svg class="ic"><use href="#i-play"/></svg></button><span class="wave" aria-hidden="true">${waveBars(info.dalga)}</span><span class="voice-len">${fmtDuration(info.sure)}</span></div>${e.text ? `<button class="voice-more">Döküm</button><div class="voice-text" hidden>${esc(e.text)}</div>` : ''}${time}`);
+        v.querySelector('.play').addEventListener('click', () => toggleVoice(v, `ses/${e.key}.ogg`, info.sure));
+        v.querySelector('.wave').addEventListener('click', () => toggleVoice(v, `ses/${e.key}.ogg`, info.sure));
+        const more = v.querySelector('.voice-more');
+        if (more) more.addEventListener('click', () => {
+          const t = v.querySelector('.voice-text');
+          t.hidden = !t.hidden;
+          more.textContent = t.hidden ? 'Döküm' : 'Dökümü gizle';
+        });
+        return v;
+      }
+      case 'cinema': {
+        const c = ASSETS.sinema[e.key] || { baslik: 'Sahne', sure: 0, kapak: '' };
+        const b = el('button', 'cine-card', `<span class="cine-thumb"${c.kapak ? ` style="background-image:url('${c.kapak}')"` : ''}><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span><span class="cine-tx"><b>${esc(c.baslik)}</b><span>Sahne · ${fmtDuration(c.sure)}</span></span>`);
+        b.addEventListener('click', () => onCinema(e.key, false));
+        return b;
+      }
       case 'sys': return el('div', 'sys', esc(e.text));
       case 'day': return el('div', 'day', `${e.n}. gün<b>${esc(e.text)}</b>`);
       case 'end': return el('div', 'day', `Son<b>${esc(e.text)}</b>`);

@@ -1,7 +1,7 @@
 // Senaryo denetçisi: biçim hataları, olmayan hedefler, ulaşılamayan düğümler
 // ve bütün dalların bir sona/ara noktasına ulaşıp ulaşmadığı.
 // Kullanım: node tools/check-story.mjs   (CI'da STORY_OUT=$GITHUB_STEP_SUMMARY ile rapor yazar)
-import { readFileSync, appendFileSync } from 'node:fs';
+import { readFileSync, appendFileSync, existsSync } from 'node:fs';
 import { parse, merge, validate } from '../www/js/parser.js';
 import { newState, advance, choose, answer } from '../www/js/engine.js';
 import { normalize } from '../www/js/parser.js';
@@ -9,6 +9,25 @@ import { STORY_FILES } from '../www/js/story.js';
 
 const story = merge(STORY_FILES.map(f => parse(readFileSync(new URL(`../www/hikaye/${f}`, import.meta.url), 'utf8'), f)));
 const errors = validate(story);
+
+// Dosya denetimi: senaryonun andığı fotoğraf, ses ve sinema dosyaları var mı
+const www = p => new URL(`../www/${p}`, import.meta.url);
+const sesMeta = existsSync(www('ses/ses.json')) ? JSON.parse(readFileSync(www('ses/ses.json'), 'utf8')) : {};
+const sinema = existsSync(www('sinema/sinema.json')) ? JSON.parse(readFileSync(www('sinema/sinema.json'), 'utf8')) : {};
+for (const id of story.order) for (const op of story.nodes[id]) {
+  const where = `${id} (satır ${op.ln})`;
+  if (op.t === 'photo' && !existsSync(www(`img/foto/${op.key}.jpg`))) errors.push(`${where}: img/foto/${op.key}.jpg yok`);
+  if (op.t === 'voice') {
+    if (!existsSync(www(`ses/${op.key}.ogg`))) errors.push(`${where}: ses/${op.key}.ogg yok`);
+    if (!sesMeta[op.key]) errors.push(`${where}: ses.json içinde "${op.key}" yok`);
+  }
+  if (op.t === 'cinema') {
+    const sc = sinema[op.key];
+    if (!sc) { errors.push(`${where}: sinema.json içinde "${op.key}" yok`); continue; }
+    if (!existsSync(www(sc.ses))) errors.push(`${where}: ${sc.ses} yok`);
+    for (const f of sc.kareler) if (f.img && !existsSync(www(f.img))) errors.push(`${where}: ${f.img} yok`);
+  }
+}
 
 // Bütün dalları dolaş (başlangıç saati sabah 10:00 ve gece 22:30 iki ayrı senaryo)
 const START_TIMES = [

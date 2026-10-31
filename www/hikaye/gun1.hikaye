@@ -6,6 +6,8 @@
 
 === basla
 !gun 1 Bilinmeyen Numara
+!sinema prolog
+~ 37sn
 !durum çevrimiçi
 ~ 2sn
 Merhaba?
@@ -298,7 +300,7 @@ Dışarısı simsiyah. Ay yok.
 ...
 duyuyor musun
 Çan çalıyor.
-!ses 0:22 | Uzaktan çan sesi. Ağır, düzenli vuruşlar. Dokuz vuruş. Kısa bir sessizlik. Sonra on vuruş daha. Ece'nin nefesi.
+!ses can1 | Uzaktan çan sesi. Ağır, düzenli vuruşlar. Dokuz vuruş. Kısa bir sessizlik. Sonra on vuruş daha. Ece'nin nefesi.
 Rüzgâr yok. Hiç yok. Yapraklar bile kıpırdamıyor.
 Kim çalıyor bunu?
 * Git bak. -> git_bak
@@ -357,7 +359,7 @@ Kulaklıkla dinliyorum şimdi.
 ...
 Bir dakika.
 Çan seslerinin altında bir şey var. Çok kısık.
-!ses 0:09 | Kayıttan bir parça. Çanın yankısı sönerken çok uzaktan bir kadın sesi. Söz yok, bir ezgi mırıldanıyor. Sonra kesiliyor.
+!ses mirilti | Kayıttan bir parça. Çanın yankısı sönerken çok uzaktan bir kadın sesi. Söz yok, bir ezgi mırıldanıyor. Sonra kesiliyor.
 Biri mırıldanıyor. Bir kadın. Bir türkü gibi.
 Ben bunu duymadım. Sadece mikrofon duydu.
 * Kayıt hatası olabilir. -> kayit_hata
@@ -388,4 +390,6 @@ Bugün tek başıma olsaydım çıldırırdım herhalde.
 === gun1_bitti
 !durum çevrimdışı
 >> Ece çevrimdışı
+~ 8sn
+!sinema gun1_son
 !ara 2. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.

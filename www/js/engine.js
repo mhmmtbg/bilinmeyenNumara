@@ -8,10 +8,7 @@ const MAX_STEPS = 20000;
 
 export function typingMs(op) {
   if (op.t === 'photo') return 2600;
-  if (op.t === 'voice') {
-    const [m, s] = String(op.len).split(':').map(Number);
-    return Math.min(9000, 2500 + ((m || 0) * 60 + (s || 0)) * 250);
-  }
+  if (op.t === 'voice') return 4200;
   return Math.min(8000, 1000 + op.text.length * 50);
 }
 
@@ -105,10 +102,13 @@ export function advance(story, st, now, opt = {}) {
         }
         if (op.t === 'msg') addLog(st, { kind: 'msg', from: op.from, text: op.text, at });
         else if (op.t === 'photo') addLog(st, { kind: 'photo', from: 'Ece', key: op.key, caption: op.caption, at });
-        else addLog(st, { kind: 'voice', from: 'Ece', len: op.len, text: op.text, at });
+        else addLog(st, { kind: 'voice', from: 'Ece', key: op.key, text: op.text, at });
         st.cursor = at; st.i++;
         break;
       }
+      case 'cinema':
+        if (st.cursor > now) return { kind: 'away', wakeAt: st.cursor };
+        addLog(st, { kind: 'cinema', key: op.key, at: st.cursor }); st.i++; break;
       case 'sys':
         if (st.cursor > now) return { kind: 'away', wakeAt: st.cursor };
         addLog(st, { kind: 'sys', text: op.text, at: st.cursor }); st.i++; break;
