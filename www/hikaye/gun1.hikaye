@@ -1,0 +1,391 @@
+# ============================================================
+# GÜN 1 — Bilinmeyen Numara
+# Ece köye varır, defteri, kuleyi, evi ve ilk 21:10 çanını yaşar.
+# Dil: docs/PLAN.md → "Senaryo dili". Kurgu: docs/HIKAYE.md
+# ============================================================
+
+=== basla
+!gun 1 Bilinmeyen Numara
+!durum çevrimiçi
+~ 2sn
+Merhaba?
+~ 6sn
+Bu numara Kemal Doğan'ın defterinde yazıyordu.
+Ona mı ulaştım?
+* Kemal Doğan kim? -> kim
+* Yanlış numara sanırım. -> yanlis
+* Önce sen kimsin? -> sen_kimsin
+
+=== kim
+Dedem.
+Yani... dedemdi. Üç ay önce öldü.
+-> dede
+
+=== yanlis
+Hayır hayır. Yanlış olamaz.
+Numarayı üç kere kontrol ettim. Dedemin el yazısı, rakam rakam.
+Kemal Doğan benim dedem. Üç ay önce kaybettik.
+-> dede
+
+=== sen_kimsin
+$ ad_verdi = 1
+Haklısın, pardon. Kafam çok karışık.
+Ben Ece.
+!ad Ece
+Kemal Doğan benim dedem. Üç ay önce kaybettik.
+-> dede
+
+=== dede
+? ad_verdi == 1 -> dede_defter
+Bu arada ben Ece.
+!ad Ece
+$ ad_verdi = 1
+=== dede_defter
+Dedemin bir defteri vardı. Son sayfasında bu numara yazıyor. Altında da bir not.
+Dur, fotoğrafını atayım.
+!foto defter | Defterin son sayfası
+“Ilgındere'de başın sıkışırsa bu numaraya yaz. O bilir.”
+En altta da: “Saat dokuzu geçe.”
+Ne demek olduğunu bilmiyorum.
+Sen... bir şey biliyor musun?
+* Hayır, kusura bakma. -> bilmiyor
+* Ilgındere neresi? -> ilgindere
+* Başın mı sıkıştı? -> basin
+
+=== bilmiyor
+Tahmin etmiştim.
+Harika gerçekten.
+Dedemin “o bilir” dediği kişi bilmiyormuş.
+~ 25sn
+Pardon. Sana kızmıyorum.
+Sadece bütün umudumu bu numaraya bağlamıştım.
+-> nerede
+
+=== ilgindere
+$ baraj_anlatti = 1
+Dedemin köyü. Ya da artık köy denirse.
+Haritadan siliniyor. Baraj yapıldı, kapakları dün kapattılar.
+Bir hafta sonra burası gölün dibi olacak.
+-> nerede
+
+=== basin
+$ guven + 1
+Biraz.
+Tamam, biraz fazla.
+-> nerede
+
+=== nerede
+? baraj_anlatti == 1 -> nerede_devam
+Şu an Ilgındere'deyim. Dedemin köyü.
+Baraj yapıldı, kapakları dün kapattılar. Bir hafta sonra burası gölün dibi olacak.
+=== nerede_devam
+Köyü boşaltmışlar. Kimse yok. Kapıların üstünde kırmızı çarpılar.
+Ben ses kaydı yapıyorum, belgeseller için. Köyün son seslerini kaydetmeye geldim.
+Bir de... dedemin hiç anlatmadığı bir şeyi öğrenmeye.
+Neyse. Asıl sorun şu:
+Köprüden geçerken kaydım. Telefon dereye düştü.
+Çıkardım ama ekranın yarısı gitti. Sadece bu konuşmanın yazma yeri çalışıyor, başka hiçbir yere geçemiyorum.
+Arama da düşüyor. Mesajlar bazen gidiyor, bazen gitmiyor.
+!pil 41
+Pilim de %41.
+Yani şu an dünyayla tek bağlantım sensin, bilinmeyen numara.
+* Hemen oradan çık, tehlikeli. -> cik
+* 112'yi aramayı denedin mi? -> ara112
+* Tamam. Buradayım, anlat. -> buradayim
+
+=== cik
+Çıkmayacağım.
+Kusura bakma ama buraya dört saat otobüs, iki saat yürüyüşle geldim.
+Su gelmeden görmem gereken şeyler var.
+-> inat
+
+=== ara112
+Denedim. Bağlanmıyor.
+Bağlansa da... burası yasak bölge. Tel örgünün altından girdim.
+Jandarma gelirse beni çıkarır, bir daha da giremem.
+-> inat
+
+=== buradayim
+$ guven + 1
+Teşekkür ederim.
+Gerçekten.
+-> inat
+
+=== inat
+Söz, gerçekten tehlike olursa yola yürürüm. Ana yol üç saat.
+Ama önce köy meydanına gideceğim. Dedemin evini bulmak istiyorum.
+Birazdan yazarım.
+~ 4dk
+Meydandayım.
+Burada çok garip bir sessizlik var. Ses kayıtçısı olarak söylüyorum: sessizlik bile yankı yapıyor.
+Bir saat kulesi var. Taştan. Tepesinde bir çan.
+!foto kule | Ilgındere saat kulesi
+Saate bak.
+* Dokuzu on geçe durmuş. -> saat_dikkat
+* Ne var saatte? -> saat_ne
+
+=== saat_dikkat
+$ guven + 1
+Aynen.
+Dokuzu on geçe.
+-> saat_devam
+
+=== saat_ne
+Dokuzu on geçe durmuş.
+=== saat_devam
+Dedemin notu: “Saat dokuzu geçe.”
+Tesadüf mü bu?
+* Tesadüftür. Eski saatler durur. -> tesaduf
+* Bence değil. -> tesaduf_degil
+
+=== tesaduf
+Haklısın. Muhtemelen.
+Ama tüylerim diken diken oldu yine de.
+-> nazli
+
+=== tesaduf_degil
+$ guven + 1
+Ben de öyle düşünmüyorum.
+=== nazli
+Sana bir şey anlatayım. Ailede fısıltıyla anlatılan bir hikâye.
+Dedemin bir kız kardeşi varmış. Nazlı.
+1987'de, düğününden bir gece önce kaybolmuş.
+O gece kulenin çanı kendi kendine çalmış. Kimse çalmamış ama çalmış.
+Sabah Nazlı yokmuş. “Dere aldı” demişler.
+Dedem ertesi hafta köyü terk etmiş. Bir daha hiç dönmemiş, hiç de anlatmamış.
+Ben bunları annemden duydum.
+* Çan kendi kendine çalmaz. -> mantik
+* Dedene ne olmuş peki? -> dedeye_ne
+* Ürperdim. -> urperdim
+
+=== mantik
+Biliyorum.
+Biri çaldı. Ama kim, neden?
+-> ev_ara
+
+=== dedeye_ne
+$ guven + 1
+Bilmiyorum. Bütün hayatı boyunca bir şeyden kaçar gibi yaşadı.
+Son aylarında deftere bir şeyler yazıp durdu. Kimseye göstermedi, sonra bana bıraktı.
+-> ev_ara
+
+=== urperdim
+Ben de. Hem de onun köyünün tam ortasında, tek başıma.
+İyi ki yazıyorsun.
+=== ev_ara
+Evi arayacağım. Annem “kuleye bakan, mavi kapılı ev” demişti.
+Pil için biraz kapatıyorum. Bulunca yazarım.
+!durum çevrimdışı
+~ 20dk
+!durum çevrimiçi
+!pil 37
+Buldum.
+Kapının mavisi solmuş ama hâlâ mavi.
+İçeride hiçbir şey yok, her şeyi almışlar.
+Ama...
+~ 30sn
+Mutfak kapısının kasasında kurşun kalemle çizgiler var.
+Boy ölçüsü. Çocukken ölçerler ya, öyle.
+!foto duvar | Mutfak kapısının kasası
+“Kemal 1971.” “Nazlı 1973.”
+Dedemin çocukluk boyu benim belime geliyor.
+~ 15sn
+Pardon. Biraz duygulandım.
+* Acele etme, buradayım. -> duygu_sefkat
+* Fotoğrafla, su gelince kaybolacak. -> duygu_pratik
+
+=== duygu_sefkat
+$ guven + 1
+Sağ ol.
+Dedemi en son hastanede gördüm. Beni tanımadı. “Nazlı, sen misin?” dedi.
+O zaman anlamamıştım.
+-> cicek
+
+=== duygu_pratik
+Çektim bile. Kayda da aldım, odanın sesini bile.
+Su gelince bu çizgiler de gidecek. En azından bende kalsınlar.
+=== cicek
+~ 20sn
+Bir dakika.
+Pencerenin içinde bir dal var. Ilgın dalı. Pembe çiçekli.
+Taze.
+Yani bugün ya da dün bırakılmış.
+Köy boş değil miydi?
+* Biri hâlâ orada yaşıyor olabilir. -> biri_var
+* Belki bir bekçi vardır. -> bekci
+* Ece, bu hiç hoşuma gitmedi. -> hosuma
+
+=== biri_var
+Gitmeyi reddeden birileri olabilir. Haberlerde görmüştüm, bazı yaşlılar çıkmıyor.
+Ama neden bu eve? Neden bu dal?
+-> gece_plan
+
+=== bekci
+Olabilir. Gelirken yukarıda bir şantiye gördüm. Bir konteyner, bir de jeneratör sesi.
+Ama bir bekçi boş bir eve neden çiçek bıraksın?
+-> gece_plan
+
+=== hosuma
+Bana da.
+Ama içimde korkudan çok merak var. Bu kötü bir şey herhalde.
+=== gece_plan
+Kalacak bir yer bulmalıyım.
+Okul binası sağlam görünüyor. Çatısı var, camları duruyor.
+Uyku tulumum yanımda, sorun değil.
+? saat >= 20 -> gece_plan_gec
+? saat < 6 -> gece_plan_gec
+Akşama kadar köyü kaydedeceğim. Pilim azalıyor, telefonu kapalı tutacağım.
+=== gece_plan_son
+Sana saat dokuzu on geçe yazacağım.
+Dedemin dediği saatte. Bakalım bir şey olacak mı.
+* Tamam. Dikkatli ol. -> kapanis_iyi
+* Söz mü? -> kapanis_soz
+* Bu saat işi biraz ürkütücü. -> kapanis_urkutucu
+
+=== kapanis_iyi
+Olurum.
+-> bekle_dokuz
+
+=== kapanis_soz
+$ guven + 1
+Söz.
+-> bekle_dokuz
+
+=== kapanis_urkutucu
+Biliyorum. Ama elimde başka ipucu yok.
+-> bekle_dokuz
+
+# Geç saatte başlayan oyuncu: 21:10 bu gece kaçtı. Ece uyur, sabah kısa bir sahne, akşam çan.
+=== gece_plan_gec
+Ama bu saatte ortalık zifiri karanlık. Fenerle daha fazla dolaşmayacağım.
+Okulda uyuyacağım. Pilim de azaldı.
+Sabah yazarım. Söz.
+* İyi geceler Ece. -> gece_plan_gec_iyi
+* Kapıyı iyi kapat. -> gece_plan_gec_kapi
+
+=== gece_plan_gec_iyi
+İyi geceler, bilinmeyen numara.
+-> sabah_ara
+
+=== gece_plan_gec_kapi
+$ guven + 1
+Kapatırım. Önüne bir sıra da çekerim. Teşekkürler.
+=== sabah_ara
+!durum çevrimdışı
+~ @08:30 en az 5sa
+!durum çevrimiçi
+!pil 34
+Günaydın.
+Uyumuşum. Hem de deliksiz. İnanamıyorum.
+Gece bir an çan sesiyle uyandım sandım. Rüya mıydı bilmiyorum, saate bakmadım.
+Bugün köyü gün ışığında kaydedeceğim. Kulenin dibinde, evin önünde, derede.
+Telefonu kapalı tutacağım. Akşam dokuzu on geçe yazarım.
+Dedemin dediği saatte. Bakalım bir şey olacak mı.
+* Gece çan sesi rüya değilse? -> sabah_ruya
+* Tamam. Pilini koru. -> bekle_dokuz
+
+=== sabah_ruya
+Onu da bu akşam öğreneceğiz.
+=== bekle_dokuz
+!durum çevrimdışı
+~ @21:10 en az 20dk
+!durum çevrimiçi
+!pil 22
+Saat dokuzu on geçiyor.
+Okuldayım. Bir sınıfın içinde. Tahtada hâlâ tebeşir yazısı var: “1987-1988 Ders Yılı.”
+Dışarısı simsiyah. Ay yok.
+~ 40sn
+...
+duyuyor musun
+Çan çalıyor.
+!ses 0:22 | Uzaktan çan sesi. Ağır, düzenli vuruşlar. Dokuz vuruş. Kısa bir sessizlik. Sonra on vuruş daha. Ece'nin nefesi.
+Rüzgâr yok. Hiç yok. Yapraklar bile kıpırdamıyor.
+Kim çalıyor bunu?
+* Git bak. -> git_bak
+* Kapıyı kilitle, sabahı bekle. -> kilitle
+* Kayda devam et, her şeyi kaydet. -> kayit
+
+# ---------- 21:10 dalları: her biri farklı bir ipucu bırakır ----------
+
+=== git_bak
+$ fener_gordu = 1
+Tamam. Tamam. Gidiyorum.
+Kaydedici açık, fener kapalı. Görünmek istemiyorum.
+~ 3dk
+Kuledeyim.
+Kapısı zincirli. Dışarıdan. Paslı bir asma kilit.
+İçeride kimse olamaz.
+Ama çan susunca...
+Derenin karşı yakasında bir ışık gördüm. Fener ışığı. Sallanarak uzaklaştı.
+Orada eski bir değirmen var galiba. Karanlıkta siluetini seçebiliyorum.
+Işık oraya gitti ve söndü.
+* Peşinden gitme. Köprü yıkık. -> git_bak_dur
+* Değirmen. Aklında tut. -> git_bak_not
+
+=== git_bak_dur
+$ guven + 1
+Gitmiyorum. Bu gece değil. Okula dönüyorum.
+-> gece_son
+
+=== git_bak_not
+Tuttum. Yarın, gün ışığında.
+-> gece_son
+
+=== kilitle
+$ ayak_sesi = 1
+$ guven + 1
+Kilitliyorum. Kapıya bir sıra itiyorum.
+~ 2dk
+Çan sustu.
+...
+Biri geçiyor.
+Pencerenin önünden. Ayak sesi. Çakıl taşları.
+Yavaş. Acelesi yok.
+~ 1dk
+Gitti.
+Okula dönüp bakmadı bile. Yani beni aramıyor. Bir yere gidiyor.
+Sabah izlerine bakacağım. Toprak çamurlu, iz kalır.
+-> gece_son
+
+=== kayit
+$ kayit_mirilti = 1
+Mesleğim bu zaten.
+Pencereyi açıyorum, mikrofonu dışarı uzatıyorum.
+~ 2dk
+Çan sustu. Kayıt hâlâ açık.
+Kulaklıkla dinliyorum şimdi.
+...
+Bir dakika.
+Çan seslerinin altında bir şey var. Çok kısık.
+!ses 0:09 | Kayıttan bir parça. Çanın yankısı sönerken çok uzaktan bir kadın sesi. Söz yok, bir ezgi mırıldanıyor. Sonra kesiliyor.
+Biri mırıldanıyor. Bir kadın. Bir türkü gibi.
+Ben bunu duymadım. Sadece mikrofon duydu.
+* Kayıt hatası olabilir. -> kayit_hata
+* Bu kaydı sakın silme. -> kayit_sakla
+
+=== kayit_hata
+Olabilir. Mikrofonlar bazen radyo yayını yakalar.
+Ama burada radyo bile çekmiyor.
+-> gece_son
+
+=== kayit_sakla
+$ guven + 1
+Silmem. İki yere yedekledim bile. Meslek refleksi.
+=== gece_son
+~ 30sn
+!pil 19
+Pilim %19.
+Telefonu kapatıp uyuyacağım. Sabah yazarım.
+...
+Bugün tek başıma olsaydım çıldırırdım herhalde.
+? guven >= 6 -> gece_son_sicak
+İyi geceler, bilinmeyen numara.
+-> gun1_bitti
+
+=== gece_son_sicak
+İyi ki cevap verdin.
+İyi geceler, bilinmeyen numara.
+=== gun1_bitti
+!durum çevrimdışı
+>> Ece çevrimdışı
+!ara 2. gün henüz yazılmadı. Hikâye şimdilik burada duruyor.

@@ -1,0 +1,45 @@
+/* Renkler ve ölçüler. Düz tasarım: gölge, parıltı ve bulanıklık yok. */
+:root {
+  --font: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', ui-monospace, monospace;
+  --scale: 1;
+  --r: 18px;
+  --r-sm: 10px;
+  --gap: 16px;
+}
+
+:root, [data-theme="dark"] {
+  --bg: #0E1316;
+  --bg-2: #141B1F;
+  --line: #233038;
+  --text: #E8EDEF;
+  --muted: #8494A0;
+  --faint: #56656F;
+  --ece: #1C262C;
+  --ece-text: #E8EDEF;
+  --me: #2C5A4E;
+  --me-text: #F1FAF6;
+  --accent: #79CDB2;
+  --accent-ink: #0B1F19;
+  --danger: #E27D6A;
+  --chip: #1A2328;
+  --photo-frame: #0A0E10;
+}
+
+[data-theme="light"] {
+  --bg: #EDF0F1;
+  --bg-2: #E3E8EA;
+  --line: #CDD5D9;
+  --text: #142026;
+  --muted: #5B6C76;
+  --faint: #8A99A2;
+  --ece: #FFFFFF;
+  --ece-text: #142026;
+  --me: #CFEADF;
+  --me-text: #0F2A21;
+  --accent: #2F8C70;
+  --accent-ink: #FFFFFF;
+  --danger: #B9472F;
+  --chip: #FFFFFF;
+  --photo-frame: #D5DCDF;
+}

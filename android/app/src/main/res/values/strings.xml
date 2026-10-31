@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Bilinmeyen Numara</string>
+    <string name="title_activity_main">Bilinmeyen Numara</string>
+    <string name="package_name">com.mhmmtbg.bilinmeyennumara</string>
+    <string name="custom_url_scheme">com.mhmmtbg.bilinmeyennumara</string>
+</resources>

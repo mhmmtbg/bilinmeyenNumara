@@ -1,0 +1,70 @@
+name: Doğrulama ve APK
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  dogrula:
+    name: Senaryo ve motor testleri
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Motor testleri
+        run: node tools/test-engine.mjs
+      - name: Senaryo denetimi (bütün dallar, ölü düğüm, süreler)
+        run: STORY_OUT="$GITHUB_STEP_SUMMARY" node tools/check-story.mjs
+
+  apk:
+    name: Android APK
+    needs: dogrula
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+      # Android SDK çalıştırıcıda hazır kurulu (ANDROID_HOME)
+      - run: npm ci
+      - name: Sürüm numarasını yaz
+        run: |
+          echo "export const VERSION = '0.1.${{ github.run_number }}';" > www/js/version.js
+          echo "export const BUILD = '${GITHUB_SHA::7}';" >> www/js/version.js
+          echo "VERSION_CODE=${{ github.run_number }}" >> $GITHUB_ENV
+          echo "VERSION_NAME=0.1.${{ github.run_number }}" >> $GITHUB_ENV
+      - name: Web dosyalarını Android projesine kopyala
+        run: npx cap sync android
+      - name: APK derle
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk "../bilinmeyen-numara-${VERSION_NAME}.apk"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bilinmeyen-numara-apk
+          path: bilinmeyen-numara-*.apk
+      - name: APK'yı "son-derleme" sürümüne yükle
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete son-derleme --yes --cleanup-tag || true
+          gh release create son-derleme bilinmeyen-numara-${VERSION_NAME}.apk \
+            --title "Son derleme ${VERSION_NAME}" --prerelease --target "$GITHUB_SHA" \
+            --notes "Test APK'sı (${GITHUB_SHA::7}). Her derlemede aynı anahtarla imzalanır; eski sürümün üstüne kurulur. Ayarlarda test araçları (zaman hızı, beklemeyi atla) açıktır."

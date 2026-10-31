@@ -1,0 +1,23 @@
+{
+  "name": "bilinmeyen-numara",
+  "version": "0.1.0",
+  "description": "Bilinmeyen Numara — gerçek zamanlı mesajlaşma macera oyunu (Android)",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "serve": "python3 -m http.server 8080 -d www",
+    "test": "node tools/test-engine.mjs && node tools/check-story.mjs",
+    "check": "node tools/check-story.mjs",
+    "sync": "cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/local-notifications": "^8.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.0"
+  }
+}

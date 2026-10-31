@@ -1,0 +1,15 @@
+{
+  "appId": "com.mhmmtbg.bilinmeyennumara",
+  "appName": "Bilinmeyen Numara",
+  "webDir": "www",
+  "backgroundColor": "#0E1316",
+  "android": {
+    "backgroundColor": "#0E1316"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_message",
+      "iconColor": "#79CDB2"
+    }
+  }
+}
