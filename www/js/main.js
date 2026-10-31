@@ -6,7 +6,7 @@ import { loadGame, saveGame, clearGame, loadPrefs, savePrefs } from './save.js';
 import { createLogView, renderDock, renderHeader, ASSETS, photoSrc } from './ui.js';
 import { setCinemaData, playCinema, cinemaPlaying } from './cinema.js';
 import { stopVoice } from './player.js';
-import { requestPermission, permissionState, pickNotifications, schedule, cancelAll } from './notify.js';
+import { requestPermission, permissionState, pickNotifications, schedule, cancelAll, clearDelivered, onReceived, ensureChannel, testNotification } from './notify.js';
 import { FEATURES } from './features.js';
 import { VERSION, BUILD } from './version.js';
 
@@ -58,7 +58,7 @@ function openCinema(key, autoplay) {
   playCinema(key, {
     autoplay,
     onDone: () => {
-      // Sinema bitti ya da geçildi: Ece'nin hemen ardından gelen mesajını bekletme
+      // Sinema bitti ya da geçildi: Elif'in hemen ardından gelen mesajını bekletme
       if (st && lastStatus?.kind === 'away' && lastStatus.wakeAt - now() < 90_000) skipWait(story, st, now(), opt());
       tick();
     },
@@ -97,6 +97,7 @@ function tick() {
   });
 
   checkCinema();
+  planNotifications();
 
   let next = null;
   if (status.kind === 'typing') next = status.at - t;
@@ -105,15 +106,23 @@ function tick() {
 }
 
 // ---------- Bildirimler ----------
-async function planNotifications() {
+// Uygulama açıkken de planlanır (arka plana geçişte JS durdurulabilir). Öndeyken yakında düşecek
+// mesajlar için bildirim kurulmaz; zaten ekranda görünecekler.
+const isVisible = () => !document.hidden;
+function planNotifications() {
   if (!st || !story) return;
-  const t = now();
-  const { items } = upcoming(story, st, t, opt());
-  await schedule(pickNotifications(items, t, st.meta.ad || 'Bilinmeyen Numara'));
+  try {
+    const t = now();
+    const { items } = upcoming(story, st, t, opt());
+    let list = pickNotifications(items, t, st.meta.ad || 'Bilinmeyen Numara');
+    if (isVisible()) list = list.filter(n => n.at > t + 90_000);
+    schedule(list);
+  } catch (e) { console.warn(e); }
 }
 
 function onHide() { clearTimeout(timer); planNotifications(); }
-function onShow() { cancelAll(); tick(); }
+function onShow() { clearDelivered(); tick(); }
+onReceived(() => { if (isVisible()) clearDelivered(); });
 
 document.addEventListener('visibilitychange', () => (document.hidden ? onHide() : onShow()));
 const App = window.Capacitor?.Plugins?.App;
@@ -137,15 +146,27 @@ $('viewer').addEventListener('click', () => { $('viewer').hidden = true; });
 async function openSettings() {
   $('settings').hidden = false;
   const p = await permissionState();
-  $('notifState').textContent = { granted: 'Açık', denied: 'Kapalı (telefon ayarlarından aç)', prompt: 'Sorulmadı', yok: 'Bu cihazda yok' }[p] || p;
+  $('notifState').textContent = { granted: 'Açık', denied: 'Kapalı', prompt: 'Sorulmadı', 'prompt-with-rationale': 'Sorulmadı', yok: 'Bu cihazda yok' }[p] || p;
 }
+$('notifTest').addEventListener('click', async () => {
+  $('notifTest').disabled = true;
+  const r = await testNotification(st?.meta.ad || 'Bilinmeyen Numara');
+  $('notifTest').disabled = false;
+  $('notifHelp').hidden = false;
+  $('notifHelp').textContent = r === 'kuruldu'
+    ? 'Deneme bildirimi 5 saniye içinde gelecek. Uygulamayı arka plana al ve bekle. Gelmezse telefonun ayarlarından bu uygulama için bildirimlere ve pil kısıtlamasının kaldırılmasına izin ver (Xiaomi, Huawei ve bazı Samsung modellerinde "Otomatik başlat" ya da "Pil: Kısıtlama yok").'
+    : r === 'yok' ? 'Bu cihazda bildirim yok (tarayıcıda oynuyorsun).'
+    : r === 'denied' ? 'Bildirim izni kapalı. Telefonun Ayarlar > Uygulamalar > Bilinmeyen Numara > Bildirimler bölümünden aç.'
+    : `Bildirim kurulamadı (${r}).`;
+  openSettings();
+});
 $('settingsBtn').addEventListener('click', openSettings);
 $('settings').addEventListener('click', e => {
   if (e.target === $('settings') || e.target.closest('[data-close]')) $('settings').hidden = true;
 });
 $('resetBtn').addEventListener('click', () => {
   if (!confirm('Hikâye en baştan başlayacak. Bütün mesajlar silinecek. Emin misin?')) return;
-  clearGame(); cancelAll();
+  clearGame(); cancelAll(); clearDelivered();
   try { localStorage.removeItem(SEEN_KEY); } catch {}
   st = null; view.reset();
   $('settings').hidden = true;
@@ -188,6 +209,7 @@ $('startBtn').addEventListener('click', async () => {
 // ---------- Başlat ----------
 (async function boot() {
   applyPrefs();
+  ensureChannel();
   try {
     const [s, ses, sinema] = await Promise.all([
       loadStory(),
@@ -204,5 +226,5 @@ $('startBtn').addEventListener('click', async () => {
   }
   st = loadGame();
   window.SplashScreen?.hide?.();
-  if (st) { cancelAll(); showChat(); } else showIntro();
+  if (st) { clearDelivered(); showChat(); } else showIntro();
 })();

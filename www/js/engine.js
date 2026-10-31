@@ -2,8 +2,8 @@
 // st.cursor = son olayın gerçekleştiği an (ms). Bir mesajın teslim anı = cursor + yazma süresi.
 // Uygulama kapalıyken geçen zaman, advance(now) çağrıldığında olması gereken saatlerle yakalanır.
 
-export const SAVE_VERSION = 1;
-const READ_PAUSE = 1400;          // oyuncu cevap verdikten sonra Ece'nin okuyup yazmaya başlaması
+export const SAVE_VERSION = 2;   // 2: karakter adı Elif, metinler yenilendi
+const READ_PAUSE = 1400;          // oyuncu cevap verdikten sonra Elif'in okuyup yazmaya başlaması
 const MAX_STEPS = 20000;
 
 export function typingMs(op) {
@@ -97,12 +97,12 @@ export function advance(story, st, now, opt = {}) {
         const dur = typingMs(op) / scale;
         const at = st.cursor + dur;
         if (at > now) {
-          const from = op.t === 'msg' ? op.from : 'Ece';
+          const from = op.t === 'msg' ? op.from : 'Elif';
           return now >= st.cursor ? { kind: 'typing', from, at } : { kind: 'away', wakeAt: st.cursor };
         }
         if (op.t === 'msg') addLog(st, { kind: 'msg', from: op.from, text: op.text, at });
-        else if (op.t === 'photo') addLog(st, { kind: 'photo', from: 'Ece', key: op.key, caption: op.caption, at });
-        else addLog(st, { kind: 'voice', from: 'Ece', key: op.key, text: op.text, at });
+        else if (op.t === 'photo') addLog(st, { kind: 'photo', from: 'Elif', key: op.key, caption: op.caption, at });
+        else addLog(st, { kind: 'voice', from: 'Elif', key: op.key, text: op.text, at });
         st.cursor = at; st.i++;
         break;
       }
@@ -207,7 +207,7 @@ export function rewind(st, now) {
   return true;
 }
 
-// Uzun beklemeyi bitirir: Ece hemen yazmaya başlar (geliştirici / ileride ödüllü reklam)
+// Uzun beklemeyi bitirir: Elif hemen yazmaya başlar (geliştirici / ileride ödüllü reklam)
 export function skipWait(story, st, now, opt = {}) {
   const s = advance(story, st, now, opt);
   if (s.kind !== 'away') return false;

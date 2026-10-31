@@ -157,7 +157,7 @@ export function parse(text, file = 'hikaye') {
     // Konuşmacılı mesaj: "Nazlı: metin" (yalnızca tanımlı konuşmacılar)
     const sp = line.match(/^(Nazlı|Rıza|Selim|Bilinmeyen):\s*(.+)$/);
     if (sp) { push(ln, { t: 'msg', from: sp[1], text: sp[2] }); return; }
-    push(ln, { t: 'msg', from: 'Ece', text: line });
+    push(ln, { t: 'msg', from: 'Elif', text: line });
   });
 
   return { nodes, order, errors };

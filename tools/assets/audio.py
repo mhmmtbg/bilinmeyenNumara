@@ -1,7 +1,7 @@
 """Oyunun bütün sesleri burada sentezlenir (kayıt dosyası yok, tamamen kodla üretilir).
 
 Çıktı:
-  www/ses/<anahtar>.ogg      Ece'nin gönderdiği ses kayıtları (mono, Opus)
+  www/ses/<anahtar>.ogg      Elif'in gönderdiği ses kayıtları (mono, Opus)
   www/ses/ses.json           süre ve dalga formu (baloncuk çizimi için)
   www/sinema/<anahtar>.ogg   sinematik müzik ve ortam sesleri (stereo, Opus)
 
@@ -263,9 +263,9 @@ USSAK = {'la': LA3, 'si': LA3 * cents(150), 'do': LA3 * cents(300), 're': LA3 * 
          'sol_': LA3 * cents(-200), 'mi_': LA3 * cents(-500)}
 
 
-# ---------------------------------------------------------------- Ece'nin ses kayıtları
+# ---------------------------------------------------------------- Elif'in ses kayıtları
 def rec_can1():
-    """0:22 — Okul penceresinden, uzaktan çan: dokuz vuruş, sessizlik, on vuruş. Ece'nin nefesi."""
+    """0:22 — Okul penceresinden, uzaktan çan: dokuz vuruş, sessizlik, on vuruş. Elif'in nefesi."""
     D = 22.0
     n = secs(D)
     bells = np.zeros(n)
@@ -414,7 +414,7 @@ def cine_gun2_son():
 
 
 def rec_kopru_sesi():
-    """0:12 — köprünün üstünden akan suyun gürültüsü, yakın; ortada Ece'nin kısık sesi yok, sadece bir öksürük/nefes."""
+    """0:12 — köprünün üstünden akan suyun gürültüsü, yakın; ortada Elif'in kısık sesi yok, sadece bir öksürük/nefes."""
     D = 12.0
     n = secs(D)
     x = river(n, 2.6) + bp(brown(n), 40, 220) * 0.35 + hp(white(n), 2500) * 0.03

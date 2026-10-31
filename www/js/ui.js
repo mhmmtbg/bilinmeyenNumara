@@ -42,7 +42,7 @@ export function createLogView(onPhoto, onCinema) {
     const time = `<span class="t">${hhmm(e.at)}</span>`;
     switch (e.kind) {
       case 'msg': {
-        const speaker = e.from !== 'Ece' ? `<span class="speaker">${esc(e.from)}</span>` : '';
+        const speaker = !['Elif', 'Ece'].includes(e.from) ? `<span class="speaker">${esc(e.from)}</span>` : '';
         return el('div', 'msg in', `${speaker}${esc(e.text)}${time}`);
       }
       case 'me': return el('div', 'msg out', `${esc(e.text)}${time}`);
@@ -150,7 +150,7 @@ export function renderDock(st, status, h) {
     return;
   }
   if (status.kind === 'typing') {
-    dock.append(el('div', 'dock-note', `<span>${esc(status.from === 'Ece' ? name : status.from)} yazıyor…</span>`));
+    dock.append(el('div', 'dock-note', `<span>${esc(['Elif', 'Ece'].includes(status.from) ? name : status.from)} yazıyor…</span>`));
     return;
   }
   // uzakta

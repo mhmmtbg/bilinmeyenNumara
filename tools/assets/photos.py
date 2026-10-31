@@ -1,4 +1,4 @@
-"""Ece'nin telefonundan "çekilmiş" fotoğraflar. Tamamen prosedürel (dışarıdan görüntü yok).
+"""Elif'in telefonundan "çekilmiş" fotoğraflar. Tamamen prosedürel (dışarıdan görüntü yok).
 Çıktı: www/img/foto/<anahtar>.jpg (1200×900)
 Gerçek bir fotoğrafla değiştirmek için aynı adla dosyayı www/img/foto/ içine koyman yeter
 (bkz. docs/GORSELLER.md); bu betik o zaman --zorla verilmedikçe dosyanın üzerine yazmaz."""

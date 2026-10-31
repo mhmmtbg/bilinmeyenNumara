@@ -87,7 +87,7 @@ Motor "şimdi"yi parametre olarak alır ve o ana kadar olması gereken her şeyi
 | Satır | Anlamı |
 | --- | --- |
 | `=== dugum_adi` | Düğüm başlangıcı. Düğümün sonunda atlama yoksa sıradaki düğüme geçilir. |
-| `Metin` | Ece'den mesaj (yazma süresi uzunluğa göre otomatik) |
+| `Metin` | Elif'ten mesaj (yazma süresi uzunluğa göre otomatik) |
 | `Nazlı: metin` | Başka bir konuşmacıdan mesaj |
 | `>> metin` | Sistem notu (ortada, gri) |
 | `~ 30sn` · `~ 5dk` · `~ 2sa` | Bekleme |
@@ -100,7 +100,7 @@ Motor "şimdi"yi parametre olarak alır ve o ana kadar olması gereken her şeyi
 | `!foto anahtar \| alt yazı` | Fotoğraf baloncuğu |
 | `!ses anahtar \| döküm` | Ses kaydı (`www/ses/<anahtar>.ogg`) |
 | `!sinema anahtar` | Tam ekran sinematik (`www/sinema/sinema.json`) |
-| `!pil 41` · `!ad Ece` · `!durum çevrimdışı` · `!gun 2 Bekçi` | Başlık ve durum |
+| `!pil 41` · `!ad Elif` · `!durum çevrimdışı` · `!gun 2 Bekçi` | Başlık ve durum |
 | `!son anahtar \| Sonun adı` · `!ara` | Son / yazılmamış bölüm sınırı |
 
-Koşullarda `saat` değişkeni Ece'nin o anki yerel saatidir (0–23).
+Koşullarda `saat` değişkeni Elif'in o anki yerel saatidir (0–23).

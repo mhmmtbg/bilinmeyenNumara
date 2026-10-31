@@ -2,7 +2,7 @@
 
 Gerçek zamanlı bir mesajlaşma macera oyunu (Android).
 
-Telefonuna bilinmeyen bir numaradan mesaj gelir: Ece, dedesinin defterindeki numaraya yazmıştır ve baraj suları altında kalmak üzere olan bir köyde, Ilgındere'de, mahsur kalmıştır. Hikâye senin saatinle akar; Ece "yarım saate yazarım" derse gerçekten yarım saat sonra yazar, mesajları bildirim olarak gelir. Her cevabın hikâyeyi değiştirir.
+Telefonuna bilinmeyen bir numaradan mesaj gelir: Elif, dedesinin defterindeki numaraya yazmıştır ve baraj suları altında kalmak üzere olan bir köyde, Ilgındere'de, mahsur kalmıştır. Hikâye senin saatinle akar; Elif "yarım saate yazarım" derse gerçekten yarım saat sonra yazar, mesajları bildirim olarak gelir. Her cevabın hikâyeyi değiştirir.
 
 ## Belgeler
 

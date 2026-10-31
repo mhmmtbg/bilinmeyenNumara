@@ -334,7 +334,7 @@ def c_kopru(flooded=False):
         img = light(img, np.ones((H, W), np.float32) * 0.8, (1.05, 0.95, 0.88))
         img = mist(img, 620, 50, 0.3, (0.78, 0.70, 0.66), 5)
         return phone_photo(img, 29, grain=0.03, vignette=0.36, warm=0.02, sharpen=0.4, soft=0.9, contrast=1.06, noise_dark=1.3)
-    # figür: sırt çantalı Ece
+    # figür: sırt çantalı Elif
     fx, fy = 1260, 652
     fig = mask_draw(H, W, lambda d, ss: (d.ellipse([(fx - 7) * ss, (fy - 52) * ss, (fx + 7) * ss, (fy - 38) * ss], fill=255),
                                          d.polygon([((fx - 10) * ss, (fy - 38) * ss), ((fx + 10) * ss, (fy - 38) * ss), ((fx + 9) * ss, (fy - 8) * ss), ((fx - 9) * ss, (fy - 8) * ss)], fill=255),
@@ -436,7 +436,7 @@ def c_gece():
     img = img * (1 - sil[..., None]) + np.array([0.012, 0.013, 0.018]) * sil[..., None]
     # kulede saat camı ay ışığını yakalar
     img = comp(img, (0.10, 0.11, 0.13), mask_draw(H, W, lambda d, ss: d.ellipse([920 * ss, 420 * ss, 990 * ss, 490 * ss], outline=255, width=3 * ss)))
-    # okulun penceresinde Ece'nin telefon ışığı
+    # okulun penceresinde Elif'in telefon ışığı
     img = comp(img, (0.12, 0.20, 0.22), mask_poly(H, W, [(380, 905), (410, 905), (410, 930), (380, 930)]) * 0.9)
     # dere: koyu, fenerin uzun yansıması
     img = water(img, 980, H, None, 14, (0.02, 0.025, 0.04), 0.6, 72)
@@ -555,7 +555,7 @@ SCENES = {
         'kareler': [
             ('c_baraj', 7.0, [0.62, 1.04], [0.72, 1.12], [(0.8, 6.4, 'Ilgın Barajı’nın kapakları dün kapandı.')]),
             ('c_koy', 7.0, [0.40, 1.12], [0.52, 1.04], [(0.4, 6.4, 'Yedi gün içinde Ilgındere suyun altında kalacak.')]),
-            ('c_kopru', 10.2, [0.36, 1.0], [0.53, 1.22], [(0.6, 4.8, 'Ece Doğan, 27. Dedesinin köyüne ilk kez geliyor.'),
+            ('c_kopru', 10.2, [0.36, 1.0], [0.53, 1.22], [(0.6, 4.8, 'Elif Doğan, 27. Dedesinin köyüne ilk kez geliyor.'),
                                                         (5.0, 9.8, 'Köprünün ortası, köyde telefonun çektiği tek yer.')]),
             ('c_dusus', 1.9, [0.50, 1.0], [0.50, 1.10], [(0.1, 1.85, 'Taşlar ıslak.')]),
             ('c_telefon', 6.0, [0.47, 1.18], [0.45, 1.05], [(0.3, 2.9, 'Telefon dereye düştü.'), (3.1, 5.9, 'Sudan çıkardığında ekranın yarısı ölmüştü.')]),

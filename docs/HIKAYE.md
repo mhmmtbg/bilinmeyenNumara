@@ -9,16 +9,16 @@ Dedesinin defterindeki numaraya yazan genç bir ses kayıtçısı, baraj suları
 
 ## Oyuncunun konumu
 
-Oyuncu kimseyi canlandırmaz: **kendisidir**. Telefonuna bilinmeyen bir numaradan mesaj gelir. Cevap verip vermemek, ne söyleyeceği, Ece'yi uyarıp uyarmayacağı ona kalmıştır. Ece'nin dünyası gerçek saatle akar: Ece "yarım saate yazarım" derse gerçekten yarım saat sonra yazar, "saat dokuzu on geçe" derse oyuncunun kendi saatiyle 21:10'da yazar.
+Oyuncu kimseyi canlandırmaz: **kendisidir**. Telefonuna bilinmeyen bir numaradan mesaj gelir. Cevap verip vermemek, ne söyleyeceği, Elif'i uyarıp uyarmayacağı ona kalmıştır. Elif'in dünyası gerçek saatle akar: Elif "yarım saate yazarım" derse gerçekten yarım saat sonra yazar, "saat dokuzu on geçe" derse oyuncunun kendi saatiyle 21:10'da yazar.
 
-## Neden Ece başka birini aramıyor?
+## Neden Elif başka birini aramıyor?
 
 İnandırıcılık için baştan kapatılan sorular:
 
 - **Telefonu bozuk.** İlk gün köprüden geçerken dereye düşürdü. Ekranın üst yarısı ölü; yalnızca açık kalan son konuşmanın yazma alanı çalışıyor. Rehbere, başka sohbete, aramaya geçemiyor.
 - **Şebeke zayıf.** Vadide veri yok; arama düşüyor, SMS bazen gidiyor.
 - **Yasak bölgede.** Köy kamulaştırıldı ve mühürlendi. Jandarmaya haber verirse dışarı çıkarılır ve aradığı şeyi bulamaz. İnatçıdır.
-- **Pil sınırlı.** Pil yüzdesi hikâyede bir kaynaktır; Ece bazen "pil için kapatıyorum" der.
+- **Pil sınırlı.** Pil yüzdesi hikâyede bir kaynaktır; Elif bazen "pil için kapatıyorum" der.
 
 ## Mekân: Ilgındere
 
@@ -27,7 +27,7 @@ Oyuncu kimseyi canlandırmaz: **kendisidir**. Telefonuna bilinmeyen bir numarada
 | Gün | Su nereye ulaşır |
 | --- | --- |
 | 1 | Aşağı tarlalar |
-| 2 | Eski köprü (Ece'nin düştüğü yer) |
+| 2 | Eski köprü (Elif'in düştüğü yer) |
 | 3 | Değirmen yolu (geçit derinleşir) |
 | 4 | Okulun bahçesi |
 | 5 | Köy meydanı |
@@ -36,23 +36,23 @@ Oyuncu kimseyi canlandırmaz: **kendisidir**. Telefonuna bilinmeyen bir numarada
 
 **Coğrafya (bütün günlerde sabit):**
 - **Kuzey yaka:** ana yola çıkan toprak yol (ana yola iki saat yürüyüş) ve biraz aşağıda eski **değirmen**.
-- **Eski taş köprü** iki yakayı bağlar. Köyde telefonun çektiği tek yer köprünün ortasıdır; Ece numarayı orada yazarken kayar ve telefonu dereye düşürür (prolog). 2. gün akşamüstü köprü su altında kalır.
+- **Eski taş köprü** iki yakayı bağlar. Köyde telefonun çektiği tek yer köprünün ortasıdır; Elif numarayı orada yazarken kayar ve telefonu dereye düşürür (prolog). 2. gün akşamüstü köprü su altında kalır.
 - **Güney yaka:** köy (meydan, saat kulesi, yanında eski PTT binası, okul, Doğanların mavi kapılı evi). Köyün yukarısında, yamaçta baraj şirketinin **şantiyesi**: Rıza'nın konteyneri, jeneratör, kıyıya çekilmiş kayık.
-- Köprünün yukarısında, derede sığ bir **geçit** vardır; Nazlı geceleri oradan geçer (Ece 2. gece fark edebilir, 3. gün kullanır).
+- Köprünün yukarısında, derede sığ bir **geçit** vardır; Nazlı geceleri oradan geçer (Elif 2. gece fark edebilir, 3. gün kullanır).
 
 Köyün kalbinde **saat kulesi** var. Saati yıllardır **dokuzu on geçe** durmuş. Kulenin yanında eski postane.
 
 ## Karakterler
 
-**Ece Doğan (27)** — Ses kayıtçısı (belgesellere saha kaydı yapar). Esprili, inatçı, kolay korkmaz gibi davranır ama korkar. Kaydedici her zaman yanında; dünyayı sesle anlatır ("burada sessizlik bile yankılı"). Dedesi üç ay önce öldü. Köye iki şey için geldi: köyün "son seslerini" kaydetmek ve dedesinin hiç anlatmadığı şeyi öğrenmek.
+**Elif Doğan (27)** — Ses kayıtçısı (belgesellere saha kaydı yapar). Esprili, inatçı, kolay korkmaz gibi davranır ama korkar. Kaydedici her zaman yanında; dünyayı sesle anlatır ("burada sessizlik bile yankılı"). Dedesi üç ay önce öldü. Köye iki şey için geldi: köyün "son seslerini" kaydetmek ve dedesinin hiç anlatmadığı şeyi öğrenmek.
 
 **Kemal Doğan (dede, ölü)** — 1987'de köyü bir gecede terk etti, bir daha dönmedi. Geriye bir defter bıraktı. Defterin son sayfasında: *"Ilgındere'de başın sıkışırsa bu numaraya yaz. O bilir. Saat dokuzu geçe."* ve bir telefon numarası. O numara oyuncunun numarasıdır.
 
 **Nazlı Doğan** — Kemal'in kız kardeşi. 1987'de, düğününden bir gece önce, **kulenin çanı kendi kendine çaldığı gece** kayboldu. Köyde anlatılan: "Dere aldı onu." Bir çocuk ayakkabısı bile bulunmadı.
 
-**Bekçi Rıza (60'lar)** — Baraj şantiyesinin bekçisi, köyde kalan tek "resmî" kişi. Huysuz, az konuşur, Ece'yi kovmaya çalışır ama ona çay ve jeneratörden şarj verir. Doğan soyadını duyunca yüzü değişir. 1987'de Nazlı'yla nişanlıydı.
+**Bekçi Rıza (60'lar)** — Baraj şantiyesinin bekçisi, köyde kalan tek "resmî" kişi. Huysuz, az konuşur, Elif'i kovmaya çalışır ama ona çay ve jeneratörden şarj verir. Doğan soyadını duyunca yüzü değişir. 1987'de Nazlı'yla nişanlıydı.
 
-**Hatice Nine (60'lar, yaşından yaşlı görünür)** — Derenin karşı yakasındaki eski değirmende tek başına yaşar, keçileri vardır, köyü terk etmeyi reddeder. Akşamları bir türkü mırıldanır (sözsüz; oyunda yalnızca "mırıltı" olarak geçer). Ece'yi görür görmez "Kemal'in torunusun, gözlerin aynı" der.
+**Hatice Nine (60'lar, yaşından yaşlı görünür)** — Derenin karşı yakasındaki eski değirmende tek başına yaşar, keçileri vardır, köyü terk etmeyi reddeder. Akşamları bir türkü mırıldanır (sözsüz; oyunda yalnızca "mırıltı" olarak geçer). Elif'i görür görmez "Kemal'in torunusun, gözlerin aynı" der.
 
 **Mühendis Selim (30'lar)** — Baraj şirketinin mühendisi. Köyün boşaltılmasından sorumlu, kurallara bağlı ama vicdanlı. Dördüncü günden itibaren baskı unsuru.
 
@@ -72,7 +72,7 @@ Katman katman açılır; her katman bir önceki "efsaneyi" yıkar.
 
 ### Neden bu kurgu güçlü
 
-- **Numara oyuncunun kendisi.** Son büyük açılım doğrudan oyuncuya dokunur: "Bu benim eski numaramdı." Altıncı günde Nazlı, Ece'nin telefonundan oyuncuya **kendisi** yazar.
+- **Numara oyuncunun kendisi.** Son büyük açılım doğrudan oyuncuya dokunur: "Bu benim eski numaramdı." Altıncı günde Nazlı, Elif'in telefonundan oyuncuya **kendisi** yazar.
 - **Gerçek saat çanı.** Çan her akşam oyuncunun kendi saatiyle 21:10'da çalar. Bir süre sonra oyuncu 21:10'u bekler.
 - **Her gün su yükselir.** Doğal bir saat ve gerilim kaynağı; aceleyi oyuncu hisseder.
 - **Doğaüstü gibi başlar, insanî biter.** Korku türünü sevenleri çeker, ama sonunda bir aile ve vicdan hikâyesidir.
@@ -82,11 +82,11 @@ Katman katman açılır; her katman bir önceki "efsaneyi" yıkar.
 Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zamanlı beklemeler içerir. Her günün bir "21:10 sahnesi" vardır.
 
 ### Gün 1 — Bilinmeyen Numara  *(yazıldı, oynanabilir)*
-- Ece yazar: "Bu numara Kemal Doğan'ın defterinde yazıyordu." Oyuncu tanımaz. Ece hayal kırıklığına uğrar ama başka şansı yoktur (bozuk ekran).
+- Elif yazar: "Bu numara Kemal Doğan'ın defterinde yazıyordu." Oyuncu tanımaz. Elif hayal kırıklığına uğrar ama başka şansı yoktur (bozuk ekran).
 - Köyü, barajı, Nazlı efsanesini, defteri öğreniriz. **Fotoğraf:** defter sayfası.
 - Meydan, saat kulesi: saat 9:10'da durmuş. **Fotoğraf:** kule.
 - Aile evi: duvarda kurşun kalemle boy çizgileri — "Kemal 1971", "Nazlı 1973". Pencerede **taze ılgın dalı**. Biri buraya geliyor.
-- Ece okulda gecelemeye karar verir. 21:10'da yazacağını söyler.
+- Elif okulda gecelemeye karar verir. 21:10'da yazacağını söyler.
 - **21:10 sahnesi:** Çan kendiliğinden çalar. Üç seçenek: *git bak* / *kapıyı kilitle* / *kayda devam et*. Her biri farklı bir ipucu bırakır (değirmene giden fener ışığı / kapının önünden geçen ayak sesleri / kayıtta bir kadının mırıltısı).
 
 ### Gün 2 — Bekçi  *(yazıldı, oynanabilir)*
@@ -94,37 +94,37 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Pil %17. Şantiyeye şarja gidiş: oyuncu yaklaşımı seçer (dürüst / gazeteci yalanı / gizlice). Pil ve Rıza'nın güveni buna göre değişir.
 - Rıza: 60'larında, bıyıklı, sol bacağını sürür. Doğan soyadına tepki verir. "Akşamüstü köprü suyun altında kalır." "Saat dokuzu geçe dışarı çıkma." Kayık onun.
 - Oyuncunun sordurduğu soru: Nazlı (kaçar, eli titrer) / çan ("rüzgâr"; kuleye hiç bakmaz) / değirmen ("orada kimse yok" der, yalan).
-- Gitmeli mi? Ece her durumda kalır ama oyuncunun sözü güveni etkiler.
-- **Bulmaca:** defterde "Notu oku. Kelime, harf." ve sayı çiftleri; ilk notun kelime ve harfleri → **DEĞİRMEN**. Oyuncu yazarak çözer; iki aşamalı ipucu, üç denemeden sonra Ece çözer. Sayfanın altında karalanmış satır: "Ona söylemeliydim."
-- **Köprü (akşamüstü):** su köprünün üstünden akar. Oyuncu "geçme" derse Ece köprünün batışını izler, yamaçta Rıza da cenazede gibi bakar. "Dene" derse Ece yarı yolda geri döner, Rıza koşup onu çeker: *"Bu köprü bir kere birini aldı. Yeter."* İki durumda da köprü gider: değirmen ve ana yol öbür yakada kalır.
+- Gitmeli mi? Elif her durumda kalır ama oyuncunun sözü güveni etkiler.
+- **Bulmaca:** defterde "Notu oku. Kelime, harf." ve sayı çiftleri; ilk notun kelime ve harfleri → **DEĞİRMEN**. Oyuncu yazarak çözer; iki aşamalı ipucu, üç denemeden sonra Elif çözer. Sayfanın altında karalanmış satır: "Ona söylemeliydim."
+- **Köprü (akşamüstü):** su köprünün üstünden akar. Oyuncu "geçme" derse Elif köprünün batışını izler, yamaçta Rıza da cenazede gibi bakar. "Dene" derse Elif yarı yolda geri döner, Rıza koşup onu çeker: *"Bu köprü bir kere birini aldı. Yeter."* İki durumda da köprü gider: değirmen ve ana yol öbür yakada kalır.
 - **21:10:** içeride kal (Rıza battaniye ve çorba getirir: "Kemal'e benziyorsun") / kuleye git (postanenin duvarındaki delikten sarkan yeni bir ip: çan postaneden çalınıyor) / kıyıya in (fener köprünün yukarısındaki sığlıktan suyu geçip değirmene gider; yamaçta Rıza'nın feneri de değirmene bakar).
 - Gün sonu: oyuncuya "o bilir"deki "o" kim diye sorulur (Rıza / değirmendeki kişi / bilmiyoruz). İleride geri dönülür.
 
 ### Gün 3 — Değirmen
-- Köprünün yukarısındaki sığ geçitten karşıya geçiş (2. gece fener oradan geçmişti). Oyuncunun önerisine göre güvenli ama uzun yol ya da hızlı ama riskli yol (riskli → **burkulan bilek** bayrağı; sonraki günlerde Ece yavaşlar).
+- Köprünün yukarısındaki sığ geçitten karşıya geçiş (2. gece fener oradan geçmişti). Oyuncunun önerisine göre güvenli ama uzun yol ya da hızlı ama riskli yol (riskli → **burkulan bilek** bayrağı; sonraki günlerde Elif yavaşlar).
 - Hatice Nine. "Kemal'in torunusun." Efsaneyi anlatır, ama gözünü kaçırır. Elinde eski bir yanık izi.
-- Gün 1'de kayıt seçildiyse: Ece mırıltıyı tanır. Hatice'nin mırıldandığı türküyle aynı.
-- **Seçim:** Ece defterdeki numaradan Hatice'ye bahsetsin mi? (Bahsederse Hatice susar, numaraya bakmayı reddeder — oyuncu bir şey sezmeye başlar.)
-- **21:10:** Ece değirmende kalırsa: Hatice o saatte dışarı çıkar ve kaybolur… ve çan çalar.
+- Gün 1'de kayıt seçildiyse: Elif mırıltıyı tanır. Hatice'nin mırıldandığı türküyle aynı.
+- **Seçim:** Elif defterdeki numaradan Hatice'ye bahsetsin mi? (Bahsederse Hatice susar, numaraya bakmayı reddeder — oyuncu bir şey sezmeye başlar.)
+- **21:10:** Elif değirmende kalırsa: Hatice o saatte dışarı çıkar ve kaybolur… ve çan çalar.
 
 ### Gün 4 — Kamulaştırma
-- Selim ve jandarma köyü son kez tarar. Ece saklanır: **"Şimdi yazma. Telefon titrerse duyarlar."**
-- **Gerçek zamanlı gizlenme:** Oyuncunun önünde iki seçenek durur: *sessizce bekle* ve *"İyi misin?"* yaz. Yazarsa Ece yakalanır (yakalandı dalı: köyden çıkarılır, gece gizlice geri döner; pil ve güven bedeli).
+- Selim ve jandarma köyü son kez tarar. Elif saklanır: **"Şimdi yazma. Telefon titrerse duyarlar."**
+- **Gerçek zamanlı gizlenme:** Oyuncunun önünde iki seçenek durur: *sessizce bekle* ve *"İyi misin?"* yaz. Yazarsa Elif yakalanır (yakalandı dalı: köyden çıkarılır, gece gizlice geri döner; pil ve güven bedeli).
 - Selim'in bıraktığı dosyada 1987 jandarma tutanağı: **Öğretmen Orhan Akın, Nazlı'nın kaybolduğu gece köprüde boğuldu.**
-- **21:10:** Ece postanede saklanır (2. gece ipi gördüyse yerini zaten biliyordur). Fenerli bir kadın gelir, ipi çeker. Çanı çalan bir insan.
+- **21:10:** Elif postanede saklanır (2. gece ipi gördüyse yerini zaten biliyordur). Fenerli bir kadın gelir, ipi çeker. Çanı çalan bir insan.
 
 ### Gün 5 — İtiraf
-- Ece tutanakla Rıza'nın karşısına çıkar. **Ahlaki seçim:** Rıza'nın sözlerini gizlice mi kaydetsin, izin mi istesin?
+- Elif tutanakla Rıza'nın karşısına çıkar. **Ahlaki seçim:** Rıza'nın sözlerini gizlice mi kaydetsin, izin mi istesin?
 - Rıza anlatır (sesli mesaj): kavga, düşüş, kaçış. Hatice'nin kim olduğunu bildiğini de söyler ama ona hiç anlatmamıştır.
 - Su meydanda. Selim yarın her şeyin biteceğini söyler.
-- **21:10:** Çan çalmaz. İlk kez. Ece endişelenir — Hatice'ye ne oldu?
+- **21:10:** Çan çalmaz. İlk kez. Elif endişelenir — Hatice'ye ne oldu?
 
 ### Gün 6 — Nazlı
-- Ece değirmene gider. Hatice hasta değil; sadece yorgun. Ece boy çizgilerinin fotoğrafını gösterir.
+- Elif değirmene gider. Hatice hasta değil; sadece yorgun. Elif boy çizgilerinin fotoğrafını gösterir.
 - **"Ben Nazlı'yım."** Kaçış gecesinin kendi anlatımı.
-- Ece defteri gösterir. Nazlı numaraya bakar: **"Bu benim numaramdı."**
-- Nazlı, Ece'nin telefonunu alır ve **oyuncuya kendisi yazar.** (Konuşan değişir; başlıkta "Ece" yerine kısa süreliğine Nazlı'nın sözleri.) Oyuncuya kim olduğunu, neden bu kadar yıl beklediğini sorar.
-- **Büyük seçim:** Oyuncu Nazlı'ya Orhan'ın nasıl öldüğünü söylesin mi, Ece'ye mi bıraksın, hiç söylemesin mi?
+- Elif defteri gösterir. Nazlı numaraya bakar: **"Bu benim numaramdı."**
+- Nazlı, Elif'in telefonunu alır ve **oyuncuya kendisi yazar.** (Konuşan değişir; başlıkta "Elif" yerine kısa süreliğine Nazlı'nın sözleri.) Oyuncuya kim olduğunu, neden bu kadar yıl beklediğini sorar.
+- **Büyük seçim:** Oyuncu Nazlı'ya Orhan'ın nasıl öldüğünü söylesin mi, Elif'e mi bıraksın, hiç söylemesin mi?
 - Gece fırtına. Su hızla yükseliyor.
 
 ### Gün 7 — Son Çan
@@ -138,17 +138,17 @@ Hiçbir sonda kimse kendi canına kıymaz; su "kayıp" değil "veda" anlamı ta�
 
 | Son | Koşul (özet) | Ne olur |
 | --- | --- | --- |
-| **Son Çan** *(gerçek son)* | Güven yüksek, tutanak + itiraf + Nazlı'nın sırrı çözüldü, gerçek Nazlı'ya söylendi | Rıza Nazlı'dan özür diler. 21:10'da çanı son kez Ece çalar: bu sefer Orhan'a veda. Üçü sabaha karşı Rıza'nın kayığıyla çıkar. Bir hafta sonra Nazlı oyuncuya Ece'nin yeni telefonundan yazar: "Cevap verdiğin için." |
-| **Kuru Toprak** | Ece çıktı ama sır tam çözülmedi ya da Nazlı'ya söylenmedi | Selim herkesi tahliye eder. Nazlı hiçbir şey öğrenmeden şehre gider. Ece köyün son seslerini kaydetmiştir ama kayıtta bir boşluk vardır. |
-| **Sinyal Yok** | Pil biter ya da bilek + riskli yol + kötü kararlar son günde birleşir | Mesajlar susar. Ertesi sabah bilinmeyen başka bir numaradan Selim yazar: telefonu bir kayıkta buldular, Ece hastanede, iyi. Sır suyun altında kaldı. |
-| **Engellendin** *(erken son)* | Oyuncu sürekli alaycı/kaba ya da Ece'yi oyalayan seçimler yapar, güven 0'a iner | Ece "yardım etmeyeceksen yazma" der ve konuşmayı bırakır. Erken ve sert ama adil bir son; oyuncu geri sarabilir. |
+| **Son Çan** *(gerçek son)* | Güven yüksek, tutanak + itiraf + Nazlı'nın sırrı çözüldü, gerçek Nazlı'ya söylendi | Rıza Nazlı'dan özür diler. 21:10'da çanı son kez Elif çalar: bu sefer Orhan'a veda. Üçü sabaha karşı Rıza'nın kayığıyla çıkar. Bir hafta sonra Nazlı oyuncuya Elif'in yeni telefonundan yazar: "Cevap verdiğin için." |
+| **Kuru Toprak** | Elif çıktı ama sır tam çözülmedi ya da Nazlı'ya söylenmedi | Selim herkesi tahliye eder. Nazlı hiçbir şey öğrenmeden şehre gider. Elif köyün son seslerini kaydetmiştir ama kayıtta bir boşluk vardır. |
+| **Sinyal Yok** | Pil biter ya da bilek + riskli yol + kötü kararlar son günde birleşir | Mesajlar susar. Ertesi sabah bilinmeyen başka bir numaradan Selim yazar: telefonu bir kayıkta buldular, Elif hastanede, iyi. Sır suyun altında kaldı. |
+| **Engellendin** *(erken son)* | Oyuncu sürekli alaycı/kaba ya da Elif'i oyalayan seçimler yapar, güven 0'a iner | Elif "yardım etmeyeceksen yazma" der ve konuşmayı bırakır. Erken ve sert ama adil bir son; oyuncu geri sarabilir. |
 
 ## Değişkenler
 
 | Değişken | Ne tutar |
 | --- | --- |
-| `guven` | Ece'nin oyuncuya güveni (0–10, başlangıç 3). Tavsiyelere uyup uymamasını, ne kadar açıldığını belirler. |
-| `pil` | Ece'nin pil yüzdesi. Başlıkta görünür. Sıfıra inerse o günün geri kalanı susar. |
+| `guven` | Elif'in oyuncuya güveni (0–10, başlangıç 3). Tavsiyelere uyup uymamasını, ne kadar açıldığını belirler. |
+| `pil` | Elif'in pil yüzdesi. Başlıkta görünür. Sıfıra inerse o günün geri kalanı susar. |
 | `kayit_mirilti`, `fener_gordu`, `ayak_sesi` | Gün 1 21:10 seçiminin bıraktığı ipucu |
 | `defter_cozuldu` | Gün 2 bulmacası |
 | `bilek` | Gün 3 riskli yol |
@@ -159,10 +159,23 @@ Hiçbir sonda kimse kendi canına kıymaz; su "kayıp" değil "veda" anlamı ta�
 
 ## Yazım kuralları
 
-- Ece **mesajlaşır**, roman yazmaz: kısa satırlar, art arda baloncuklar, ara sıra küçük harf, nadir emoji (en fazla gün başına bir iki).
+### Elif nasıl yazar
+
+Elif bir romancı değil, telefondan yazışan 27 yaşında biri. Mesajları gerçek bir sohbet gibi görünmeli:
+
+- **Küçük harf:** Cümleler çoğunlukla küçük harfle başlar, sonda nokta yoktur. Özel adlar (Nazlı, Rıza, Kemal Doğan, Ilgındere) büyük kalır.
+- **Konuşma dili:** "bi", "bişey", "şuan", "yazıyo", "gidicem", "napıyım", "dakka", "orda/burda", "hala", "rüzgar". Her kelimeye değil; doğal yerlerde.
+- **Devrik cümle:** "geldim buraya", "gölün dibi olacak burası", "çıkarır beni".
+- **Yazım hatası ve düzeltme:** Ara sıra harf eksik ya da yer değiştirmiş yazar ("defteir", "kilti") ve hemen ardından düzeltir: `defteri*`. Gerginken (köprü, çan) hatalar ve yarım cümleler artar. Düzeltme satırı yıldızla **biter**, yıldızla başlamaz (yıldızla başlayan satır senaryoda seçenektir).
+- **İfadeler:** `:)` `;)` `:(` `:/` `:D` ölçülü kullanılır, duyguya göre. Korku sahnelerinde hiç kullanılmaz.
+- **Alıntılar dokunulmaz:** Defterdeki not, şifre, tahta yazısı ve Rıza'nın kritik sözleri ("Bu köprü bir kere birini aldı. Yeter.") olduğu gibi, düzgün yazımla aktarılır.
+- Oyuncu seçenekleri düzgün yazılır (oyuncunun kendi sesi), en fazla ~40 karakter.
+
+### Genel
+
 - Her mesaj tek düşünce. Uzun açıklamalar 3–4 baloncuğa bölünür.
-- Oyuncu seçenekleri **oyuncunun ağzından** yazılır ve kısa olur (en fazla ~40 karakter). Hep bir tane "insanî" (merak, şaka, şefkat) bir tane "pratik" seçenek bulunur.
-- Bilgi, sahne ve duygu ses üzerinden anlatılır (Ece'nin mesleği): "rüzgâr kapıyı dövüyor", "su burada başka türlü uğulduyor".
+- Hep bir "insanî" (merak, şaka, şefkat) bir de "pratik" seçenek bulunur.
+- Bilgi, sahne ve duygu ses üzerinden anlatılır (Elif'in mesleği): "rüzgar kapıyı dövüyo", "su burda başka türlü uğulduyo".
 - Doğaüstü hiçbir zaman kesin doğrulanmaz; her olayın sonunda insanî bir açıklaması vardır.
-- Türkü sözleri yazılmaz; yalnızca "mırıltı" olarak geçer (telif ve atmosfer için).
+- Türkü sözleri yazılmaz; yalnızca "mırıltı" olarak geçer.
 - Şiddet anlatılır ama gösterilmez; Orhan'ın ölümü bir itiraf olarak, ayrıntıya girmeden anlatılır.

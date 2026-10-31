@@ -1,7 +1,7 @@
 // Kayıt: oyun durumu ve ayarlar localStorage'da.
 import { SAVE_VERSION } from './engine.js';
 
-const KEY = 'bn_kayit_v1';
+const KEY = 'bn_kayit_v2';
 const PREF = 'bn_ayar_v1';
 
 export function loadGame() {

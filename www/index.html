@@ -45,7 +45,7 @@
   </header>
   <div class="chat-info" id="chatInfo">
     <span class="info-day" id="infoDay"></span>
-    <span class="info-bat" id="infoBat" hidden title="Ece'nin pili">
+    <span class="info-bat" id="infoBat" hidden title="Elif'in pili">
       <svg class="bat" viewBox="0 0 26 12" aria-hidden="true"><rect x="0.5" y="0.5" width="22" height="11" rx="2.5" fill="none" stroke="currentColor"/><rect x="23.5" y="3.5" width="2" height="5" rx="1" fill="currentColor"/><rect id="batFill" x="2" y="2" width="19" height="8" rx="1.2" fill="currentColor"/></svg>
       <span id="batText">%0</span>
     </span>
@@ -75,8 +75,9 @@
     </div>
     <div class="row">
       <span>Bildirimler</span>
-      <span class="muted" id="notifState">—</span>
+      <span class="row-r"><span class="muted" id="notifState">—</span><button class="btn ghost mini" id="notifTest">Dene</button></span>
     </div>
+    <p class="muted small help" id="notifHelp" hidden></p>
     <div class="dev" id="devBox" hidden>
       <h3>Test araçları</h3>
       <p class="muted small">Yalnızca geliştirme sürümünde görünür.</p>

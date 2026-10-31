@@ -9,7 +9,7 @@ const test = (name, fn) => { fn(); n++; console.log('✓', name); };
 
 const src = `
 === basla
-!ad Ece
+!ad Elif
 Merhaba
 ~ 10dk
 İkinci
@@ -51,7 +51,7 @@ test('ilk mesaj yazma süresi kadar sonra düşer, öncesinde "yazıyor"', () =>
   assert.equal(st.log.length, 0);
   advance(story, st, T0 + typingMs({ t: 'msg', text: 'Merhaba' }));
   assert.equal(st.log[0].text, 'Merhaba');
-  assert.equal(st.meta.ad, 'Ece');
+  assert.equal(st.meta.ad, 'Elif');
 });
 
 test('bekleme sırasında "uzakta", sonra mesaj gerçek saatiyle kaydedilir', () => {
@@ -127,12 +127,12 @@ test('hatalı senaryo yakalanır', () => {
 
 test('bildirim: yalnızca sessizlikten sonra gelen ilk mesaj', () => {
   const list = pickNotifications([
-    { kind: 'msg', from: 'Ece', text: 'a', at: 1_000 },
-    { kind: 'msg', from: 'Ece', text: 'b', at: 5_000 },
-    { kind: 'msg', from: 'Ece', text: 'c', at: 600_000 },
-    { kind: 'photo', from: 'Ece', at: 700_000 },
+    { kind: 'msg', from: 'Elif', text: 'a', at: 1_000 },
+    { kind: 'msg', from: 'Elif', text: 'b', at: 5_000 },
+    { kind: 'msg', from: 'Elif', text: 'c', at: 600_000 },
+    { kind: 'photo', from: 'Elif', at: 700_000 },
     { kind: 'msg', from: 'Nazlı', text: 'd', at: 701_000 },
-  ], 0, 'Ece');
+  ], 0, 'Elif');
   assert.deepEqual(list.map(x => x.body), ['c', '📷 Fotoğraf']);
 });
 
