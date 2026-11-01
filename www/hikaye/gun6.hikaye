@@ -81,7 +81,8 @@ anlatıyo. yazıyorum
 “Kemal yardım etti. Dokuzu on geçe çanı çalacaktı. Orhan köprüden geçip değirmene gelecek, beni alacaktı.”
 “Yolun başında bir araba bekliyordu. Şehre gidecektik.”
 “Çan çaldı. Bekledim. Sabaha kadar bekledim. Gelmedi.”
-“Sabah Kemal traktörle geldi. ‘Gelmedi Nazlı, gidelim’ dedi. Bıraktı sandım.”
+“Sabah Kemal traktörle geldi. Üstü başı ıslaktı, gömleği yırtık. ‘Köprüde düştüm’ dedi.”
+“‘Gelmedi Nazlı, gidelim’ dedi. Bıraktı sandım.”
 “Otuz yıl Ankara'da yaşadım. Hatice adıyla. Kemal yılda iki kere gelirdi. Bir de telefon vardı.”
 “Baraj haberini duyunca döndüm. Burada telefon çekmez. Hattı kapattım.”
 “Her akşam çanı çalıyorum. Gelmeyeceğini biliyorum. Ama çan çalınca sanki yoldadır.”
@@ -226,6 +227,15 @@ pencerenin önüne oturdu. ağlamıyo. sadece bakıyo
 !durum çevrimiçi
 hava değişti. kara bulutlar
 dere sesini değiştirdi. daha kalın, daha hızlı
+zarf hala montumun cebinde. “Nazlı'ya”
+? nazli_bildi == 1 -> zarf_bekle_bildi
+bugün vermedim. bi gün bu kadar şeyi kaldırır mı bilmiyorum
+-> zarf_bekle_son
+
+=== zarf_bekle_bildi
+bugün vermedim. Orhan'ın ölümünü yeni öğrendi. bi de dedemin son sözlerini mi okutayım
+=== zarf_bekle_son
+yarın. son çandan önce
 Nazlı'ya yarın akşam altıda son aracın gideceğini söyledim
 “ben son çanı çalmadan gitmem” dedi
 * Ona saygı göster, kalsın. -> nazli_kalsin

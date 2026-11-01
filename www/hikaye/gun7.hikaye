@@ -47,6 +47,8 @@ Bilinmeyen: Merhaba. Ben Selim Aydın, baraj şirketinden.
 Bilinmeyen: Bu telefonu dün akşam Rıza ustanın kayığının dibinde bulduk. Islak ama açıldı.
 Bilinmeyen: Telefonun sahibi Elif Hanım hastanede. İyi, merak etmeyin. Yanında yaşlı bir teyze var, o da iyi.
 Bilinmeyen: Rıza usta ikisini de geçidin aşağısında sudan çıkarmış.
+Bilinmeyen: Elif Hanım'ın montunun cebinden ıslak bir zarf çıktı. Üstünde “Nazlı'ya” yazıyor.
+Bilinmeyen: Mürekkebi akmış. İçindekini kimse okuyamıyor.
 Bilinmeyen: Elif Hanım bu numaraya haber vermemi istedi.
 Bilinmeyen: Bir de şunu söylememi istedi: “Çanı çalamadık.”
 ~ 1dk
@@ -157,6 +159,139 @@ saat hala dokuzu on geçeyi gösteriyo. kapısı artık suyun altında
 
 === son_karar_oncesi
 şantiyedeyiz. Rıza çay koydu. Nazlı battaniyeye sarındı
+~ 1dk
+zarf
+dedemin zarfı. hala montumun iç cebinde. kuru, şükür
+“Nazlı'ya”
+son gün bugün. ne yapayım?
+* Ver ona. Kemal bunu ona yazmış. -> zarf_ver
+* Önce sen oku. -> zarf_elif_okur
+* Verme. Bazı şeyler gömülü kalsın. -> zarf_verme
+
+# ---------- Kemal'in mektubu ----------
+
+=== zarf_verme
+$ zarf_gizlendi = 1
+...
+tamam
+ama içinde ne var bilmeden taşımak da ağır
+cebime geri koydum
+-> zarf_sonra
+
+=== zarf_elif_okur
+$ elif_once_okudu = 1
+açtım
+iki sayfa. dedemin el yazısı. titrek. hastanedeyken yazmış olmalı
+~ 1dk
+...
+okudum
+~ 1dk
+yazamıyorum
+~ 30sn
+dedem
+benim dedem öldürmüş onu
+!foto mektup | Kemal'in mektubu, son sayfa
+* Ona ver. Bu onun hakkı. -> zarf_elif_ver
+* Yırt. Kimse bilmesin. -> zarf_yirt
+
+=== zarf_yirt
+$ zarf_gizlendi = 1
+$ guven - 1
+...
+yırtamadım
+ama vermedim de. katlayıp cebime koydum
+Rıza bana bakıyo. biliyo bişey okuduğumu. bilmiyomuş gibi yapıyo
+kırk yıl böyle yaşamış o
+-> zarf_sonra
+
+=== zarf_elif_ver
+Nazlı'nın yanına oturdum. mektubu eline verdim
+“dedem sana yazmış” dedim. sesim titredi
+-> mektup_okunur
+
+=== zarf_ver
+$ guven + 1
+Nazlı'nın yanına oturdum. zarfı uzattım
+“dedem sana yazmış” dedim
+adını görünce eli titredi. açtı
+=== mektup_okunur
+$ zarf_okundu = 1
+$ nazli_bildi = 1
+$ orhan_ogrendi = 1
+~ 30sn
+sesli okuyo. Rıza'ya duyurur gibi. ben yazıyorum
+“Nazlı'm,”
+“Bunu okuyorsan ben ölmüşüm ve Elif seni bulmuş. Bulsun istedim.”
+“Kırk yıl sana yalan söyledim.”
+“O gece çanı çaldım. Sözümü tuttum. Sonra babam öğrendi. ‘O öğretmen bu gece köprüden geçerse ikisini de vururum’ dedi.”
+“Orhan'ı geri çevirmek için köprüye koştum. Bir hafta bekle, dedim. Dinlemedi. ‘Bu gece’ dedi.”
+“Kolundan tuttum. İttim. Korkuluk kırıldı.”
+~ 20sn
+“Orhan'ı ben öldürdüm.”
+~ 30sn
+“Suya atlayan Rıza'ydı. Çanı duyup koşmuştu. Orhan'ı yakaladı, akıntı ikisini de aldı. Bacağını o gece kayalarda bıraktı.”
+“Sabah Rıza bana ‘Nazlı'yı al, git’ dedi. ‘Ben kaza derim. Benden şüphelenirlerse ben üstlenirim. Sen onun ağabeyisin, sen kal ona.’”
+“Kabul ettim. Korkaktım. Sana ‘gelmedi’ dedim. Gelmişti. Seni almaya gelmişti.”
+“Babamın cenazesine bile gidemedim. O köprüden geçmem gerekirdi.”
+“Ona söylemeliydim. Sana söylemeliydim.”
+“Beni affetme. Ama Rıza'yı affet. Onun affedilecek bir şeyi yok.”
+“Kemal”
+? elif_once_okudu == 1 -> mektup_tepki
+!foto mektup | Kemal'in mektubu, son sayfa
+=== mektup_tepki
+~ 1dk
+kimse konuşmuyo
+Rıza konteynerin kapısında duruyo. sırtı bize dönük
+? riza_itiraf_net == 1 -> mektup_riza_yalan
+-> mektup_nazli
+
+=== mektup_riza_yalan
+bana iki gün önce “Orhan'ı ben öldürdüm” dedi
+“atlamadım” dedi. “kayalara düştüm” dedi
+ezberlemiş. kırk yıl ezberlemiş
+=== mektup_nazli
+Nazlı kalktı. battaniye düştü
+Rıza'nın yanına gitti
+“atladın mı?” dedi
+Rıza cevap vermedi
+“atladın mı Rıza?”
+~ 30sn
+“tutmuştum” dedi Rıza. “bileğinden tutmuştum. su çok güçlüydü”
+“kırk yıl kapıma bir kere gelmedin” dedi Nazlı
+“gelemezdim” dedi Rıza. “gelsem söylerdim. Kemal'e söz vermiştim”
+~ 1dk
+Nazlı elini Rıza'nın yüzüne koydu. ağlıyolar. ikisi de
+-> mektup_elif
+
+=== mektup_elif
+~ 1dk
+ben
+benim dedem
+beni bisiklete bindiren, hastanede elimi tutan adam
+hastanede beni tanımadı, “Nazlı sen misin” dedi ya
+özür dilemek istiyomuş. bana değil. ona
+* Sen onun suçu değilsin. -> elif_teselli
+* Deden de kırk yıl cezasını çekti. -> elif_ceza
+* (Bir şey yazma, bekle) -> elif_sessiz
+
+=== elif_teselli
+$ guven + 1
+biliyorum
+Nazlı da aynısını söyledi az önce. yanıma geldi, “sen Kemal değilsin” dedi
+“ama onun torunusun. ve gelip söyledin. o söyleyemedi”
+-> zarf_sonra
+
+=== elif_ceza
+çekti. kırk yıl o numarayı aramadan, köprüye bakmadan yaşadı
+ama Rıza da çekti. hem de kendi suçu olmayan bişeyin cezasını
+-> zarf_sonra
+
+=== elif_sessiz
+$ guven + 1
+~ 2dk
+sağol. yazmadığın için
+bazen yazmamak da cevap
+=== zarf_sonra
 !pil 7
 !durum çevrimdışı
 ? saat >= 17 -> son_karar
@@ -208,9 +343,16 @@ bu akşam kimse çalmıcak o çanı
 Bilinmeyen: merhaba, ben Elif
 Bilinmeyen: yeni telefonum bu. eskisi dün tamamen öldü
 Bilinmeyen: Nazlı Nine benimle Ankara'da kalıyo şimdilik
+? zarf_okundu == 1 -> epilog_kuru_zarf
 ? nazli_bildi == 1 -> epilog_kuru_bildi
 Bilinmeyen: hala Orhan'ın onu bıraktığını sanıyo. bazen söylemek istiyorum. sonra vazgeçiyorum
 Bilinmeyen: köyün son seslerini kaydettim. ama kayıtta bi boşluk var. hep olcak
+-> epilog_kuru_son
+
+=== epilog_kuru_zarf
+Bilinmeyen: dedemin mektubunu yastığının altında tutuyo
+Bilinmeyen: Rıza'yı her akşam arıyo. dokuzu on geçe. çan yok artık, ama telefon çalıyo
+Bilinmeyen: son çanı çalamadık. bunu hep düşünücem
 -> epilog_kuru_son
 
 === epilog_kuru_bildi
@@ -233,9 +375,8 @@ Selim bey geldiğinde saklanmadık. konuştuk. ikna olmadı ama zorla da götür
 kayıktayız. postanenin penceresinin önünde
 alt kat tamamen suyun altında. çan ipi pencereden içeri sarkıyo, Rıza tuttu
 pilim bitmek üzere. son mesajlarım bunlar galiba
-? nazli_bildi == 0 -> son_can_eksik
-? orhan_ogrendi == 0 -> son_can_eksik
-? guven < 7 -> son_can_eksik
+? zarf_okundu == 0 -> son_can_eksik
+? guven < 5 -> son_can_eksik
 -> son_can
 
 === son_can_eksik
@@ -243,8 +384,15 @@ Nazlı ipi aldı
 ~ @21:10 en az 20sn
 çekiyo
 dokuz. sonra on
+? nazli_bildi == 1 -> eksik_bildi
 son kere fısıldadı. “gel artık Orhan”
-Orhan'ın gelmeyeceğini hala bilmeden
+Orhan'ın neden gelmediğini hala bilmeden
+-> eksik_son
+
+=== eksik_bildi
+son kere fısıldadı. “hoşça kal Orhan”
+o gece köprüde gerçekte ne olduğunu bilmeden. Rıza'ya “sen” diye bakarak
+=== eksik_son
 Rıza başını eğdi. küreklere asıldı
 !durum çevrimdışı
 >> Elif çevrimdışı
@@ -259,7 +407,14 @@ Bilinmeyen: merhaba, ben Elif. yeni telefonum bu
 Bilinmeyen: sabaha karşı iskeleye vardık. Selim bey bekliyomuş
 Bilinmeyen: Nazlı Nine benimle kalıyo şimdi. Rıza köyün yukarısındaki kasabaya yerleşti
 Bilinmeyen: son çanı çaldık. ama bişey eksik kaldı, biliyosun
+? zarf_gizlendi == 1 -> epilog_eksik_zarf
 ? nazli_bildi == 0 -> epilog_eksik_bilmiyor
+Bilinmeyen: teşekkür ederim. her şey için
+!son kuru_toprak | Kuru Toprak
+
+=== epilog_eksik_zarf
+Bilinmeyen: dedemin zarfı hala bende. bazen açıp tekrar okuyorum
+Bilinmeyen: Rıza'yı geçen hafta aradım. “iyiyim” dedi. kırk yıldır aynı şeyi diyo herhalde
 Bilinmeyen: teşekkür ederim. her şey için
 !son kuru_toprak | Kuru Toprak
 
@@ -271,22 +426,44 @@ Bilinmeyen: teşekkür ederim. her şey için
 # ---------- Gerçek son ----------
 
 === son_can
-Nazlı ipi bana uzattı
-“bu sefer sen çal” dedi. “Kemal'in torunu çalsın. o gece Kemal çalmıştı”
+Nazlı ipi tuttu. sonra bana uzattı
+“o gece Kemal çaldı, gelsin diye” dedi. “bu gece gitsin diye çalınacak”
+“kim çalsın, sen seç”
+ipi kime vereyim?
+* Sen çal, Elif. -> ip_elif
+* Rıza çalsın. -> ip_riza
+* Nazlı çalsın. -> ip_nazli
+
+=== ip_elif
+$ ip = 1
+ben çalıcam. dedemin yarım bıraktığı yerden
 ~ @21:10 en az 20sn
 çekiyorum
+-> son_can_ses
+
+=== ip_riza
+$ ip = 2
+$ guven + 1
+ipi Rıza'ya verdim
+bi an bakakaldı. sonra iki eliyle tuttu. kırk yıl önce bu ipi duyup koşmuştu
+~ @21:10 en az 20sn
+çekiyo
+-> son_can_ses
+
+=== ip_nazli
+$ ip = 3
+ipi Nazlı'ya geri verdim. kırk yıldır her akşam o çaldı. sonuncusu da onun
+~ @21:10 en az 20sn
+çekiyo
+=== son_can_ses
 !ses son_can | Kayıktan, postanenin penceresinden: suyun üstünde yankılanan çan. Dokuz vuruş, sessizlik, on vuruş. Sonunda bir kadın fısıltıyla bir şey söylüyor.
 dokuz. sonra on
 Nazlı fısıldadı
-“git artık Orhan. ben de gidiyorum”
+“bırakmamışsın beni. şimdi ben bırakıyorum seni. git artık Orhan”
 ...
 Rıza kayığı çevirdi. göle doğru
 kule arkamızda kalıyo
-? yuzlesme == 1 -> son_can_ucumuz
--> son_can_bitis
-
-=== son_can_ucumuz
-üçümüz bi kayıkta. kırk yıl önce bu üç kişiden biri hep eksikti
+üçümüz bi kayıkta. kırk yıl önce bu köprüde dört kişi vardı. biri gitti, biri kaçtı, ikisi bekledi
 === son_can_bitis
 !pil 1
 telefon kapanıyo
@@ -306,12 +483,13 @@ Bilinmeyen: Ben Nazlı.
 Bilinmeyen: Elif yeni telefon aldı. Bana da bir tane aldı. İlk numara olarak seninkini yazdı.
 Bilinmeyen: Kemal'in numarası artık sende kalsın.
 Bilinmeyen: Orhan'ı Ankara'ya getirdik. Kimsesizler mezarlığına değil. Benim yanıma.
-? yuzlesme == 1 -> epilog_riza
--> epilog_son
+-> epilog_riza
 
 === epilog_riza
 Bilinmeyen: Rıza da geldi cenazeye. Mezarı o kazdı. Kimseye bırakmadı.
 === epilog_son
+Bilinmeyen: Kemal'in mezarına da gittim. Mektubunu orada ona okudum.
+Bilinmeyen: Ne dediğimi sorma evladım. Ama bu sefer söyleyen ben oldum.
 Bilinmeyen: Kırk yıl bir cevap bekledim.
 Bilinmeyen: Cevap verdiğin için teşekkür ederim.
 !son son_can | Son Çan

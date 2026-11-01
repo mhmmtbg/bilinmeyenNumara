@@ -46,7 +46,7 @@ Köyün kalbinde **saat kulesi** var. Saati yıllardır **dokuzu on geçe** durm
 
 **Elif Doğan (27)** — Ses kayıtçısı (belgesellere saha kaydı yapar). Esprili, inatçı, kolay korkmaz gibi davranır ama korkar. Kaydedici her zaman yanında; dünyayı sesle anlatır ("burada sessizlik bile yankılı"). Dedesi üç ay önce öldü. Köye iki şey için geldi: köyün "son seslerini" kaydetmek ve dedesinin hiç anlatmadığı şeyi öğrenmek.
 
-**Kemal Doğan (dede, ölü, 1950–2026)** — 1987'de köyü bir gecede terk etti, bir daha dönmedi. Geriye bir defter bıraktı. Defterin son sayfasında: *"Ilgındere'de başın sıkışırsa bu numaraya yaz. O bilir. Saat dokuzu geçe."* ve bir telefon numarası. O numara oyuncunun numarasıdır.
+**Kemal Doğan (dede, ölü, 1950–2026)** — 1987'de köyü bir gecede terk etti, bir daha dönmedi. Orhan'ı öldüren odur; bunu ölmeden önce yazdığı, "Nazlı'ya" başlıklı kapalı bir mektuba bıraktı. Geriye bir defter bıraktı. Defterin son sayfasında: *"Ilgındere'de başın sıkışırsa bu numaraya yaz. O bilir. Saat dokuzu geçe."* ve bir telefon numarası. O numara oyuncunun numarasıdır.
 
 **Nazlı Doğan (1964)** — Kemal'in on dört yaş küçük kız kardeşi. 1987'de, düğününden bir gece önce, **kulenin çanı kendi kendine çaldığı gece** kayboldu. Köyde anlatılan: "Dere aldı onu." Bir çocuk ayakkabısı bile bulunmadı.
 
@@ -63,12 +63,13 @@ Köyün kalbinde **saat kulesi** var. Saati yıllardır **dokuzu on geçe** durm
 Katman katman açılır; her katman bir önceki "efsaneyi" yıkar.
 
 1. **Efsane (Gün 1–2):** Çan kendi kendine çaldı, Nazlı'yı dere aldı. Çan hâlâ her gece 21:10'da çalıyor.
-2. **Kaçış (Gün 2–3):** Nazlı kaybolmadı, kaçtı. Babası onu istemediği biriyle, Rıza'yla evlendirecekti. Ağabeyi Kemal ona yardım etti: **çanı 21:10'da Kemal çaldı** — dere kenarında arabayla bekleyen Orhan'a "yola çık" işareti.
-3. **Ölüm (Gün 4):** O gece Orhan Akın köprüde boğuldu. Jandarma tutanağı "kaza" diyor. Köyde kimse bundan bahsetmez.
-4. **İtiraf (Gün 5):** Rıza o gece çanı duyup köprüye koştu. Orhan'la kavga ettiler; Orhan taşkın dereye düştü. Rıza onu kurtarmaya çalışmadı — kaçtı. 39 yıldır susuyor. Bekçiliği bu yüzden aldı: dereden ayrılamadı.
-   Kemal de bunu biliyordu: Orhan'ın cesedi bulunduğunda Nazlı çoktan şehre götürülmüştü. Kemal ona hiç söylemedi; Nazlı yıllarca Orhan'ın kendisini bıraktığını sandı. Defterdeki karalanmış satır: *"Ona söylemeliydim."*
-5. **Nazlı (Gün 6):** Hatice Nine, Nazlı'dır. O gece değirmende sabaha kadar Orhan'ı bekledi; Orhan gelmeyince "beni bıraktı" sandı. Kemal onu traktörle şehre götürdü. Yıllarca başka bir isimle yaşadı; Kemal'le tek bağı **bir telefon numarasıydı**. 2016'da köye döndü — çekmeyen bir vadiye. Hattı kapattı. Numara boşa düştü, yıllar sonra başka birine verildi: **oyuncuya.** "O bilir" diyen Kemal, Nazlı'yı kastediyordu. Her gece 21:10'da çanı çalan da Nazlı: hâlâ gelmeyen birine işaret veriyor.
-6. **Seçim (Gün 7):** Nazlı, Orhan'ın onu terk etmediğini — öldüğünü ve nasıl öldüğünü — öğrenecek mi? Kimden? Ve su gelmeden kim, nasıl çıkacak?
+2. **Kaçış (Gün 2–3):** Nazlı kaybolmadı, kaçtı. Babası Ahmet Doğan onu Rıza'yla evlendirecekti. Ağabeyi Kemal yardım etti: **çanı 21:10'da Kemal çaldı**, Orhan köprüden geçip değirmene gelecekti.
+3. **Ölüm (Gün 4):** O gece öğretmen Orhan Akın köprüde boğuldu (14.06.1987). Resmî kayıt: kaza.
+4. **Sahte itiraf (Gün 5):** Rıza açıkça söyler: "Orhan'ı ben öldürdüm." Kıskançlıkla köprüye koştu, itti, korkuluk kırıldı; atlamadı, kaçtı; bacağını "kaçarken kayalarda" kırdı. Oyuncu bunun gerçek olduğunu düşünür. Tek tuhaflık: anlatırken hep yere bakar, yalnız "ben öldürdüm" derken gözüne bakar, "ezberlemiş gibi".
+5. **Nazlı (Gün 6):** Hatice Nine, Nazlı'dır. Sabaha kadar değirmende bekledi. Kemal sabah **üstü başı ıslak, gömleği yırtık** gelip "Köprüde düştüm. Gelmedi Nazlı, gidelim" dedi. Otuz yıl Ankara'da Hatice adıyla yaşadı; Kemal'le tek bağı **bir telefon numarasıydı**. 2016'da döndü, hattı kapattı; numara yıllar sonra **oyuncuya** verildi. "O bilir" diyen Kemal Nazlı'yı kastediyordu.
+6. **Gerçek (Gün 7): Kemal'in mektubu.** 1. günden beri Elif'in cebinde duran, "Nazlı'ya" yazılı kapalı zarf. Babası "o öğretmen bu gece köprüden geçerse ikisini de vururum" deyince Kemal Orhan'ı geri çevirmeye koştu; Orhan "bu gece" dedi; **Kemal itti, korkuluk kırıldı. Orhan'ı Kemal öldürdü.** Suya atlayan Rıza'ydı: Orhan'ı bileğinden yakaladı, akıntı ikisini de aldı, **bacağını o gece kayalarda bıraktı.** Sabah Rıza Kemal'e "Nazlı'yı al git, ben kaza derim, şüphelenirlerse ben üstlenirim; sen onun ağabeyisin" dedi. Rıza kırk yıl başkasının suçunu taşıdı, Nazlı kırk yıl Rıza'ya katil diye baktı, Kemal kırk yıl kaçtı (babasının cenazesine bile gidemedi: köprüden geçmesi gerekirdi). Defterdeki "Ona söylemeliydim" ve hastanede Elif'e "Nazlı sen misin?" demesi, söyleyemediği bu özürdür.
+
+Zarf açılırsa gerçek son mümkündür; açılmazsa Rıza'nın yalanı sürer. Elif kendi dedesinin katil olduğunu öğrenir.
 
 ### Neden bu kurgu güçlü
 
@@ -82,7 +83,7 @@ Katman katman açılır; her katman bir önceki "efsaneyi" yıkar.
 Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zamanlı beklemeler içerir. Her günün bir "21:10 sahnesi" vardır.
 
 ### Gün 1 — Bilinmeyen Numara  *(yazıldı, oynanabilir)*
-- Elif yazar: "Bu numara Kemal Doğan'ın defterinde yazıyordu." Oyuncu tanımaz. Elif hayal kırıklığına uğrar ama başka şansı yoktur (bozuk ekran).
+- Elif yazar: "Bu numara Kemal Doğan'ın defterinde yazıyordu." Defterin kabında "Nazlı'ya" yazılı kapalı bir zarf vardır; Elif açmaz, montunun iç cebinde taşır (7. günün anahtarı). Oyuncu tanımaz. Elif hayal kırıklığına uğrar ama başka şansı yoktur (bozuk ekran).
 - Köyü, barajı, Nazlı efsanesini, defteri öğreniriz. **Fotoğraf:** defter sayfası.
 - Meydan, saat kulesi: saat 9:10'da durmuş. **Fotoğraf:** kule.
 - Aile evi: duvarda kurşun kalemle boy çizgileri — "Kemal 1955", "Nazlı 1969". Pencerede **taze ılgın dalı**. Biri buraya geliyor.
@@ -120,7 +121,7 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 ### Gün 5 — İtiraf  *(yazıldı, oynanabilir)*
 - Su okulun bahçesinde. Elif Rıza'ya gider (doğrudan / şarj bahanesiyle / postanedeki "gel artık Orhan"ı anlatarak).
 - **Kayıt etiği:** izin isteyip kaydetmek ("Al. Bir kere söyleyeceğim.") / gizlice kaydetmek (güven düşer, 7. günde karşılığı olur) / kaydetmemek.
-- **İtiraf** (Rıza'nın sözleri düzgün yazımla, aynen): çanı duydu, köprüye koştu, Orhan elinde valizle ortada bekliyordu, itiştiler, eski korkuluk kırıldı, Orhan taşkın dereye düştü; Rıza atlamadı, kaçtı. "Kaza dediler. Ben de kaza dedim." Kemal ertesi sabah onu köprünün başında buldu, bir şey demedi, bir hafta sonra gitti.
+- **Sahte itiraf** (Rıza'nın sözleri düzgün yazımla, aynen): çanı duydu, köprüye koştu, Orhan elinde valizle ortada bekliyordu; "İttim. Korkuluk kırıldı." **"Orhan'ı ben öldürdüm."** Atlamadı, kaçtı, bacağı o gece kayalarda gitti. "Kaza dediler. Ben de kaza dedim." Elif: "Hep yere baktı. Bir tek 'ben öldürdüm' derken gözüme baktı. Ezberlemiş gibi." (Gerçek 7. günde.) Kemal ertesi sabah onu köprünün başında buldu, bir şey demedi, bir hafta sonra gitti.
 - "Değirmendekine söyleme. O bilmesin. Kırk yıldır bilmeden yaşadı." Kim olduğunu söylemez.
 - Oyuncunun kararı: Rıza Nazlı'ya kendisi anlatsın (güveni yüksekse söz verir: "Yarın. Son gün.") / jandarmaya söylenecek ("Anlat. Kırk yıldır birinin gelip sormasını bekliyorum.") / geçmişte kalsın.
 - Selim'in haberi: yarın 18:00'de son araç, sonra baraj yolu kapanıyor; geriye yalnızca kayık kalır.
@@ -138,12 +139,12 @@ Her gün yaklaşık 20–40 dakikalık etkin yazışma ve aralarda gerçek zaman
 - Gece fırtına; su değirmenin bahçesinde. "Yarın 18:00'de son araç, 21:10'da son çan. İkisi bir arada olmaz."
 
 ### Gün 7 — Son Çan  *(yazıldı, oynanabilir)*
-- Su değirmenin içinde. Çıkış: Rıza'nın kayığını beklemek (Rıza'yla bağ kurulduysa sabah erken, yoksa öğlen gelir) / geçitten Nazlı'yı tutarak geçmek (**Sinyal Yok**) / kuzey yoluna yürümek (Nazlı yürüyemez, geri dönülür).
-- **Rıza ile Nazlı:** Nazlı Rıza'nın payını biliyorsa yüzleşirler ("Atlamadım. Kırk yıl her gece atladım ama." / "İkimiz de yanlış yerde bekledik. Kürek çek Rıza."). Rıza söz verdiyse kayıkta kendisi anlatır. Aksi hâlde sır Rıza'da kalır.
+- Su değirmenin içinde. Çıkış: Rıza'nın kayığını beklemek / geçitten Nazlı'yı tutarak geçmek (**Sinyal Yok**; zarf ıslanır, mürekkebi akar, kimse okuyamaz) / kuzey yoluna yürümek (Nazlı yürüyemez, geri dönülür).
+- Kayıkta Rıza ile Nazlı: Nazlı Rıza'nın payını biliyorsa yüzleşirler; Rıza yalanını tekrarlar ("Atlamadım"). Rıza söz verdiyse kayıkta kendisi anlatır (yine sahte itiraf).
+- **Zarf (şantiyede):** oyuncu seçer: Nazlı'ya ver / önce Elif okusun (sonra verir ya da yırtamaz, saklar) / verme. Okunursa Kemal'in mektubu satır satır, sonra Nazlı Rıza'ya: "Atladın mı Rıza?" — "Tutmuştum. Bileğinden tutmuştum." Elif dedesinin katil olduğunu öğrenir; oyuncu teselli eder ya da susar.
 - Bu gece savaklar tamamen kapanır; su bir gecede kuleyi yutacaktır.
 - **17:10 kararı:** 18:00'de Selim'in aracıyla çıkmak (**Kuru Toprak**) ya da son çanı bekleyip gece kayıkla gölün üstünden baraj iskelesine gitmek.
-- **21:10:** Kayık postanenin penceresinin önünde. Koşullar tamamsa (Nazlı gerçeği biliyor, güven ≥ 7) Nazlı ipi Elif'e verir: "Bu sefer sen çal. O gece Kemal çalmıştı." Nazlı fısıldar: **"Git artık Orhan. Ben de gidiyorum."** (**Son Çan**). Değilse Nazlı son kez "gel artık" der (**Kuru Toprak**).
-- Sonsözler birkaç gün / bir hafta sonra, başka bir numaradan gelir (Elif'in ya da Nazlı'nın yeni telefonu, ya da Selim).
+- **21:10:** Mektup okunduysa Nazlı "O gece Kemal çaldı, gelsin diye. Bu gece gitsin diye çalınacak. Kim çalsın, sen seç" der; oyuncu ipi Elif'e, Rıza'ya ya da Nazlı'ya verir. Nazlı: **"Bırakmamışsın beni. Şimdi ben bırakıyorum seni. Git artık Orhan."** (**Son Çan**). Okunmadıysa çan son kez "gel artık" ya da "hoşça kal" için çalınır (**Kuru Toprak**).
 
 ## Sonlar
 
@@ -151,9 +152,9 @@ Hiçbir sonda kimse kendi canına kıymaz; su "kayıp" değil "veda" anlamı ta�
 
 | Son | Koşul (özet) | Ne olur |
 | --- | --- | --- |
-| **Son Çan** *(gerçek son)* | Son çan beklendi, Nazlı Orhan'ın gerçeğini biliyor, güven ≥ 7 | 21:10'da çanı Elif çalar; Nazlı "Git artık Orhan" der. Yüzleşme olduysa üçü aynı kayıktadır. Bir hafta sonra Nazlı yeni telefonundan yazar: Orhan'ı Ankara'ya, yanına taşımışlar (yüzleşme olduysa mezarı Rıza kazmıştır). "Cevap verdiğin için teşekkür ederim." |
+| **Son Çan** *(gerçek son)* | Kemal'in mektubu okundu, son çan beklendi, güven ≥ 5 | 21:10'da çanı Elif çalar; Nazlı "Git artık Orhan" der. Yüzleşme olduysa üçü aynı kayıktadır. Bir hafta sonra Nazlı yeni telefonundan yazar: Orhan'ı Ankara'ya taşımışlar, mezarı Rıza kazmış; Kemal'in mezarına gidip mektubu ona okumuş: "Bu sefer söyleyen ben oldum." "Cevap verdiğin için teşekkür ederim." |
 | **Kuru Toprak** | 18:00'deki araçla çıkıldı ya da son çan çalındı ama Nazlı gerçeği bilmiyor / güven düşük | Çan ya hiç çalınmaz ya da son kez "gel artık" için çalınır. Birkaç gün sonra Elif yeni numarasından yazar: Nazlı Nine yanında; gerçeği biliyorsa her akşam 21:10'da pencereye gider, bilmiyorsa hâlâ bekler. |
-| **Sinyal Yok** | 7. gün sabahı Nazlı'yla göğüs boyu geçitten geçmeye çalışmak | Nazlı kayar, Elif onu tutar, telefon suya düşer. "Mesaj iletilemedi." Ertesi gün Selim yazar: Rıza ikisini de sudan çıkarmış, hastanedeler, iyiler. "Çanı çalamadık." |
+| **Sinyal Yok** | 7. gün sabahı Nazlı'yla göğüs boyu geçitten geçmeye çalışmak | Nazlı kayar, Elif onu tutar, telefon suya düşer. "Mesaj iletilemedi." Ertesi gün Selim yazar: Rıza ikisini de sudan çıkarmış (kırk yıl sonra ikinci kez o suya atlamış), hastanedeler, iyiler. Elif'in cebinden çıkan zarfın mürekkebi akmış; kimse okuyamıyor. "Çanı çalamadık." |
 | **Engellendin** *(erken son)* | Oyuncu sürekli alaycı/kaba ya da Elif'i oyalayan seçimler yapar, güven 0'a iner | Elif "yardım etmeyeceksen yazma" der ve konuşmayı bırakır. Erken ve sert ama adil bir son; oyuncu geri sarabilir. |
 
 ## Değişkenler

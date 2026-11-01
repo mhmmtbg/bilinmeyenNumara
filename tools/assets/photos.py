@@ -53,6 +53,55 @@ def finish_page(paper, pw, ph):
     return Image.fromarray((rgba * 255).astype(np.uint8), 'RGBA')
 
 
+def letter_page(pw=820, ph=1080, seed=6):
+    """Kemal'in mektubu: çizgisiz, katlanmış kâğıt, titrek el yazısı (son satırlar okunur)."""
+    fib = fbm(ph, pw, 3, 3, seed)
+    tone = fbm(ph, pw, 260, 4, seed + 1)
+    paper = tint(0.75 * tone + 0.25 * fib, (0.86, 0.84, 0.78), (0.96, 0.95, 0.91))
+    # katlama izleri
+    for y in (ph // 3, 2 * ph // 3):
+        band = np.exp(-((np.arange(ph) - y) / 3.0) ** 2)[:, None]
+        paper = paper * (1 - 0.10 * band[..., None]) + 0.0
+        paper[y + 2:y + 5] *= 1.03
+    F = 'Kalam_300Light.ttf'
+    # İkinci (son) sayfa: okunan mektubun sonu
+    lines = ["dedi. Kolundan tuttum. İttim.", "Korkuluk kırıldı.", "", "Orhan'ı ben öldürdüm.", "",
+             "Suya atlayan Rıza'ydı. Bacağını", "o gece kayalarda bıraktı.", "", "Sana gelmedi dedim. Gelmişti.",
+             "Seni almaya gelmişti.", "", "Ona söylemeliydim. Sana söylemeliydim.", "Beni affetme. Rıza'yı affet.", "",
+             "                    Kemal"]
+    ink = np.zeros((ph, pw), np.float32)
+    r = rng(seed)
+    for i, t in enumerate(lines):
+        if t:
+            ink = np.maximum(ink, mask_text(ph, pw, t, (80 + r.uniform(-4, 4), 70 + i * 62), F, 38, angle=float(r.uniform(-1.2, 1.2))))
+    # titrek el: hafif dalgalı bozulma
+    yy, xx = np.mgrid[0:ph, 0:pw].astype(np.float32)
+    ink = ndimage.map_coordinates(ink, [yy + np.sin(xx / 7.0) * 0.8, xx + np.sin(yy / 5.0) * 0.6], order=1)
+    ink = ndimage.gaussian_filter(ink, 0.6) * (0.75 + 0.25 * fbm(ph, pw, 20, 3, seed + 9))
+    paper = comp(paper, (0.10, 0.10, 0.12), np.clip(ink * 1.3, 0, 1) * 0.92)
+    # bir gözyaşı/su damlası lekesi "öldürdüm"ün yanında
+    drop = radial(ph, pw, 560, 260, 34, 30, 0.8)
+    paper = paper * (1 - 0.06 * drop[..., None])
+    paper = comp(paper, (0.70, 0.66, 0.58), np.clip(ndimage.gaussian_filter(drop, 1) - ndimage.gaussian_filter(drop, 3), 0, 1) * 2)
+    rgba = np.dstack([np.clip(paper, 0, 1), np.ones((ph, pw))])
+    return Image.fromarray((rgba * 255).astype(np.uint8), 'RGBA')
+
+
+def photo_mektup():
+    """Battaniyenin üstünde, bir elin tuttuğu mektup; konteynerin içinden loş ışık."""
+    img = tint(fbm(H, W, 18, 5, 71, aspect=(1.0, 0.3)), (0.22, 0.14, 0.12), (0.42, 0.28, 0.22))
+    stripes = (np.sin(np.arange(W) * 0.05)[None, :] > 0.7).astype(np.float32)
+    img = img * (1 - stripes[..., None] * 0.25)
+    page = letter_page()
+    canvas = to_pil(img).convert('RGBA')
+    canvas.alpha_composite(warp_rgba(page, (W, H), [(300, 30), (980, 70), (940, 890), (230, 860)]))
+    img = from_pil(canvas)
+    hand = mask_poly(H, W, [(0, 700), (240, 640), (330, 700), (320, 760), (240, 800), (0, 900)], blur=6)
+    img = img * (1 - hand[..., None]) + np.array([0.58, 0.44, 0.36]) * hand[..., None]
+    img = light(img, 0.45 + 0.8 * radial(H, W, 650, 380, 1000, 900, 1.3), (1.05, 0.96, 0.86))
+    return phone_photo(img, 72, grain=0.035, vignette=0.45, warm=0.03, sharpen=0.4, soft=0.8, noise_dark=1.4)
+
+
 def notebook_cipher(pw=820, ph=1080, seed=4):
     """Şifre sayfası: "Notu oku. Kelime, harf." ve sayı çiftleri; altta eski, karalanmış bir satır."""
     paper = paper_base(pw, ph, seed, ['Haziran 12', 'Hastane, kontrol', 'Rıza'])
@@ -467,6 +516,7 @@ def _scene(name, *args):
 PHOTOS = {'defter': photo_defter, 'duvar': photo_duvar, 'kule': photo_kule,
           'defter2': lambda: photo_defter(notebook_cipher, 23, ((0.30, 0.24, 0.18), (0.50, 0.42, 0.32))),
           'kopru_su': photo_kopru_su,
+          'mektup': photo_mektup,
           'gecit': lambda: photo_crop(_scene('c_gecit'), 0.45),
           'degirmen': lambda: photo_crop(_scene('c_degirmen', 'gun'), 0.5),
           'mezar': lambda: photo_crop(_scene('photo_mezar'), 0.5),

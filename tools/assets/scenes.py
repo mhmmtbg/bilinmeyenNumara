@@ -276,8 +276,8 @@ def photo_liste():
     rows = [('24', 'Yıldız, Hasan', '1931-2004', 'Ailesi - Kayseri', 'TAŞINDI'),
             ('25', 'Yıldız, Fadime', '1936-2011', 'Ailesi - Kayseri', 'TAŞINDI'),
             ('26', 'Kaya, Mustafa', '1940-1998', 'Ailesi - Ankara', 'TAŞINDI'),
-            ('27', 'Doğan, Ahmet', '1922-1979', 'Ailesi - Ankara', 'TAŞINDI'),
-            ('28', 'Doğan, Zehra', '1928-1984', 'Ailesi - Ankara', 'TAŞINDI'),
+            ('27', 'Doğan, Ahmet', '1922-1993', 'Ailesi - Ankara', 'TAŞINDI'),
+            ('28', 'Doğan, Zehra', '1928-1999', 'Ailesi - Ankara', 'TAŞINDI'),
             ('29', 'Sarı, İbrahim', '1919-1990', 'Ailesi - Sivas', 'TAŞINDI'),
             ('30', 'Akın, Orhan', '1962-1987', 'Öğretmen', 'SAHİPSİZ')]
     y = 170

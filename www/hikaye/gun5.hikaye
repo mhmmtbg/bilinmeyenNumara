@@ -90,12 +90,15 @@ sonra anlattı. aynen yazıyorum, hiç bozmadan
 “O gece çanı duydum. Rüzgâr değildi. Kemal'in çaldığını sonradan anladım.”
 “Orhan'ın Nazlı'ya mektup yazdığını bütün köy biliyordu. Bir ben bilmezden geliyordum.”
 “Köprüye koştum. Orhan ortada duruyordu. Elinde bir valiz.”
-“Bağırdım. İttim. O da beni itti. Dere o hafta taşkındı.”
-“Korkuluk eskiydi. Kırıldı.”
+“Bağırdım. Gitme dedim. Gidiyorum dedi.”
+“İttim. Bütün gücümle. Korkuluk eskiydi, kırıldı.”
 ~ 30sn
-“Atlayabilirdim. Atlamadım. Koştum. Sabaha kadar koştum.”
+“Orhan'ı ben öldürdüm.”
+~ 30sn
+“Atlamadım. Koştum. Kayalara düştüm, bacağım o gece gitti. Kalktım, yine koştum.”
 “Ertesi gün aşağıda buldular. Kaza dediler. Ben de kaza dedim.”
-“Kemal ertesi sabah beni köprünün başında buldu. Gözlerime baktı. Bir şey demedi. Bir hafta sonra gitti.”
+“Kemal sabah beni köprünün başında buldu. Gözlerime baktı. Bir şey demedi. Bir hafta sonra gitti.”
+$ riza_itiraf_net = 1
 ? itiraf_kayit == 1 -> itiraf_ses
 -> itiraf_sonra
 
@@ -105,6 +108,9 @@ sonra anlattı. aynen yazıyorum, hiç bozmadan
 ...
 elim titriyo
 kırk yıl. kırk yıl bu adam o köprüye bakarak yaşamış
+ve şimdi bana, bi yabancıya, “ben öldürdüm” dedi
+ama bi şey var. anlatırken hep yere baktı. bi tek “ben öldürdüm” derken gözüme baktı
+sanki ezberlemiş gibi
 ? riza_kurtardi == 1 -> itiraf_kurtardi
 -> itiraf_nazli
 

@@ -106,6 +106,7 @@ konteynerin kapısında oturmuş çay demliyo. beni görünce kalktı
 altmışlarında. kalın bıyıklı, sol bacağını hafif sürüyo. üstünde şirketin yeleği
 adı Rıza. bekçiymiş
 ilk sözü “burası yasak” oldu. ikincisi “şekerli mi” :)
+bacağını sordum. “gençlikte” dedi. “dere”. o kadar
 ? riza_yaklasim == 1 -> riza_durust
 ? riza_yaklasim == 2 -> riza_yalan
 -> riza_gizli_sonra
